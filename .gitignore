@@ -1,0 +1,10 @@
+# General
+.DS_Store
+*.swp
+*.swo
+*~
+
+# AI agents
+AGENTS.md
+CLAUDE.md
+/.claude
