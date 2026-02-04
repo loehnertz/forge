@@ -20,12 +20,10 @@ and goals, they produce generic suggestions that require extensive correction.
 
 **The solution:** Forge gives AI the context it needs through:
 
-|                            |                                                                     |
-|----------------------------|---------------------------------------------------------------------|
-| **Layered context files**  | AGENTS.md files that give AI progressively deeper understanding     |
-| **Durable artifacts**      | Explorations, Proposals, and Decisions that capture design thinking |
-| **Connections to reality** | Links to actual codebases and external systems                      |
-| **Structured workflows**   | A path from exploration to actionable work                          |
+- **Layered context files:** AGENTS.md files that give AI progressively deeper understanding
+- **Durable artifacts:** Explorations, Proposals, and Decisions that capture design thinking
+- **Connections to reality:** Links to actual codebases and external systems
+- **Structured workflows:** A path from exploration to actionable work
 
 > **When NOT to use Forge:** Skip it for quick bug fixes, small self-contained changes, throwaway prototypes, or
 > anything with an obvious solution. If you wouldn't call a meeting about it, you probably don't need an initiative.
@@ -36,16 +34,28 @@ and goals, they produce generic suggestions that require extensive correction.
 
 **1. Adapt for your AI tool**
 
-Rename `AGENTS.EXAMPLE.md` to your tool's convention:
+Rename `AGENTS.EXAMPLE.md` to your tool's convention and fill in the placeholders in the file:
 
-| Tool        | Context file   |
-|-------------|----------------|
-| Claude Code | `CLAUDE.md`    |
-| Cursor      | `.cursorrules` |
+| Tool           | Context file                       |
+|----------------|------------------------------------|
+| Claude Code    | `CLAUDE.md`                        |
+| Cursor         | `.cursorrules`                     |
+| Windsurf       | `.windsurfrules`                   |
+| GitHub Copilot | `.github/copilot-instructions.md`  |
+| Aider          | `CONVENTIONS.md`                   |
+| Generic        | `AGENTS.md`                        |
 
 **2. Copy commands**
 
-Move files from `Commands/` to your tool's command location (e.g., `.claude/commands/` for Claude Code).
+Move files from `Commands/` to your tool's command location:
+
+| Tool           | Command location                   |
+|----------------|------------------------------------|
+| Claude Code    | `.claude/commands/`                |
+| Cursor         | `.cursor/prompts/`                 |
+| Windsurf       | `.windsurf/workflows/`             |
+| GitHub Copilot | `.github/copilot-instructions/`    |
+| Aider          | `.aider/prompts/`                  |
 
 **3. Create your first product**
 
@@ -58,6 +68,10 @@ Move files from `Commands/` to your tool's command location (e.g., `.claude/comm
 ```
 /forge-new-initiative MyProduct My-First-Initiative
 ```
+
+**5. Start ideating**
+
+Work with your AI agent to explore ideas, draft proposals, and make decisions. See [FORGE.md](./FORGE.md) for guidance on the workflow and artifact types.
 
 ---
 
