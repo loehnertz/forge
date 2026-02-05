@@ -17,7 +17,7 @@ Perform the following checks and report results:
 
 ### 1. Link Integrity
 
-For each `AGENTS.md` file, verify that linked items exist:
+For each `AGENTS.md` file (or your tool's equivalent), verify that linked items exist:
 
 - Products listed in root `AGENTS.md` have corresponding folders
 - Initiatives listed in Product `AGENTS.md` have corresponding folders

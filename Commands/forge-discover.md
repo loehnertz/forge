@@ -36,7 +36,7 @@ Capture the problem or opportunity, research the space, and gather context befor
 
 ## Context Update Checkpoint
 
-Before leaving this stage, verify the Initiative's `AGENTS.md` reflects:
+Before leaving this stage, verify the Initiative's `AGENTS.md` (or your tool's context file) reflects:
 
 - [ ] **Current State** is accurate (should be "Discover" or moving to "Design")
 - [ ] **Key findings** from exploration are captured in Background or notes

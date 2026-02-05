@@ -11,15 +11,12 @@ rough exploration to implementation-ready decisions.
 ## Table of Contents
 
 1. [What is Forge?](#what-is-forge)
-2. [Philosophy](#philosophy)
-3. [Workspace Structure](#workspace-structure)
-4. [The `AGENTS.md` System](#the-agentsmd-system)
-5. [Artifact Types](#artifact-types)
-6. [Initiative Lifecycle](#initiative-lifecycle)
-7. [Commands & Skills](#commands--skills)
-8. [Best Practices](#best-practices)
-9. [Getting Started](#getting-started)
-10. [Golden Rules](#golden-rules)
+2. [Workspace Structure](#workspace-structure)
+3. [The `AGENTS.md` System](#the-agentsmd-system)
+4. [Artifact Types](#artifact-types)
+5. [Initiative Lifecycle](#initiative-lifecycle)
+6. [Commands & Skills](#commands--skills)
+7. [Best Practices](#best-practices)
 
 ---
 
@@ -51,6 +48,13 @@ Forge addresses this by:
 - **Defining workflows** that move systematically from exploration to actionable work.
 - **Living alongside code** as a git-tracked workspace that evolves with the systems it documents.
 
+### Guiding Principles
+
+- **Context is King:** Layered `AGENTS.md` files give AI progressively deeper understanding.
+- **Artifacts Over Meetings:** Capture substance in durable, searchable form (`Notes`, `Proposals`, `Decisions`).
+- **Incremental Refinement:** Start messy in `Exploration`, formalize in `Proposal`, lock in `Decision`.
+- **Link to Reality:** Connect to actual codebases via Related Repositories; flow artifacts into real systems.
+
 ### Who is Forge For?
 
 Forge works with any AI coding assistant. Despite being marketed for coding, these tools excel at writing, ideation, and
@@ -76,56 +80,6 @@ when:
 
 The test is simple: if you wouldn't call a meeting about it, you probably don't need a Forge `Initiative`. Use your
 judgment. A "quick fix" that keeps growing might deserve an `Initiative` after all.
-
----
-
-## Philosophy
-
-Four principles guide the Forge approach:
-
-### Context is King
-
-AI assistants are only as good as the context they receive. A generic AI knows nothing about our architecture decisions,
-coding conventions, or business constraints. Forge solves this through layered `AGENTS.md` files that provide:
-
-- **Root level:** Workspace purpose, writing conventions, general guidance.
-- **`Product` level:** Domain context, related repositories, team-specific patterns.
-- **`Initiative` level:** Current goals, constraints, and decisions-in-progress.
-
-The more context we provide, the more useful the AI becomes. Context files are living documents; we update them as our
-understanding evolves.
-
-### Artifacts Over Meetings
-
-Design discussions are valuable. Losing them to the ether is wasteful. Forge emphasizes written artifacts because:
-
-- **They persist:** An `Exploration` file captures research that would otherwise vanish from a Slack thread.
-- **They scale:** New team members can read the `Proposal` rather than asking someone to re-explain.
-- **They compound:** Today's `Notes` become tomorrow's `References`.
-- **They're searchable:** We can find "that discussion we had about caching" six months later.
-
-This doesn't mean we stop talking. It means we capture the substance of our conversations in durable form.
-
-### Incremental Refinement
-
-Ideas don't arrive fully formed. Forge embraces this by distinguishing between:
-
-- **Messy exploration** (`Exploration`): half-formed thoughts, links, questions.
-- **Structured proposals** (`Proposal`): clear problem statements, evaluated alternatives, proposed solutions.
-- **Locked decisions** (`Decision`): the record of what we chose and why.
-
-We start messy and progressively refine. Trying to write a perfect proposal before we've explored the problem
-leads to wasted effort. Leaving everything in rough notes means we never commit to decisions.
-
-### Link to Reality
-
-A workspace disconnected from code is never going to really speed us up. Forge connects to reality through:
-
-- **Related Repositories:** sections that link to actual codebases.
-- **Skills and integrations:** pull in information from issue trackers, wikis, and other systems.
-- **Implementation tickets:** bridge from design to delivery.
-
-The workspace is a staging area, not a destination. Its artifacts should flow into real systems and real code.
 
 ---
 
@@ -157,37 +111,24 @@ The internal structure of a Forge workspace:
 
 ```
 forge/
-├── AGENTS.EXAMPLE.md      # Template: rename for your AI tool (see Adapting Forge below)
+├── AGENTS.EXAMPLE.md      # Template: rename for your AI tool (see below)
 ├── FORGE.md               # This framework document
-├── Commands/              # Built-in lifecycle commands (copy to your tool's location)
-│   └── ...
-├── Templates/             # Starter templates for common artifacts
-│   └── ...
+├── Commands/              # Lifecycle commands – copy to your tool's location
+├── Templates/             # Starter files to bootstrap artifacts consistently
 ├── Products/
 │   └── <Product>/
-│       ├── AGENTS.md      # Product-specific context and linked repositories
-│       ├── Initiatives/
+│       ├── AGENTS.md      # Product context and linked repositories
+│       ├── Initiatives/   # Active workstreams
 │       │   └── <Initiative>/
-│       │       ├── Decision.md      # Architecture decisions
-│       │       ├── AGENTS.md        # Initiative-specific context (optional)
-│       │       ├── Exploration.md   # Refined research synthesis
+│       │       ├── AGENTS.md        # Initiative context (optional)
+│       │       ├── Exploration.md   # Research synthesis
 │       │       ├── Proposal.md      # Formal proposals
-│       │       ├── Notes/           # Raw meeting notes, transcripts, brain dumps
-│       │       ├── References/      # Initiative-specific reference materials
+│       │       ├── Decision.md      # Architecture decisions
+│       │       ├── Notes/           # Raw meeting notes, brain dumps
+│       │       ├── References/      # Initiative-specific references
 │       │       └── Tickets/         # Work item drafts
-│       └── References/    # Reference materials (exports, specs, research)
+│       └── References/    # Product-level reference materials
 ```
-
-### Folder Rationale
-
-| Folder         | Purpose                                                                 |
-|----------------|-------------------------------------------------------------------------|
-| `Commands/`    | Built-in lifecycle commands. Copy to your AI tool's command location.   |
-| `Templates/`   | Starter files to bootstrap new artifacts consistently.                  |
-| `Products/`    | Top-level grouping by product area or domain.                           |
-| `References/`  | Reference materials: things we read, not things we're actively writing. |
-| `Initiatives/` | Active workstreams where the current work happens.                      |
-| `Notes/`       | Raw meeting notes, transcripts, brain dumps (unfiltered context).       |
 
 ### Adapting Forge to Your AI Tool
 
@@ -452,26 +393,8 @@ relevant `Proposal` and `Decision` documents so future readers understand not ju
 
 Each stage has a corresponding command. See [Commands & Skills](#commands--skills) for details.
 
-These commands hydrate context but wait for your direction. They don't take action until you say what you need.
-
-### Reality of Initiatives
-
-* **Not linear:** `Design` often reveals gaps that send us back to `Discover`. That's normal; the stages are a guide,
-  not a
-  mandate.
-
-* **Skip stages:** Small changes might jump from `Discover` straight to `Decompose`. A config tweak doesn't need a
-  proposal.
-
-* **Abandon gracefully:** Some initiatives die at `Discover` or `Design`. `Exploration` reveals it's not worth doing.
-  Keep
-  them around to preserve the learning.
-
-* **Scope affects depth:** Small changes might combine `Discover`+`Design`+`Decide` in one lightweight pass, while large
-  architectural changes spend significant time in each stage.
-
-* **Timebox discovery:** It's easy to keep researching indefinitely. Set a timebox, then force yourself to `Design` even
-  with incomplete information.
+**Practical notes:** Stages are a guide, not a mandate. `Design` often reveals gaps that send us back to `Discover`.
+Small changes might skip stages entirely. Some initiatives die early – keep them around to preserve the learning.
 
 ---
 
@@ -675,63 +598,3 @@ Skip documentation when:
 - Documentation would be pure overhead.
 - The artifact would never be read.
 
----
-
-## Getting Started
-
-### Setting Up a New Product
-
-Use the scaffolding command:
-
-```
-/forge-new-product MyProduct
-```
-
-This creates the full folder structure with `AGENTS.md` template and `.gitkeep` files. Then:
-
-1. Fill in the `AGENTS.md` with product context.
-2. Add related repositories and products.
-3. Seed References/ with existing documentation.
-
-### Creating an Initiative
-
-Use the scaffolding command:
-
-```
-/forge-new-initiative MyProduct My-Initiative
-```
-
-This creates the `Initiative` folder with `Exploration.md`, `AGENTS.md`, and all subfolders. Then:
-
-1. Fill in the goal and background in `AGENTS.md`.
-2. Start capturing research in `Exploration.md`.
-3. Use `/forge-discover` to begin the `Discover` stage.
-
-### Manual Setup
-
-If you prefer manual setup or don't have the commands available, create the folder structures as shown
-in [Workspace Hierarchy](#workspace-hierarchy) and copy templates from `Templates/`.
-
----
-
-## Golden Rules
-
-- **Start simple:** Add structure only when it helps, not preemptively.
-- **Keep context current:** Stale `AGENTS.md` files mislead more than they help.
-- **Keep, don't delete:** Future-us might need that context.
-- **Link liberally:** Connect artifacts to each other and to code.
-- **Refine incrementally:** Messy exploration first, formal documents later.
-- **Know when to skip:** Not every change needs a proposal.
-
-### Key Elements
-
-| Element           | Purpose                                  |
-|-------------------|------------------------------------------|
-| `AGENTS.md` files | Provide layered context to AI assistants |
-| `Notes`           | Dump raw meeting notes and transcripts   |
-| `Exploration`     | Synthesize research into understanding   |
-| `Proposal`        | Formalize proposals with alternatives    |
-| `Decision`        | Record decisions and reasoning           |
-| `Tickets`         | Define actionable work                   |
-| Skills            | Connect to external systems              |
-| Templates         | Bootstrap new artifacts consistently     |

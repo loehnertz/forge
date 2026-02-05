@@ -18,46 +18,34 @@ Click the green **"Use this template"** button above to create your own Forge wo
 
 ## What is Forge?
 
-Forge is a framework for structuring collaborative workspaces where engineers and AI assistants work together on
-design and documentation.
+Forge gives AI assistants the context they need to be genuinely useful collaborators – through layered context files, durable artifacts, and connections to real code. It works with any AI coding assistant (Claude Code, Cursor, Copilot, etc.).
 
-### The Problem
-
-AI assistants are powerful but context-starved. Without understanding your architecture, conventions, and goals, they
-produce generic suggestions that require extensive correction. We spend time explaining the same background repeatedly,
-and valuable design discussions happen in ephemeral chat sessions that leave no trace.
-
-Features like `Projects` in Claude or ChatGPT, or `Gems` in Gemini, attempt to address this by letting us attach
-persistent instructions and reference files. But they fall short for engineering work:
-
-- No structure for organizing context hierarchically
-- No access to actual source code
-- No way to evolve documentation alongside the codebase
-
-They're better than starting from scratch each time, but they remain disconnected from the reality of our systems.
-
-### The Solution
-
-Forge gives AI the context it needs through:
-
-- **Layered context files:** Hierarchical `AGENTS.md` files, not flat instruction dumps
-- **Durable artifacts:** Explorations, Proposals, and Decisions that capture design thinking
-- **Connections to reality:** AI reads real implementations, not just descriptions
-- **Structured workflows:** A path from exploration to actionable work
-- **Living documentation:** Git-tracked workspace that evolves with the systems it documents
-
-### Who is Forge For?
-
-Forge works with any AI coding assistant (Claude Code, Cursor, Copilot, etc.). Despite being marketed for coding, these
-tools excel at writing, ideation, and design work. It's designed for teams who:
-
-- Use AI assistants for design and documentation work
-- Want to preserve and build on design discussions rather than lose them
-- Need AI collaborators that understand their specific systems
-- Value written artifacts over verbal discussions for technical decisions
+See **[FORGE.md](./FORGE.md)** for the complete framework documentation covering philosophy, problem statement, and detailed guidance.
 
 > **When NOT to use Forge:** Skip it for quick bug fixes, small self-contained changes, throwaway prototypes, or
 > anything with an obvious solution. If you wouldn't call a meeting about it, you probably don't need an initiative.
+
+### Golden Rules
+
+- **Start simple:** Add structure only when it helps, not preemptively.
+- **Keep context current:** Stale `AGENTS.md` files mislead more than they help.
+- **Keep, don't delete:** Future-us might need that context.
+- **Link liberally:** Connect artifacts to each other and to code.
+- **Refine incrementally:** Messy exploration first, formal documents later.
+- **Know when to skip:** Not every change needs a proposal.
+
+### Key Elements
+
+| Element           | Purpose                                  |
+|-------------------|------------------------------------------|
+| `AGENTS.md` files | Provide layered context to AI assistants |
+| `Notes`           | Dump raw meeting notes and transcripts   |
+| `Exploration`     | Synthesize research into understanding   |
+| `Proposal`        | Formalize proposals with alternatives    |
+| `Decision`        | Record decisions and reasoning           |
+| `Tickets`         | Define actionable work                   |
+| Skills            | Connect to external systems              |
+| Templates         | Bootstrap new artifacts consistently     |
 
 ---
 
@@ -93,11 +81,15 @@ Not all tools support custom commands; check your tool's documentation.
 /forge-new-product MyProduct
 ```
 
+Then fill in the generated `AGENTS.md` with product context, link related repositories, and seed `References/` with existing documentation.
+
 **4. Start an initiative**
 
 ```
 /forge-new-initiative MyProduct My-First-Initiative
 ```
+
+Fill in the goal and background in the initiative's `AGENTS.md`, then start capturing research in `Exploration.md`.
 
 **5. Start ideating**
 
