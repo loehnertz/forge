@@ -5,33 +5,8 @@
   <br><br>
   <a href="./FORGE.md">Documentation</a> ·
   <a href="./AGENTS.EXAMPLE.md">Template</a> ·
-  <a href="#quick-start">Quick Start</a>
+  <a href="#getting-started">Getting Started</a>
 </p>
-
----
-
-## Getting Started
-
-**Option A: Use GitHub's template feature**
-
-Click the green **"Use this template"** button at the top of this repository to create your own Forge workspace.
-This gives you a fresh copy with all the framework files.
-
-**Option B: Copy files manually**
-
-If you prefer to add Forge to an existing repository or don't use GitHub:
-
-```bash
-# Clone the repository temporarily
-git clone https://github.com/loehnertz/forge.git /tmp/forge
-
-# Copy the framework files to your project
-cp /tmp/forge/FORGE.md /tmp/forge/AGENTS.EXAMPLE.md /tmp/forge/update-forge.sh your-project/
-cp -r /tmp/forge/Commands /tmp/forge/Templates your-project/
-
-# Clean up
-rm -rf /tmp/forge
-```
 
 ---
 
@@ -71,7 +46,28 @@ detailed guidance.
 
 ---
 
-## Quick Start
+## Getting Started
+
+**Option A: Use GitHub's template feature**
+
+Click the green **"Use this template"** button at the top of this repository to create your own Forge workspace.
+This gives you a fresh copy with all the framework files.
+
+**Option B: Copy files manually**
+
+If you prefer to add Forge to an existing repository or don't use GitHub:
+
+```bash
+# Clone the repository temporarily
+git clone https://github.com/loehnertz/forge.git /tmp/forge
+
+# Copy the framework files to your project
+cp /tmp/forge/FORGE.md /tmp/forge/AGENTS.EXAMPLE.md /tmp/forge/update-forge.sh your-project/
+cp -r /tmp/forge/Commands /tmp/forge/Templates your-project/
+
+# Clean up
+rm -rf /tmp/forge
+```
 
 **1. Adapt for your AI tool**
 
