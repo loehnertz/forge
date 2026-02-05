@@ -7,7 +7,7 @@ context changes. Instead, create a new decision that supersedes the old one.
 -->
 
 **Date**: YYYY-MM-DD
-**Status**: Proposed | Accepted | Deprecated | Superseded
+**Status**: **Draft** → **Accepted** → **Superseded**
 **Proposal**: [Link to proposal if applicable]
 
 ## Context

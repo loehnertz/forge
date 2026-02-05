@@ -2,7 +2,7 @@
 
 <!--
 This is an example Product context file template. Adapt sections to your needs.
-Rename to CLAUDE.md, .cursorrules, or your tool's convention.
+Rename to `CLAUDE.md`, `.cursorrules`, or your tool's convention.
 -->
 
 Brief description of this product area.

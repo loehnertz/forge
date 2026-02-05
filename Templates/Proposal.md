@@ -7,7 +7,9 @@ Adapt sections to your needs. Proposals should clearly state the problem before 
 
 ## Status
 
-Draft | In Review | Accepted | Superseded
+**Draft** → **In Review** → **Accepted** → **Superseded**
+
+**Decision**: [Link to decision if made]
 
 ## Problem Statement
 

@@ -2,7 +2,7 @@
 
 <!--
 This is an example Initiative context file template. Adapt sections to your needs.
-Rename to CLAUDE.md, .cursorrules, or your tool's convention.
+Rename to `CLAUDE.md`, `.cursorrules`, or your tool's convention.
 -->
 
 ## Goal
@@ -30,5 +30,5 @@ One-sentence summary of what we're trying to achieve.
 ## Context Guidance
 
 - **Notes/**: Raw meeting notes and transcripts – unfiltered, may be incomplete or contradictory
-- **Exploration.md**: Refined synthesis – use this as the source of truth for current understanding
+- **`Exploration.md`**: Refined synthesis – use this as the source of truth for current understanding
 - When Notes and Exploration conflict, trust Exploration or ask for clarification

@@ -5,8 +5,8 @@ This is an example Ticket template. Adapt sections to your needs.
 Tickets should be specific, actionable, and reference context rather than duplicating it.
 -->
 
-**Epic**: [Parent epic or initiative]
-**RFC**: [Link to RFC if applicable]
+**Initiative**: [Link to parent initiative]
+**Proposal**: [Link to proposal if applicable]
 
 ## Description
 

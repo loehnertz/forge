@@ -9,7 +9,7 @@ Create the folder structure for a new product in the Forge workspace.
 2. **Create folder structure**:
    ```
    Products/<ProductName>/
-   ├── AGENTS.md (or your tool's context file name)
+   ├── `AGENTS.md` (or your tool's context file name)
    ├── Initiatives/
    │   └── .gitkeep
    └── References/
@@ -36,15 +36,16 @@ Create the folder structure for a new product in the Forge workspace.
 
    ## Related Repositories
 
-   | Repository | Path | Description |
-   |------------|------|-------------|
-   | | | |
+   | Repository | Path                     | Description              |
+   |------------|--------------------------|--------------------------|
+   | backend    | ~/Projects/myapp-backend | API and business logic   |
+   | frontend   | ~/Projects/myapp-frontend| React application        |
 
    ## Related Products
 
-   | Product | Relationship |
-   |---------|--------------|
-   | | |
+   | Product       | Relationship                        |
+   |---------------|-------------------------------------|
+   | Other-Product | Consumes our API for feature X      |
 
    ## Current Focus
 

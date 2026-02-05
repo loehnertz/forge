@@ -2,7 +2,7 @@
 
 > A framework for AI-assisted engineering workspaces
 
-Forge is a methodology for structuring collaborative workspaces where engineers and AI assistants work together on
+Forge is a framework for structuring collaborative workspaces where engineers and AI assistants work together on
 design and documentation. It provides conventions for organizing context, writing artifacts, and moving ideas from
 rough exploration to implementation-ready decisions.
 
@@ -13,12 +13,13 @@ rough exploration to implementation-ready decisions.
 1. [What is Forge?](#what-is-forge)
 2. [Philosophy](#philosophy)
 3. [Workspace Structure](#workspace-structure)
-4. [The AGENTS.md System](#the-agentsmd-system)
+4. [The `AGENTS.md` System](#the-agentsmd-system)
 5. [Artifact Types](#artifact-types)
 6. [Initiative Lifecycle](#initiative-lifecycle)
 7. [Commands & Skills](#commands--skills)
 8. [Best Practices](#best-practices)
 9. [Getting Started](#getting-started)
+10. [Golden Rules](#golden-rules)
 
 ---
 
@@ -33,20 +34,29 @@ AI assistants are powerful but context-starved. Without understanding our archit
 produce generic suggestions that require extensive correction. We spend time explaining the same background repeatedly,
 and valuable design discussions happen in ephemeral chat sessions that leave no trace.
 
+Features like `Projects` in Claude or ChatGPT, or `Gems` in Gemini, attempt to address this by letting us attach
+persistent instructions and reference files. But they fall short for engineering work: there's no structure for
+organizing context hierarchically, no access to actual source code, and no way to evolve documentation alongside the
+codebase. They're better than starting from scratch each time, but they remain disconnected from the reality of our
+systems.
+
 ### The Solution
 
 Forge addresses this by:
 
-- **Structuring context** through hierarchical AGENTS.md files that give AI assistants progressively deeper
-  understanding
+- **Structuring context** through hierarchical `AGENTS.md` files that give AI assistants progressively deeper
+  understanding – from workspace-wide conventions down to initiative-specific goals – rather than flat instruction dumps
 - **Capturing knowledge** in durable artifacts (Notes, Proposals, Decisions) rather than transient conversations
-- **Connecting to reality** by linking workspaces to actual codebases and external systems
+- **Connecting to reality** by linking workspaces to actual codebases and external systems – AI assistants can read real
+  implementations, not just descriptions of them
 - **Defining workflows** that move systematically from exploration to actionable work
+- **Living alongside code** as a git-tracked workspace that evolves with the systems it documents
 
 ### Who is Forge For?
 
-Forge works with any AI coding assistant (Claude Code, Cursor, Copilot, etc.).
-The conventions are tool-agnostic – adapt the context file naming to your tool's conventions.
+Forge works with any AI coding assistant (Claude Code, Cursor, Copilot, etc.). Despite being marketed for coding, these
+tools excel at writing, ideation, and design work – exactly what Forge is built for. The conventions are tool-agnostic –
+adapt the context file naming to your tool's conventions.
 
 Forge is designed for software engineering teams who:
 
@@ -80,7 +90,7 @@ Four principles guide the Forge approach:
 ### Context is King
 
 AI assistants are only as good as the context they receive. A generic AI knows nothing about our architecture decisions,
-coding conventions, or business constraints. Forge solves this through layered AGENTS.md files that provide:
+coding conventions, or business constraints. Forge solves this through layered `AGENTS.md` files that provide:
 
 - **Root level**: Workspace purpose, writing conventions, general guidance
 - **Product level**: Domain context, related repositories, team-specific patterns
@@ -140,7 +150,7 @@ inside them:
 ```
 
 This separation keeps concerns clean: Forge handles design and documentation, repositories handle code. The **Related
-Repositories** pattern in product AGENTS.md files links the two by path, allowing AI assistants to read actual
+Repositories** pattern in product `AGENTS.md` files links the two by path, allowing AI assistants to read actual
 implementations when discussing design.
 
 ### Workspace Hierarchy
@@ -209,30 +219,35 @@ adding frontmatter, tool-specific syntax) while the originals serve as reference
   `Proposal-API.md`
 - **Decisions**: Use `Decision.md` within an initiative folder. If an initiative has multiple decisions, use topic
   suffixes matching the proposals: `Decision-Caching.md`, `Decision-API.md`
+- **Exploration**: Use `Exploration.md` within an initiative folder. For initiatives exploring multiple distinct topics,
+  use topic suffixes: `Exploration-Caching.md`, `Exploration-Scaling.md`
 - **Documents**: Use clear, descriptive names; include dates or versions when relevant
 
 ---
 
-## The AGENTS.md System
+## The `AGENTS.md` System
 
-AGENTS.md files are the heart of Forge. They provide context to AI assistants at each level of the workspace hierarchy.
+`AGENTS.md` files are the heart of Forge. They provide context to AI assistants at each level of the workspace hierarchy.
 
-### Root AGENTS.md
+Throughout this documentation, we use `AGENTS.md` as the generic term for context files. When setting up your workspace,
+rename these files to match your AI tool's convention (e.g., `CLAUDE.md` for Claude Code, `.cursorrules` for Cursor).
+
+### Root `AGENTS.md`
 
 The root file establishes workspace-wide conventions: working style, writing conventions, folder structure, and
 available skills/commands.
 
-**Template**: See [AGENTS.EXAMPLE.md](./AGENTS.EXAMPLE.md) – rename to your tool's convention (CLAUDE.md, .cursorrules,
+**Template**: See [AGENTS.EXAMPLE.md](./AGENTS.EXAMPLE.md) – rename to your tool's convention (`CLAUDE.md`, `.cursorrules`,
 etc.)
 
-### Product AGENTS.md
+### Product `AGENTS.md`
 
 Product-level files add domain-specific context: what the product does, its architecture, related repositories, and
 connections to other products.
 
 **Template**: See [Templates/Product-AGENTS.EXAMPLE.md](./Templates/Product-AGENTS.EXAMPLE.md)
 
-### Initiative AGENTS.md (Optional)
+### Initiative `AGENTS.md` (Optional)
 
 For complex initiatives, a dedicated context file captures the goal, background, current state, and guidance for
 navigating the initiative's artifacts.
@@ -241,40 +256,30 @@ navigating the initiative's artifacts.
 
 ### Customizing Forge
 
-FORGE.md is the canonical framework – don't edit it. Instead, add a `## Forge Customizations` section to the root
-AGENTS.md for team-specific overrides:
+`FORGE.md` is the canonical framework – don't edit it. Instead, add a `## Forge Customizations` section to the root
+`AGENTS.md` for team-specific overrides:
 
 ```markdown
 ## Forge Customizations
 
 ### Artifact Conventions
 
-- Proposals use tiered specs: TS50, TS75, TS90
 - Decisions are numbered sequentially (Decision-001, Decision-002, ...)
 - Exploration files are named by topic (e.g., `Exploration-Caching.md`)
 
 ### Required Sections
 
 - All proposals must include "Rollback Plan"
-- All TS75+ specs require "Security Considerations"
 
 ### Naming
 
 - Initiatives use ticket prefix: `PROJ-123-Feature-Name/`
-
-### Tiers
-
-| Tier | Threshold                                      |
-|------|------------------------------------------------|
-| TS50 | < 1 week of work, no new dependencies          |
-| TS75 | 1-4 weeks, may add dependencies                |
-| TS90 | > 4 weeks, architectural changes, or new infra |
 ```
 
 This layering works at every level:
 
-- **Root AGENTS.md**: Company-wide Forge customizations
-- **Product AGENTS.md**: Product-specific overrides (e.g., different tier thresholds for a high-risk domain)
+- **Root `AGENTS.md`**: Company-wide Forge customizations
+- **Product `AGENTS.md`**: Product-specific overrides (e.g., stricter review requirements for a high-risk domain)
 - **Templates/**: Customized artifact structures with required sections baked in
 
 ---
@@ -301,8 +306,10 @@ Decision        → Locked decision record (also known as ADR)
 - No expectation of structure or coherence
 - Treat as background context, not as source of truth
 
-**AI guidance**: Notes are raw and potentially incomplete or contradictory. When in doubt, prefer Exploration.md for the
+**AI guidance**: Notes are raw and potentially incomplete or contradictory. When in doubt, prefer `Exploration.md` for the
 current understanding, or ask the user to clarify.
+
+Notes are raw input – what we heard. Exploration is synthesis – what we understand.
 
 **When to use**: After any meeting, interview, or brainstorm – capture first, synthesize later.
 
@@ -436,8 +443,7 @@ These commands hydrate context but wait for your direction – they don't take a
   them around to preserve the learning.
 
 * **Scope affects depth:** Small changes might combine Discover+Design+Decide in one lightweight pass, while large
-  architectural changes spend significant time in each stage. Some teams formalize this with tier systems (see
-  [Customizing Forge](#customizing-forge) for an example).
+  architectural changes spend significant time in each stage.
 
 * **Timebox discovery:** It's easy to keep researching indefinitely. Set a timebox, then force yourself to Design even
   with incomplete information.
@@ -461,8 +467,8 @@ Commands are user-invoked actions. Forge ships with these in the `Commands/` fol
 
 | Command                 | What it does                                              |
 |-------------------------|-----------------------------------------------------------|
-| `/forge-new-product`    | Scaffold a new product with AGENTS.md and empty folders   |
-| `/forge-new-initiative` | Scaffold a new initiative with Exploration.md and folders |
+| `/forge-new-product`    | Scaffold a new product with `AGENTS.md` and empty folders   |
+| `/forge-new-initiative` | Scaffold a new initiative with `Exploration.md` and folders |
 
 These create the full folder structure with `.gitkeep` files in empty directories so they can be committed to git.
 
@@ -474,7 +480,12 @@ These create the full folder structure with `.gitkeep` files in empty directorie
 | `/forge-design`    | Design    | Prepares to formalize findings into a proposal |
 | `/forge-decide`    | Decide    | Prepares to finalize and record the decision   |
 | `/forge-decompose` | Decompose | Prepares to break work into tickets            |
-| `/forge-review`    | Any       | Reviews artifact quality and readiness         |
+
+**Utility commands** – available at any stage:
+
+| Command         | What it does                           |
+|-----------------|----------------------------------------|
+| `/forge-review` | Reviews artifact quality and readiness |
 
 ### Skills
 
@@ -508,11 +519,11 @@ description: Short description shown in list
 
 The exact location depends on your AI tool. See your tool's documentation.
 
-Document available commands and skills in your root AGENTS.md so team members know what's available.
+Document available commands and skills in your root `AGENTS.md` so team members know what's available.
 
 ### Connecting to Repositories
 
-The `## Related Repositories` section in product AGENTS.md files links to actual codebases:
+The `## Related Repositories` section in product `AGENTS.md` files links to actual codebases:
 
 ```markdown
 ## Related Repositories
@@ -545,7 +556,7 @@ The `.gitignore` can exclude any local scratch files that shouldn't be shared.
 
 ### Keep Context Files Current
 
-Stale context is worse than no context – it misleads. Update AGENTS.md files when:
+Stale context is worse than no context – it misleads. Update `AGENTS.md` files when:
 
 - Architecture changes
 - New patterns are adopted
@@ -584,7 +595,7 @@ Connect artifacts to each other and to external resources:
 - Exploration should link to sources
 - Proposals should reference related decisions
 - Tickets should point to their parent proposal
-- AGENTS.md files should link to key documents
+- `AGENTS.md` files should link to key documents
 - Products should link to related products they depend on or interact with
 
 Cross-product linking helps the AI build a mental model of how your systems interact – which services call which, what
@@ -594,8 +605,7 @@ Isolated documents lose context over time.
 
 ### Keep, Don't Delete
 
-When work completes, leave initiatives where they are rather than deleting them. Use status indicators (emoji prefixes,
-a note in the context file) if you want to distinguish active from completed work. Future-us might need that context.
+When work completes, leave initiatives where they are rather than deleting them. Future-us might need that context.
 
 ### Know When to Stop Documenting
 
@@ -624,9 +634,9 @@ Use the scaffolding command:
 /forge-new-product MyProduct
 ```
 
-This creates the full folder structure with AGENTS.md template and .gitkeep files. Then:
+This creates the full folder structure with `AGENTS.md` template and `.gitkeep` files. Then:
 
-1. Fill in the AGENTS.md with product context
+1. Fill in the `AGENTS.md` with product context
 2. Add related repositories and products
 3. Seed References/ with existing documentation
 
@@ -638,10 +648,10 @@ Use the scaffolding command:
 /forge-new-initiative MyProduct My-Initiative
 ```
 
-This creates the initiative folder with Exploration.md, AGENTS.md, and all subfolders. Then:
+This creates the initiative folder with `Exploration.md`, `AGENTS.md`, and all subfolders. Then:
 
-1. Fill in the goal and background in AGENTS.md
-2. Start capturing research in Exploration.md
+1. Fill in the goal and background in `AGENTS.md`
+2. Start capturing research in `Exploration.md`
 3. Use `/forge-discover` to begin the Discover stage
 
 ### Manual Setup
@@ -654,7 +664,7 @@ in [Workspace Hierarchy](#workspace-hierarchy) and copy templates from `Template
 ## Golden Rules
 
 - **Start simple:** Add structure only when it helps, not preemptively
-- **Keep context current:** Stale AGENTS.md files mislead more than they help
+- **Keep context current:** Stale `AGENTS.md` files mislead more than they help
 - **Keep, don't delete:** Future-us might need that context
 - **Link liberally:** Connect artifacts to each other and to code
 - **Refine incrementally:** Messy exploration first, formal documents later
@@ -664,7 +674,7 @@ in [Workspace Hierarchy](#workspace-hierarchy) and copy templates from `Template
 
 | Element         | Purpose                                  |
 |-----------------|------------------------------------------|
-| AGENTS.md files | Provide layered context to AI assistants |
+| `AGENTS.md` files | Provide layered context to AI assistants |
 | Notes           | Dump raw meeting notes and transcripts   |
 | Exploration     | Synthesize research into understanding   |
 | Proposals       | Formalize proposals with alternatives    |

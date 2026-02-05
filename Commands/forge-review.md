@@ -45,7 +45,7 @@ Provide structured feedback on artifacts to identify gaps, surface questions, an
 
 - Problem stated before solution
 - Alternatives honestly evaluated (not straw-manned)
-- Design detail appropriate for tier
+- Design detail appropriate for the scope and complexity of the change
 - Migration plan addresses rollout
 - Open questions are specific
 

@@ -9,7 +9,7 @@ Formalize findings into a proposal, evaluate alternatives, and prepare for a dec
 ## Context
 
 - **Entry trigger**: Enough understanding from Discover to propose solutions
-- **Exit artifact**: Proposal (or tiered spec) with problem statement, proposal, and alternatives considered
+- **Exit artifact**: Proposal with problem statement, proposed solution, and alternatives considered
 
 ## Relevant Files
 
@@ -23,7 +23,6 @@ Formalize findings into a proposal, evaluate alternatives, and prepare for a dec
 2. Propose a solution with enough detail for others to evaluate
 3. Document alternatives considered and why they were not chosen
 4. Identify risks, trade-offs, and open questions
-5. Determine the appropriate tier (TS50/TS75/TS90) if using tiered specs
 
 ## Design Principles
 

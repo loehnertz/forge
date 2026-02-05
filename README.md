@@ -15,15 +15,40 @@
 Forge is a framework for structuring collaborative workspaces where engineers and AI assistants work together on
 design and documentation.
 
-**The problem:** AI assistants are powerful but context-starved. Without understanding your architecture, conventions,
-and goals, they produce generic suggestions that require extensive correction.
+### The Problem
 
-**The solution:** Forge gives AI the context it needs through:
+AI assistants are powerful but context-starved. Without understanding your architecture, conventions, and goals, they
+produce generic suggestions that require extensive correction. We spend time explaining the same background repeatedly,
+and valuable design discussions happen in ephemeral chat sessions that leave no trace.
 
-- **Layered context files:** AGENTS.md files that give AI progressively deeper understanding
+Features like `Projects` in Claude or ChatGPT, or `Gems` in Gemini, attempt to address this by letting us attach
+persistent instructions and reference files. But they fall short for engineering work:
+
+- No structure for organizing context hierarchically
+- No access to actual source code
+- No way to evolve documentation alongside the codebase
+
+They're better than starting from scratch each time, but they remain disconnected from the reality of our systems.
+
+### The Solution
+
+Forge gives AI the context it needs through:
+
+- **Layered context files:** Hierarchical `AGENTS.md` files, not flat instruction dumps
 - **Durable artifacts:** Explorations, Proposals, and Decisions that capture design thinking
-- **Connections to reality:** Links to actual codebases and external systems
+- **Connections to reality:** AI reads real implementations, not just descriptions
 - **Structured workflows:** A path from exploration to actionable work
+- **Living documentation:** Git-tracked workspace that evolves with the systems it documents
+
+### Who is Forge For?
+
+Forge works with any AI coding assistant (Claude Code, Cursor, Copilot, etc.). Despite being marketed for coding, these
+tools excel at writing, ideation, and design work – exactly what Forge is built for. It's designed for teams who:
+
+- Use AI assistants for design and documentation work
+- Want to preserve and build on design discussions rather than lose them
+- Need AI collaborators that understand their specific systems
+- Value written artifacts over verbal discussions for technical decisions
 
 > **When NOT to use Forge:** Skip it for quick bug fixes, small self-contained changes, throwaway prototypes, or
 > anything with an obvious solution. If you wouldn't call a meeting about it, you probably don't need an initiative.
@@ -49,13 +74,12 @@ Rename `AGENTS.EXAMPLE.md` to your tool's convention and fill in the placeholder
 
 Move files from `Commands/` to your tool's command location:
 
-| Tool           | Command location                   |
-|----------------|------------------------------------|
-| Claude Code    | `.claude/commands/`                |
-| Cursor         | `.cursor/prompts/`                 |
-| Windsurf       | `.windsurf/workflows/`             |
-| GitHub Copilot | `.github/copilot-instructions/`    |
-| Aider          | `.aider/prompts/`                  |
+| Tool        | Command location      |
+|-------------|-----------------------|
+| Claude Code | `.claude/commands/`   |
+| OpenCode    | `.opencode/commands/` |
+
+Not all tools support custom commands – check your tool's documentation.
 
 **3. Create your first product**
 

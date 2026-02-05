@@ -13,8 +13,8 @@ Create the folder structure for a new initiative within a product.
 2. **Create folder structure**:
    ```
    Products/<Product>/Initiatives/<InitiativeName>/
-   ├── AGENTS.md (or your tool's context file name)
-   ├── Exploration.md
+   ├── `AGENTS.md` (or your tool's context file name)
+   ├── `Exploration.md`
    ├── Notes/
    │   └── .gitkeep
    ├── References/
@@ -50,7 +50,7 @@ Create the folder structure for a new initiative within a product.
    ## Context Guidance
 
    - **Notes/**: Raw meeting notes and transcripts – unfiltered, may be incomplete or contradictory
-   - **Exploration.md**: Refined synthesis – use this as the source of truth for current understanding
+   - **`Exploration.md`**: Refined synthesis – use this as the source of truth for current understanding
    - When Notes and Exploration conflict, trust Exploration or ask for clarification
    ```
 
@@ -83,5 +83,5 @@ Create the folder structure for a new initiative within a product.
 
 6. **Report**: Show the user what was created and suggest next steps:
     - Fill in the goal and background in context file
-    - Start capturing research in Exploration.md
+    - Start capturing research in `Exploration.md`
     - Use `/forge-discover` to begin the Discover stage
