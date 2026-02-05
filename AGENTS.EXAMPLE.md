@@ -1,7 +1,3 @@
----
-last-reviewed: YYYY-MM-DD
----
-
 # Forge
 
 This is a collaborative workspace for brainstorming, designing, and documenting projects built on the **Forge**
@@ -27,6 +23,20 @@ You assist with:
 ## Folder Structure
 
 Please check the [FORGE.md](./FORGE.md) for the complete folder structure.
+
+## Resources
+
+- [FORGE.md](./FORGE.md) – Framework documentation
+- `Templates/` – Starter files for artifacts
+- `Commands/` – Lifecycle and utility commands (copy to your tool's location)
+
+## Staleness Detection
+
+To check when files were last updated, use version control or filesystem:
+
+- `git log -1 --format="%cr" -- <file>` – Shows relative time since last commit
+- `git log -1 --format="%ci" -- <file>` – Shows absolute date of last commit
+- File modification time as fallback for untracked files
 
 ## Products
 

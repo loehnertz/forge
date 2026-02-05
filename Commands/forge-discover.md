@@ -41,7 +41,6 @@ Before leaving this stage, verify the Initiative's `AGENTS.md` (or your tool's c
 - [ ] **Current State** is accurate (should be "Discover" or moving to "Design")
 - [ ] **Key findings** from exploration are captured in Background or notes
 - [ ] **Open Questions** list is current
-- [ ] `last-reviewed` timestamp is updated
 
 This keeps context fresh for future sessions and other collaborators.
 

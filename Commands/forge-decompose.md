@@ -41,7 +41,6 @@ Before completing this stage, verify the Initiative's `AGENTS.md` (or your tool'
 - [ ] **Current State** is accurate (should be "Decompose" or "Complete")
 - [ ] **Key outcomes** are captured (number of tickets, implementation approach)
 - [ ] **Open Questions** are resolved or transferred to ticket descriptions
-- [ ] `last-reviewed` timestamp is updated
 
 Also update the parent Product's `AGENTS.md` (or your tool's context file):
 

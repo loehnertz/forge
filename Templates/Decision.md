@@ -1,14 +1,17 @@
+---
+status: Draft
+proposal: ./Proposal.md
+---
+
 # Decision: [Title]
 
 <!--
 This is an example Decision template (also known as ADR – Architecture Decision Record).
 Adapt sections to your needs. Decisions are point-in-time records – don't update them when
 context changes. Instead, create a new decision that supersedes the old one.
--->
 
-**Date**: YYYY-MM-DD
-**Status**: **Draft** → **Accepted** → **Superseded**
-**Proposal**: [Link to proposal if applicable]
+Status values: Draft → Accepted → Superseded
+-->
 
 ## Context
 
@@ -30,3 +33,8 @@ What are the implications of this decision?
 - Trade-offs accepted
 - Follow-up work required
 - Risks to monitor
+
+## References
+
+- [Proposal](./Proposal.md)
+- [Related discussion or documentation]

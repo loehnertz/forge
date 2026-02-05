@@ -1,7 +1,3 @@
----
-last-reviewed: YYYY-MM-DD
----
-
 # [Product Name]
 
 <!--
@@ -44,3 +40,7 @@ Brief description of this product area.
 - [Example-Initiative](./Initiatives/Example-Initiative/AGENTS.md)
 
 <!-- Add more initiatives as you create them. Move completed ones to a "Completed Initiatives" section or remove them. -->
+
+## References
+
+<!-- Product-level documentation, wikis, runbooks -->

@@ -321,7 +321,6 @@ Also known as **ADR** (Architecture Decision Record) in some organizations.
 - Point-in-time record (not updated when context changes).
 - Captures the "why" not just the "what".
 - References the proposal or discussion that led to the decision.
-- Dated and numbered for reference.
 
 **Template:** See [Templates/Decision.md](./Templates/Decision.md) for an example structure.
 
@@ -431,9 +430,11 @@ These create the full folder structure with `.gitkeep` files in empty directorie
 
 **Utility commands** (available at any stage):
 
-| Command         | What it does                           |
-|-----------------|----------------------------------------|
-| `/forge-review` | Reviews artifact quality and readiness |
+| Command           | What it does                                                        |
+|-------------------|---------------------------------------------------------------------|
+| `/forge-review`   | Reviews artifact quality and readiness                              |
+| `/forge-status`   | Shows workspace overview with all products and initiatives by stage |
+| `/forge-validate` | Validates workspace health, links, and staleness                    |
 
 ### Skills
 
@@ -511,18 +512,15 @@ Stale context is worse than no context; it misleads. Update `AGENTS.md` files wh
 - `Initiatives` complete or change in direction.
 - Conventions evolve.
 
-#### Freshness Timestamps
+#### Staleness Detection
 
-All `AGENTS.md` templates include a `last-reviewed` field in their YAML frontmatter:
+Use version control or filesystem to check when files were last updated:
 
-```yaml
----
-last-reviewed: 2025-05-15
----
-```
+- `git log -1 --format="%cr" -- <file>` – Shows relative time since last commit
+- `git log -1 --format="%ci" -- <file>` – Shows absolute date of last commit
+- File modification time as fallback for untracked files
 
-Update this timestamp whenever you verify the content is current. This makes staleness visible and scriptable – the
-`/forge-validate` command flags files not reviewed in 30+ days.
+The `/forge-validate` command uses these methods to flag files not updated in 30+ days.
 
 #### Context Health Checklist
 
@@ -534,7 +532,6 @@ Review context files monthly or quarterly. For each `AGENTS.md`, verify:
 - [ ] **Related Repositories** paths exist on disk
 - [ ] **Related Products** links are still accurate
 - [ ] **Open Questions** are still relevant
-- [ ] `last-reviewed` timestamp is updated
 
 Run `/forge-validate` to automate structural checks. Manual review is still needed for semantic accuracy (e.g., "is
 the architecture description still true?").
@@ -597,4 +594,3 @@ Skip documentation when:
 - The change is trivial and obvious.
 - Documentation would be pure overhead.
 - The artifact would never be read.
-

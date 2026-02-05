@@ -10,6 +10,7 @@ Detect problems in the workspace that could mislead AI assistants or indicate st
 - Orphaned artifacts
 - Stale context files
 - Stage inconsistencies
+- Broken or circular dependencies
 
 ## Validation Checks
 
@@ -34,12 +35,13 @@ Find artifacts that exist but aren't linked:
 
 ### 3. Freshness Check
 
-For each `AGENTS.md` with a `last-reviewed` frontmatter field:
+For each `AGENTS.md` file, check when it was last modified using version control or filesystem:
 
-- Parse the date from YAML frontmatter
-- Flag files not reviewed in 30+ days as warnings
-- Flag files not reviewed in 90+ days as errors
-- Flag files with missing or invalid `last-reviewed` as needing attention
+- Use `git log -1 --format="%cr" -- <file>` to get relative time since last commit
+- Use `git log -1 --format="%ci" -- <file>` to get absolute date of last commit
+- Fall back to file modification time for untracked files
+- Flag files not updated in 30+ days as warnings
+- Flag files not updated in 90+ days as errors
 
 ### 4. Stage Consistency
 
@@ -54,6 +56,32 @@ For each Initiative, compare the stated stage in `AGENTS.md` with actual artifac
 
 Flag mismatches as warnings for human review.
 
+### 5. Dependency Validation
+
+For each Initiative with `depends-on` or `blocks` in its YAML frontmatter:
+
+**Path validation:**
+
+- Verify each dependency path points to an existing Initiative folder
+- Flag broken paths as errors
+
+**Circular dependency detection:**
+
+- Build a dependency graph from all `depends-on` relationships
+- Detect cycles (A depends on B depends on C depends on A)
+- Flag circular dependencies as errors
+
+**Symmetry check:**
+
+- If A lists B in `depends-on`, B should list A in `blocks` (and vice versa)
+- Flag asymmetric dependencies as warnings
+
+| Check              | Level   | Example                                           |
+|--------------------|---------|---------------------------------------------------|
+| Broken path        | ❌ Error | `depends-on: Products/X/Initiatives/Gone` missing |
+| Circular           | ❌ Error | A → B → C → A forms a cycle                       |
+| Asymmetric         | ⚠️ Warn  | A depends-on B, but B doesn't list A in blocks    |
+
 ## Output Format
 
 Present results in a clear, scannable format:
@@ -65,26 +93,39 @@ Present results in a clear, scannable format:
 📁 Products/PaymentService
    ✅ AGENTS.md exists and linked
    ✅ Related repositories accessible
-   ✅ Last reviewed: 12 days ago
+   ✅ Last modified: 12 days ago
+
+   📁 Initiatives/Checkout-V2
+      ✅ Stage consistent with artifacts
+      ⚠️  depends-on: OAuth-Migration, but OAuth-Migration doesn't list this in blocks
 
 📁 Products/UserAuth
-   ⚠️  AGENTS.md last reviewed 45 days ago
+   ⚠️  AGENTS.md last modified 45 days ago
    ✅ Related repositories accessible
 
    📁 Initiatives/OAuth-Integration
       ⚠️  AGENTS.md says "Discover" but Decision.md exists
-      ⚠️  AGENTS.md last reviewed 60 days ago
+      ⚠️  AGENTS.md last modified 60 days ago
+
+   📁 Initiatives/Legacy-Auth-Cleanup
+      ❌ depends-on: Products/Infra/Initiatives/Gone – path does not exist
 
 📁 Products/Legacy
    ❌ Linked in root AGENTS.md but folder doesn't exist
 
+🔗 Dependency Graph
+   ❌ Circular dependency detected: A → B → C → A
+
 ══════════════════════════════════════════════════════════════════════
-Summary: 2 errors, 3 warnings
+Summary: 4 errors, 3 warnings
 
 Recommendations:
 - Remove or fix broken link to Products/Legacy
+- Fix broken dependency path in Legacy-Auth-Cleanup
+- Resolve circular dependency: A → B → C → A
 - Update stage in Products/UserAuth/Initiatives/OAuth-Integration/AGENTS.md
-- Review stale AGENTS.md files and update last-reviewed timestamps
+- Add symmetric blocks/depends-on entries for Checkout-V2 ↔ OAuth-Migration
+- Review stale AGENTS.md files and update content
 ```
 
 ## How to Run
@@ -99,8 +140,8 @@ Recommendations:
 
 | Level   | Meaning                                              | Examples                                |
 |---------|------------------------------------------------------|-----------------------------------------|
-| ✅ Pass  | Item is healthy                                      | Links valid, recently reviewed          |
-| ⚠️ Warn  | Potential issue, human judgment needed               | Stale timestamp, stage mismatch         |
+| ✅ Pass  | Item is healthy                                      | Links valid, recently modified          |
+| ⚠️ Warn  | Potential issue, human judgment needed               | Stale file, stage mismatch              |
 | ❌ Error | Definite structural problem                          | Broken link, missing required file      |
 
 ## Limitations

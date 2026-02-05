@@ -1,5 +1,8 @@
 ---
-last-reviewed: YYYY-MM-DD
+depends-on: []
+  # - Products/Auth/Initiatives/OAuth-Migration
+blocks: []
+  # - Products/Frontend/Initiatives/New-Login-Flow
 ---
 
 # [Initiative Name]
@@ -30,6 +33,23 @@ One-sentence summary of what we're trying to achieve.
 - [Exploration.md](./Exploration.md): Research and findings
 - [Proposal.md](./Proposal.md): Proposal (when created)
 - [Decision.md](./Decision.md): Decision (when made)
+
+## Dependencies
+
+<!--
+Track cross-initiative dependencies here. The frontmatter enables automated validation;
+this section provides human-readable context about *why* each dependency exists.
+-->
+
+### Depends On
+
+<!-- Initiatives that must complete before this one can proceed -->
+<!-- - [OAuth-Migration](../../../Auth/Initiatives/OAuth-Migration/AGENTS.md) – Need new auth tokens before we can integrate -->
+
+### Blocks
+
+<!-- Initiatives waiting on this one to complete -->
+<!-- - [New-Login-Flow](../../../Frontend/Initiatives/New-Login-Flow/AGENTS.md) – Waiting on our API changes -->
 
 ## Context Guidance
 

@@ -41,7 +41,6 @@ Before leaving this stage, verify the Initiative's `AGENTS.md` (or your tool's c
 - [ ] **Current State** is accurate (should be "Decide" or moving to "Decompose")
 - [ ] **Key decisions** are captured (reference Decision.md for details)
 - [ ] **Open Questions** resolved during decision are removed or marked resolved
-- [ ] `last-reviewed` timestamp is updated
 
 This keeps context fresh for future sessions and other collaborators.
 
