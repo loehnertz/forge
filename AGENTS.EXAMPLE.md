@@ -38,14 +38,6 @@ To check when files were last updated, use version control or filesystem:
 - `git log -1 --format="%ci" -- <file>` – Shows absolute date of last commit
 - File modification time as fallback for untracked files
 
-## Products
-
-<!-- Link to each product's context file so AI tools discover the full hierarchy -->
-
-- [ExampleProduct](./Products/ExampleProduct/AGENTS.md)
-
-<!-- Add more products as you create them -->
-
 ## Writing Conventions
 
 <!-- Add your team's writing conventions here. Examples:
