@@ -49,7 +49,7 @@ Forge gives AI the context it needs through:
 ### Who is Forge For?
 
 Forge works with any AI coding assistant (Claude Code, Cursor, Copilot, etc.). Despite being marketed for coding, these
-tools excel at writing, ideation, and design work – exactly what Forge is built for. It's designed for teams who:
+tools excel at writing, ideation, and design work. It's designed for teams who:
 
 - Use AI assistants for design and documentation work
 - Want to preserve and build on design discussions rather than lose them
@@ -85,7 +85,7 @@ Move files from `Commands/` to your tool's command location:
 | Claude Code | `.claude/commands/`   |
 | OpenCode    | `.opencode/commands/` |
 
-Not all tools support custom commands – check your tool's documentation.
+Not all tools support custom commands; check your tool's documentation.
 
 **3. Create your first product**
 
@@ -114,9 +114,9 @@ To pull the latest framework files:
 ```
 
 This updates:
-- `FORGE.md` – framework documentation
-- `Commands/` – workflow commands
-- `Templates/` – artifact templates
+- `FORGE.md`: framework documentation
+- `Commands/`: workflow commands
+- `Templates/`: artifact templates
 
 **Handling local modifications:**
 
@@ -147,8 +147,8 @@ To force-update all files (backs up your versions as `*.local`):
 
 | Document                                     | Description                                                                                        |
 |----------------------------------------------|----------------------------------------------------------------------------------------------------|
-| **[FORGE.md](./FORGE.md)**                   | Complete framework documentation – philosophy, workspace structure, artifact types, best practices |
-| **[AGENTS.EXAMPLE.md](./AGENTS.EXAMPLE.md)** | Template for your root context file – adapt this for your AI tool                                  |
+| **[FORGE.md](./FORGE.md)**                   | Complete framework documentation: philosophy, workspace structure, artifact types, best practices |
+| **[AGENTS.EXAMPLE.md](./AGENTS.EXAMPLE.md)** | Template for your root context file. Adapt this for your AI tool.                                 |
 
 ---
 

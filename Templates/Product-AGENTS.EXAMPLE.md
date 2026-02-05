@@ -2,7 +2,7 @@
 
 <!--
 This is an example Product context file template. Adapt sections to your needs.
-Rename to `CLAUDE.md`, `.cursorrules`, or your tool's convention.
+Rename to your AI tool's convention.
 -->
 
 Brief description of this product area.
@@ -33,7 +33,10 @@ Brief description of this product area.
 | Payments     | We call their API for checkout            |
 | User Service | Provides authentication, we consume users |
 
-## Current Focus
+## Active Initiatives
 
-- Active initiatives
-- Upcoming priorities
+<!-- Link to each initiative's context file so AI tools discover the full hierarchy -->
+
+- [Example-Initiative](./Initiatives/Example-Initiative/AGENTS.md)
+
+<!-- Add more initiatives as you create them. Move completed ones to a "Completed Initiatives" section or remove them. -->
