@@ -46,4 +46,4 @@ This keeps context fresh for future sessions and other collaborators.
 
 ---
 
-**Awaiting your direction.** What would you like to explore?
+**Awaiting your direction.** What would you like to discover?

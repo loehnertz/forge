@@ -12,7 +12,25 @@
 
 ## Getting Started
 
-Click the green **"Use this template"** button above to create your own Forge workspace. This gives you a fresh copy with all the framework files.
+**Option A: Use GitHub's template feature**
+
+Click the green **"Use this template"** button at the top of this repository to create your own Forge workspace. This gives you a fresh copy with all the framework files – no git history from this repo.
+
+**Option B: Copy files manually**
+
+If you prefer to add Forge to an existing repository or don't use GitHub:
+
+```bash
+# Clone the repo temporarily
+git clone https://github.com/loehnertz/forge.git /tmp/forge
+
+# Copy the framework files to your project
+cp /tmp/forge/FORGE.md /tmp/forge/AGENTS.EXAMPLE.md /tmp/forge/update-forge.sh your-project/
+cp -r /tmp/forge/Commands /tmp/forge/Templates your-project/
+
+# Clean up
+rm -rf /tmp/forge
+```
 
 ---
 
@@ -145,5 +163,5 @@ To force-update all files (backs up your versions as `*.local`):
 ---
 
 <p align="center">
-  <sub>MIT License</sub>
+  <sub><a href="./LICENSE">MIT License</a></sub>
 </p>
