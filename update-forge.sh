@@ -16,6 +16,15 @@ FORCE=false
 SKIPPED=()
 UPDATED=()
 BACKED_UP=()
+TEMP_FILES=()
+
+# Cleanup temp files on exit (normal or error)
+cleanup_temp_files() {
+  for f in "${TEMP_FILES[@]}"; do
+    rm -f "$f" 2>/dev/null || true
+  done
+}
+trap cleanup_temp_files EXIT
 
 if [[ "$1" == "--force" ]]; then
   FORCE=true
@@ -29,6 +38,7 @@ update_file() {
   local local_path="$2"
   local temp_file
   temp_file=$(mktemp)
+  TEMP_FILES+=("$temp_file")
 
   # Download new version
   if ! curl -fsSL "$FORGE_REPO/$remote_path" -o "$temp_file" 2>/dev/null; then
