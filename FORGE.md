@@ -526,12 +526,9 @@ The `/forge-validate` command uses these methods to flag files not updated in 30
 
 Review context files monthly or quarterly. For each `AGENTS.md`, verify:
 
-- [ ] **Active Initiatives** are listed and linked correctly
-- [ ] **Completed Initiatives** are moved or removed
 - [ ] **Architecture** section reflects current state
 - [ ] **Related Repositories** paths exist on disk
 - [ ] **Related Products** links are still accurate
-- [ ] **Open Questions** are still relevant
 
 Run `/forge-validate` to automate structural checks. Manual review is still needed for semantic accuracy (e.g., "is
 the architecture description still true?").
