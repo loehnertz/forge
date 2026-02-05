@@ -10,6 +10,12 @@
 
 ---
 
+## Getting Started
+
+Click the green **"Use this template"** button above to create your own Forge workspace. This gives you a fresh copy with all the framework files.
+
+---
+
 ## What is Forge?
 
 Forge is a framework for structuring collaborative workspaces where engineers and AI assistants work together on
@@ -96,6 +102,44 @@ Not all tools support custom commands – check your tool's documentation.
 **5. Start ideating**
 
 Work with your AI agent to explore ideas, draft proposals, and make decisions. See [FORGE.md](./FORGE.md) for guidance on the workflow and artifact types.
+
+---
+
+## Updating the Framework
+
+To pull the latest framework files:
+
+```bash
+./update-forge.sh
+```
+
+This updates:
+- `FORGE.md` – framework documentation
+- `Commands/` – workflow commands
+- `Templates/` – artifact templates
+
+**Handling local modifications:**
+
+If you've customized any framework files, the script detects this and saves the new upstream version as `<file>.upstream` instead of overwriting. You can then:
+
+```bash
+# Compare your version with upstream
+diff Commands/forge-design.md Commands/forge-design.md.upstream
+
+# Merge changes manually, then clean up
+rm Commands/forge-design.md.upstream
+```
+
+To force-update all files (backs up your versions as `*.local`):
+
+```bash
+./update-forge.sh --force
+```
+
+**Always preserved** (never touched by the script):
+- Your agent context file (`CLAUDE.md`, `.cursorrules`, etc.)
+- Product folders and their contents
+- Any other files you've added
 
 ---
 
