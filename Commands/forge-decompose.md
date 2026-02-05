@@ -34,4 +34,22 @@ Break the decided approach into actionable work items ready for implementation.
 
 ---
 
+## Context Update Checkpoint
+
+Before completing this stage, verify the Initiative's `AGENTS.md` reflects:
+
+- [ ] **Current State** is accurate (should be "Decompose" or "Complete")
+- [ ] **Key outcomes** are captured (number of tickets, implementation approach)
+- [ ] **Open Questions** are resolved or transferred to ticket descriptions
+- [ ] `last-reviewed` timestamp is updated
+
+Also update the parent Product's `AGENTS.md`:
+
+- [ ] If Initiative is complete, move to "Completed Initiatives" section or remove
+- [ ] Update any architecture notes if this Initiative changed the system design
+
+This keeps context fresh for future sessions and other collaborators.
+
+---
+
 **Awaiting your direction.** What work needs to be decomposed?

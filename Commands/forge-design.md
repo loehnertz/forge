@@ -33,4 +33,17 @@ Formalize findings into a proposal, evaluate alternatives, and prepare for a dec
 
 ---
 
+## Context Update Checkpoint
+
+Before leaving this stage, verify the Initiative's `AGENTS.md` reflects:
+
+- [ ] **Current State** is accurate (should be "Design" or moving to "Decide")
+- [ ] **Key decisions** and trade-offs from design work are noted
+- [ ] **Open Questions** list is current (design may have resolved some, surfaced others)
+- [ ] `last-reviewed` timestamp is updated
+
+This keeps context fresh for future sessions and other collaborators.
+
+---
+
 **Awaiting your direction.** What would you like to design?

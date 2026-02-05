@@ -34,4 +34,17 @@ Capture the problem or opportunity, research the space, and gather context befor
 
 ---
 
+## Context Update Checkpoint
+
+Before leaving this stage, verify the Initiative's `AGENTS.md` reflects:
+
+- [ ] **Current State** is accurate (should be "Discover" or moving to "Design")
+- [ ] **Key findings** from exploration are captured in Background or notes
+- [ ] **Open Questions** list is current
+- [ ] `last-reviewed` timestamp is updated
+
+This keeps context fresh for future sessions and other collaborators.
+
+---
+
 **Awaiting your direction.** What would you like to explore?

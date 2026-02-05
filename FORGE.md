@@ -588,6 +588,34 @@ Stale context is worse than no context; it misleads. Update `AGENTS.md` files wh
 - `Initiatives` complete or change in direction.
 - Conventions evolve.
 
+#### Freshness Timestamps
+
+All `AGENTS.md` templates include a `last-reviewed` field in their YAML frontmatter:
+
+```yaml
+---
+last-reviewed: 2025-05-15
+---
+```
+
+Update this timestamp whenever you verify the content is current. This makes staleness visible and scriptable – the
+`/forge-validate` command flags files not reviewed in 30+ days.
+
+#### Context Health Checklist
+
+Review context files monthly or quarterly. For each `AGENTS.md`, verify:
+
+- [ ] **Active Initiatives** are listed and linked correctly
+- [ ] **Completed Initiatives** are moved or removed
+- [ ] **Architecture** section reflects current state
+- [ ] **Related Repositories** paths exist on disk
+- [ ] **Related Products** links are still accurate
+- [ ] **Open Questions** are still relevant
+- [ ] `last-reviewed` timestamp is updated
+
+Run `/forge-validate` to automate structural checks. Manual review is still needed for semantic accuracy (e.g., "is
+the architecture description still true?").
+
 ### Start Messy, Refine Progressively
 
 Don't try to write perfect documents from the start:

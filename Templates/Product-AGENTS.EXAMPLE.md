@@ -1,3 +1,7 @@
+---
+last-reviewed: YYYY-MM-DD
+---
+
 # [Product Name]
 
 <!--

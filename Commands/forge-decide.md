@@ -34,4 +34,17 @@ Get alignment on the proposal, make the call, and record the decision for poster
 
 ---
 
+## Context Update Checkpoint
+
+Before leaving this stage, verify the Initiative's `AGENTS.md` reflects:
+
+- [ ] **Current State** is accurate (should be "Decide" or moving to "Decompose")
+- [ ] **Key decisions** are captured (reference Decision.md for details)
+- [ ] **Open Questions** resolved during decision are removed or marked resolved
+- [ ] `last-reviewed` timestamp is updated
+
+This keeps context fresh for future sessions and other collaborators.
+
+---
+
 **Awaiting your direction.** What decision needs to be made?
