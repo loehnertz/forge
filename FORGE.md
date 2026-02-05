@@ -108,9 +108,8 @@ Ideas don't arrive fully formed. Forge embraces this by distinguishing between:
 - **Structured proposals** (Proposal) – clear problem statements, evaluated alternatives
 - **Locked decisions** (Decision) – the record of what we chose and why
 
-We start messy and progressively refine. Trying to write a perfect proposal before we've explored the problem leads to
-wasted
-effort. Leaving everything in rough notes means we never commit to decisions.
+We start messy and progressively refine. Trying to write a perfect proposal before we've explored the problem
+leads to wasted effort. Leaving everything in rough notes means we never commit to decisions.
 
 ### Link to Reality
 
@@ -399,7 +398,7 @@ decision-making phase before code gets written:
 │   └─────┬─────┘    └─────┬─────┘    └─────┬─────┘    └─────┬─────┘           │
 │         │                │                │                │                 │
 │         ▼                ▼                ▼                ▼                 │
-│    Exploration.md     Proposal.md     Decision.md      Tickets/              │
+│    Exploration.md    Proposal.md     Decision.md        Tickets/             │
 │                                                                              │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -422,7 +421,7 @@ and decision documents so future readers understand not just *what* was built, b
 
 ### Workflow Commands
 
-Each stage has a corresponding command – see [Workflow Commands](#workflow-commands) for details.
+Each stage has a corresponding command – see [Commands & Skills](#commands--skills) for details.
 
 These commands hydrate context but wait for your direction – they don't take action until you say what you need.
 
@@ -436,8 +435,9 @@ These commands hydrate context but wait for your direction – they don't take a
 * **Abandon gracefully:** Some initiatives die at Discover or Design – exploration reveals it's not worth doing. Keep
   them around to preserve the learning.
 
-* **Tiers affect depth:** A TS50 might combine Discover+Design+Decide in one lightweight pass. A TS90 spends significant
-  time in each stage.
+* **Scope affects depth:** Small changes might combine Discover+Design+Decide in one lightweight pass, while large
+  architectural changes spend significant time in each stage. Some teams formalize this with tier systems (see
+  [Customizing Forge](#customizing-forge) for an example).
 
 * **Timebox discovery:** It's easy to keep researching indefinitely. Set a timebox, then force yourself to Design even
   with incomplete information.
@@ -493,7 +493,7 @@ needs:
 
 ### Defining Commands & Skills
 
-Both use a similar format – typically a markdown file with instructions (some tools add frontmatter):
+Both use a similar format – typically a Markdown file with instructions (some tools add frontmatter):
 
 ```markdown
 ---
@@ -506,11 +506,7 @@ description: Short description shown in list
 2. **Step two**: What to do next
 ```
 
-The exact location depends on your AI tool. See your tool's documentation:
-
-- **Claude Code**: [Slash commands](https://docs.anthropic.com/en/docs/claude-code/slash-commands) in
-  `.claude/Commands/`
-- **Other tools**: Consult their extension/plugin documentation
+The exact location depends on your AI tool. See your tool's documentation.
 
 Document available commands and skills in your root AGENTS.md so team members know what's available.
 
@@ -544,8 +540,8 @@ A Forge workspace works best when version-controlled. Git provides:
 - **Backup**: The workspace is recoverable if something goes wrong
 
 Commit artifacts as they stabilize – rough Exploration updates can be frequent, while proposal commits should mark
-meaningful
-milestones. The `.gitignore` can exclude any local scratch files that shouldn't be shared.
+meaningful milestones.
+The `.gitignore` can exclude any local scratch files that shouldn't be shared.
 
 ### Keep Context Files Current
 
@@ -657,12 +653,12 @@ in [Workspace Hierarchy](#workspace-hierarchy) and copy templates from `Template
 
 ## Golden Rules
 
-- **Start simple** – add structure only when it helps, not preemptively
-- **Keep context current** – stale AGENTS.md files mislead more than they help
-- **Keep, don't delete** – future-us might need that context
-- **Link liberally** – connect artifacts to each other and to code
-- **Refine incrementally** – messy exploration first, formal documents later
-- **Know when to skip** – not every change needs a proposal
+- **Start simple:** Add structure only when it helps, not preemptively
+- **Keep context current:** Stale AGENTS.md files mislead more than they help
+- **Keep, don't delete:** Future-us might need that context
+- **Link liberally:** Connect artifacts to each other and to code
+- **Refine incrementally:** Messy exploration first, formal documents later
+- **Know when to skip:** Not every change needs a proposal
 
 ### Key Elements
 

@@ -13,7 +13,7 @@ Provide structured feedback on artifacts to identify gaps, surface questions, an
 
 ## Parameters
 
-- **Path**: A specific artifact path (e.g., `Products/CMF/Initiatives/Analytics/Proposal.md`)
+- **Path**: A specific artifact path (e.g., `Products/MyProduct/Initiatives/Analytics/Proposal.md`)
 - **Type**: An artifact type in current initiative (`Exploration`, `Proposal`, `Decision`, `Tickets`)
 - **None**: Review all artifacts in the current initiative
 
