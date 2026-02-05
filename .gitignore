@@ -3,8 +3,3 @@
 *.swp
 *.swo
 *~
-
-# AI agents
-AGENTS.md
-CLAUDE.md
-/.claude
