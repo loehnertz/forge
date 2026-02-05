@@ -19,6 +19,10 @@ etc.).
 See **[FORGE.md](./FORGE.md)** for the complete framework documentation covering philosophy, problem statement, and
 detailed guidance.
 
+> **"But Claude/ChatGPT/Gemini already have Projects!"** – Yes, and they're useful for simple context. But they lack
+> structure for artifacts (everything is a flat list), make evolution difficult (try refactoring a project's knowledge
+> base), and aren't connected to your actual source code. Forge addresses all of these!
+
 > **When NOT to use Forge:** Skip it for quick bug fixes, small self-contained changes, throwaway prototypes, or
 > anything with an obvious solution. If you wouldn't call a meeting about it, you probably don't need an initiative.
 
