@@ -64,7 +64,7 @@ If Initiative AGENTS.md has an explicit stage, prefer that over inference.
 | Design    | 📝   |
 | Decide    | 📐   |
 | Decompose | 🎫   |
-| Complete  | ✅   |
+| Complete  | ✅    |
 
 ## Staleness Indicators
 
@@ -73,20 +73,20 @@ Staleness is determined by checking when files were last modified using version 
 - Use `git log -1 --format="%cr" -- <file>` to get relative time since last commit
 - Fall back to file modification time for untracked files
 
-| Condition                     | Indicator      |
-|-------------------------------|----------------|
-| Last modified < 30 days       | ✅ Active      |
-| Last modified 30-60 days      | ⚠️ Xd stale    |
-| Last modified > 60 days       | ❌ Xd stale    |
+| Condition                | Indicator   |
+|--------------------------|-------------|
+| Last modified < 30 days  | ✅ Active    |
+| Last modified 30-60 days | ⚠️ Xd stale |
+| Last modified > 60 days  | ❌ Xd stale  |
 
 ## Dependency Indicators
 
 When an Initiative has `depends-on` or `blocks` in its frontmatter:
 
-| Condition                                    | Indicator                          |
-|----------------------------------------------|------------------------------------|
-| Has incomplete dependencies (`depends-on`)   | ⏸️ Blocked by: [Initiative-Name]   |
-| Blocks other initiatives (`blocks`)          | (blocks N) appended to status      |
+| Condition                                  | Indicator                        |
+|--------------------------------------------|----------------------------------|
+| Has incomplete dependencies (`depends-on`) | ⏸️ Blocked by: [Initiative-Name] |
+| Blocks other initiatives (`blocks`)        | (blocks N) appended to status    |
 
 Dependencies are only shown if the blocking initiative is not yet Complete.
 

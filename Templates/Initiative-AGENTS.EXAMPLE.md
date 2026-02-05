@@ -1,8 +1,8 @@
 ---
-depends-on: []
-  # - Products/Auth/Initiatives/OAuth-Migration
-blocks: []
-  # - Products/Frontend/Initiatives/New-Login-Flow
+depends-on: [ ]
+# - Products/Auth/Initiatives/OAuth-Migration
+blocks: [ ]
+# - Products/Frontend/Initiatives/New-Login-Flow
 ---
 
 # [Initiative Name]

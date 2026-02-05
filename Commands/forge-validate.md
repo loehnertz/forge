@@ -47,12 +47,12 @@ For each `AGENTS.md` file, check when it was last modified using version control
 
 For each Initiative, compare the stated stage in `AGENTS.md` with actual artifacts:
 
-| Stated Stage | Expected Artifacts                    | Inconsistency Flag                               |
-|--------------|---------------------------------------|--------------------------------------------------|
-| Discover     | Exploration.md may exist              | Decision.md exists = likely past Discover        |
-| Design       | Exploration.md exists                 | Decision.md exists = likely past Design          |
-| Decide       | Proposal.md exists                    | Decision.md missing = still in Decide            |
-| Decompose    | Decision.md exists                    | Tickets/ empty = decomposition not started       |
+| Stated Stage | Expected Artifacts       | Inconsistency Flag                         |
+|--------------|--------------------------|--------------------------------------------|
+| Discover     | Exploration.md may exist | Decision.md exists = likely past Discover  |
+| Design       | Exploration.md exists    | Decision.md exists = likely past Design    |
+| Decide       | Proposal.md exists       | Decision.md missing = still in Decide      |
+| Decompose    | Decision.md exists       | Tickets/ empty = decomposition not started |
 
 Flag mismatches as warnings for human review.
 
@@ -76,11 +76,11 @@ For each Initiative with `depends-on` or `blocks` in its YAML frontmatter:
 - If A lists B in `depends-on`, B should list A in `blocks` (and vice versa)
 - Flag asymmetric dependencies as warnings
 
-| Check              | Level   | Example                                           |
-|--------------------|---------|---------------------------------------------------|
-| Broken path        | ❌ Error | `depends-on: Products/X/Initiatives/Gone` missing |
-| Circular           | ❌ Error | A → B → C → A forms a cycle                       |
-| Asymmetric         | ⚠️ Warn  | A depends-on B, but B doesn't list A in blocks    |
+| Check       | Level   | Example                                           |
+|-------------|---------|---------------------------------------------------|
+| Broken path | ❌ Error | `depends-on: Products/X/Initiatives/Gone` missing |
+| Circular    | ❌ Error | A → B → C → A forms a cycle                       |
+| Asymmetric  | ⚠️ Warn | A depends-on B, but B doesn't list A in blocks    |
 
 ## Output Format
 
@@ -138,11 +138,11 @@ Recommendations:
 
 ## Severity Levels
 
-| Level   | Meaning                                              | Examples                                |
-|---------|------------------------------------------------------|-----------------------------------------|
-| ✅ Pass  | Item is healthy                                      | Links valid, recently modified          |
-| ⚠️ Warn  | Potential issue, human judgment needed               | Stale file, stage mismatch              |
-| ❌ Error | Definite structural problem                          | Broken link, missing required file      |
+| Level   | Meaning                                | Examples                           |
+|---------|----------------------------------------|------------------------------------|
+| ✅ Pass  | Item is healthy                        | Links valid, recently modified     |
+| ⚠️ Warn | Potential issue, human judgment needed | Stale file, stage mismatch         |
+| ❌ Error | Definite structural problem            | Broken link, missing required file |
 
 ## Limitations
 

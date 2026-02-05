@@ -14,14 +14,15 @@
 
 **Option A: Use GitHub's template feature**
 
-Click the green **"Use this template"** button at the top of this repository to create your own Forge workspace. This gives you a fresh copy with all the framework files – no git history from this repo.
+Click the green **"Use this template"** button at the top of this repository to create your own Forge workspace.
+This gives you a fresh copy with all the framework files.
 
 **Option B: Copy files manually**
 
 If you prefer to add Forge to an existing repository or don't use GitHub:
 
 ```bash
-# Clone the repo temporarily
+# Clone the repository temporarily
 git clone https://github.com/loehnertz/forge.git /tmp/forge
 
 # Copy the framework files to your project
@@ -36,9 +37,12 @@ rm -rf /tmp/forge
 
 ## What is Forge?
 
-Forge gives AI assistants the context they need to be genuinely useful collaborators – through layered context files, durable artifacts, and connections to real code. It works with any AI coding assistant (Claude Code, Cursor, Copilot, etc.).
+Forge gives AI assistants the context they need to be genuinely useful collaborators – through layered context files,
+durable artifacts, and connections to real code. It works with any AI coding assistant (Claude Code, Cursor, Copilot,
+etc.).
 
-See **[FORGE.md](./FORGE.md)** for the complete framework documentation covering philosophy, problem statement, and detailed guidance.
+See **[FORGE.md](./FORGE.md)** for the complete framework documentation covering philosophy, problem statement, and
+detailed guidance.
 
 > **When NOT to use Forge:** Skip it for quick bug fixes, small self-contained changes, throwaway prototypes, or
 > anything with an obvious solution. If you wouldn't call a meeting about it, you probably don't need an initiative.
@@ -73,14 +77,14 @@ See **[FORGE.md](./FORGE.md)** for the complete framework documentation covering
 
 Rename `AGENTS.EXAMPLE.md` to your tool's convention and fill in the placeholders in the file:
 
-| Tool           | Context file                       |
-|----------------|------------------------------------|
-| Claude Code    | `CLAUDE.md`                        |
-| Cursor         | `.cursorrules`                     |
-| Windsurf       | `.windsurfrules`                   |
-| GitHub Copilot | `.github/copilot-instructions.md`  |
-| Aider          | `CONVENTIONS.md`                   |
-| Generic        | `AGENTS.md`                        |
+| Tool           | Context file                      |
+|----------------|-----------------------------------|
+| Claude Code    | `CLAUDE.md`                       |
+| Cursor         | `.cursorrules`                    |
+| Windsurf       | `.windsurfrules`                  |
+| GitHub Copilot | `.github/copilot-instructions.md` |
+| Aider          | `CONVENTIONS.md`                  |
+| Generic        | `AGENTS.md`                       |
 
 **2. Copy commands**
 
@@ -99,7 +103,8 @@ Not all tools support custom commands; check your tool's documentation.
 /forge-new-product MyProduct
 ```
 
-Then fill in the generated `AGENTS.md` with product context, link related repositories, and seed `References/` with existing documentation.
+Then fill in the generated `AGENTS.md` with product context, link related repositories, and seed `References/` with
+existing documentation.
 
 **4. Start an initiative**
 
@@ -111,7 +116,8 @@ Fill in the goal and background in the initiative's `AGENTS.md`, then start capt
 
 **5. Start ideating**
 
-Work with your AI agent to explore ideas, draft proposals, and make decisions. See [FORGE.md](./FORGE.md) for guidance on the workflow and artifact types.
+Work with your AI agent to explore ideas, draft proposals, and make decisions. See [FORGE.md](./FORGE.md) for guidance
+on the workflow and artifact types.
 
 ---
 
@@ -124,13 +130,15 @@ To pull the latest framework files:
 ```
 
 This updates:
+
 - `FORGE.md`: framework documentation
 - `Commands/`: workflow commands
 - `Templates/`: artifact templates
 
 **Handling local modifications:**
 
-If you've customized any framework files, the script detects this and saves the new upstream version as `<file>.upstream` instead of overwriting. You can then:
+If you've customized any framework files, the script detects this and saves the new upstream version as
+`<file>.upstream` instead of overwriting. You can then:
 
 ```bash
 # Compare your version with upstream
@@ -147,6 +155,7 @@ To force-update all files (backs up your versions as `*.local`):
 ```
 
 **Always preserved** (never touched by the script):
+
 - Your agent context file (`CLAUDE.md`, `.cursorrules`, etc.)
 - Product folders and their contents
 - Any other files you've added
@@ -155,8 +164,8 @@ To force-update all files (backs up your versions as `*.local`):
 
 ## Documentation
 
-| Document                                     | Description                                                                                        |
-|----------------------------------------------|----------------------------------------------------------------------------------------------------|
+| Document                                     | Description                                                                                       |
+|----------------------------------------------|---------------------------------------------------------------------------------------------------|
 | **[FORGE.md](./FORGE.md)**                   | Complete framework documentation: philosophy, workspace structure, artifact types, best practices |
 | **[AGENTS.EXAMPLE.md](./AGENTS.EXAMPLE.md)** | Template for your root context file. Adapt this for your AI tool.                                 |
 
