@@ -23,61 +23,14 @@ Create the folder structure for a new initiative within a product.
        └── .gitkeep
    ```
 
-3. **Create context file** with this template:
-   ```markdown
-   # <Initiative Name>
+3. **Create context file** using `Templates/Initiative-AGENTS.EXAMPLE.md` as the starting point:
+   - Copy the template to `AGENTS.md` (or your tool's context file name)
+   - Replace `[Initiative Name]` with the actual initiative name
+   - Fill in the Goal section
 
-   ## Goal
-
-   One-sentence summary of what we're trying to achieve.
-
-   ## Background
-
-   - Why this initiative exists
-   - Key decisions already made
-   - Constraints we're working within
-
-   ## Current State
-
-   - Where we are in the process
-   - Open questions
-   - Recent decisions
-
-   ## Key Documents
-
-   - Links to relevant proposals, decisions, external docs
-
-   ## Context Guidance
-
-   - **Notes/**: Raw meeting notes and transcripts – unfiltered, may be incomplete or contradictory
-   - **`Exploration.md`**: Refined synthesis – use this as the source of truth for current understanding
-   - When Notes and Exploration conflict, trust Exploration or ask for clarification
-   ```
-
-4. **Create Exploration.md** with this template:
-   ```markdown
-   # <Initiative Name>
-
-   ## Problem Statement
-
-   What problem are we trying to solve?
-
-   ## Links
-
-   - Relevant external resources, docs, prior art
-
-   ## Observations
-
-   - What have we learned so far?
-
-   ## Questions
-
-   - What do we still need to find out?
-
-   ## Ideas
-
-   - Potential approaches to explore
-   ```
+4. **Create Exploration.md** using `Templates/Exploration.md` as the starting point:
+   - Copy the template to `Exploration.md`
+   - Replace `[Topic Name]` with the initiative name
 
 5. **Create .gitkeep files** in empty folders (Notes/, References/, Tickets/).
 

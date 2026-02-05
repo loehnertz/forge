@@ -16,42 +16,10 @@ Create the folder structure for a new product in the Forge workspace.
        └── .gitkeep
    ```
 
-3. **Create context file** with this template:
-   ```markdown
-   # <Product Name>
-
-   Brief description of this product area.
-
-   ## Context
-
-   - What problem does this product solve?
-   - Who are the users?
-   - What are the key constraints?
-
-   ## Architecture
-
-   - High-level system overview
-   - Key components and their relationships
-   - Important patterns used
-
-   ## Related Repositories
-
-   | Repository | Path                     | Description              |
-   |------------|--------------------------|--------------------------|
-   | backend    | ~/Projects/myapp-backend | API and business logic   |
-   | frontend   | ~/Projects/myapp-frontend| React application        |
-
-   ## Related Products
-
-   | Product       | Relationship                        |
-   |---------------|-------------------------------------|
-   | Other-Product | Consumes our API for feature X      |
-
-   ## Current Focus
-
-   - Active initiatives
-   - Upcoming priorities
-   ```
+3. **Create context file** using `Templates/Product-AGENTS.EXAMPLE.md` as the starting point:
+   - Copy the template to `AGENTS.md` (or your tool's context file name)
+   - Replace `[Product Name]` with the actual product name
+   - Fill in the Context section
 
 4. **Create .gitkeep files** in empty folders (Initiatives/, References/).
 
