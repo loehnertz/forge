@@ -49,11 +49,35 @@ How do we get from the current state to the proposed state? Consider:
 - **Pros**: ...
 - **Cons**: ...
 
-## Open Questions
+## Open Decisions
 
-- Questions that need answers before or during implementation
-- Uncertainties to resolve
-- Feedback requested on specific aspects
+<!--
+For complex proposals, use the full format below. For simpler proposals, a bullet list of open questions is sufficient.
+
+Workflow: Each entry has a status label that can be one of three values:
+- "Recommendation" – Initial state with a suggested approach
+- "Decision Needed" – Flagged for attention, needs stakeholder input
+- "Decision" – Final call made, ready to be incorporated into the proposal and archived
+-->
+
+### Decision Tracking
+
+| ID  | Decision              | Status | Section |
+|-----|-----------------------|--------|---------|
+| 1   | [Decision summary]    | Open   | X.X     |
+
+### X.X [Decision Category]
+
+#### [ID]: [Decision Question]
+
+**Context:** Why this decision matters and what constraints apply.
+
+| Option       | Description          | Pros             | Cons             |
+|--------------|----------------------|------------------|------------------|
+| **A) Name**  | What this option is  | Benefits         | Drawbacks        |
+| **B) Name**  | What this option is  | Benefits         | Drawbacks        |
+
+**Recommendation:** Option X because [reasoning].
 
 ## References
 

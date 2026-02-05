@@ -25,6 +25,22 @@ Get alignment on the proposal, make the call, and record the decision for poster
 4. Record the decision with context and rationale
 5. Update proposal status to "Accepted" or "Superseded"
 
+## Handling Open Decisions in Proposals
+
+When reviewing a proposal, check for an "Open Decisions" section with individual decision entries. Each entry has a status label that can be one of three values:
+
+- **"Recommendation"** – Initial state with a suggested approach, no action needed yet
+- **"Decision Needed"** – Flagged for attention, requires discussion or stakeholder input
+- **"Decision"** – Final call made, ready to be processed
+
+When you encounter an entry marked **"Decision"**:
+
+1. Incorporate the decided approach into the relevant section of the proposal
+2. Update the Decision Tracking table status from "Open" to "Resolved"
+3. Archive or remove the detailed decision entry (keep a brief note of what was decided)
+
+This keeps proposals clean while preserving decision history.
+
 ## Decision Principles
 
 - Decisions are point-in-time – capture the context that led to this choice
