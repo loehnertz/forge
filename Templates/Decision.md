@@ -1,6 +1,5 @@
 ---
 status: Draft
-proposal: ./Proposal.md
 ---
 
 # Decision: [Title]

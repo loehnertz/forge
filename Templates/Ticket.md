@@ -5,9 +5,6 @@ This is an example Ticket template. Adapt sections to your needs.
 Tickets should be specific, actionable, and reference context rather than duplicating it.
 -->
 
-**Initiative**: [Link to parent initiative]
-**Proposal**: [Link to proposal if applicable]
-
 ## Description
 
 What needs to be done? Provide enough context for someone unfamiliar with the initiative to understand the task.

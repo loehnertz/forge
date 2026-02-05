@@ -24,13 +24,13 @@ Create the folder structure for a new initiative within a product.
    ```
 
 3. **Create context file** using `Templates/Initiative-AGENTS.EXAMPLE.md` as the starting point:
-   - Copy the template to `AGENTS.md` (or your tool's context file name)
-   - Replace `[Initiative Name]` with the actual initiative name
-   - Fill in the Goal section
+    - Copy the template to `AGENTS.md` (or your tool's context file name)
+    - Replace `[Initiative Name]` with the actual initiative name
+    - Fill in the Goal section
 
 4. **Create Exploration.md** using `Templates/Exploration.md` as the starting point:
-   - Copy the template to `Exploration.md`
-   - Replace `[Topic Name]` with the initiative name
+    - Copy the template to `Exploration.md`
+    - Replace `[Topic Name]` with the initiative name
 
 5. **Create .gitkeep files** in empty folders (Notes/, References/, Tickets/).
 

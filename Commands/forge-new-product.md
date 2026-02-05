@@ -17,9 +17,9 @@ Create the folder structure for a new product in the Forge workspace.
    ```
 
 3. **Create context file** using `Templates/Product-AGENTS.EXAMPLE.md` as the starting point:
-   - Copy the template to `AGENTS.md` (or your tool's context file name)
-   - Replace `[Product Name]` with the actual product name
-   - Fill in the Context section
+    - Copy the template to `AGENTS.md` (or your tool's context file name)
+    - Replace `[Product Name]` with the actual product name
+    - Fill in the Context section
 
 4. **Create .gitkeep files** in empty folders (Initiatives/, References/).
 

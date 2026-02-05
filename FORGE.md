@@ -2,8 +2,8 @@
 
 > A framework for AI-assisted engineering workspaces
 
-Forge is a framework for structuring collaborative workspaces where engineers and AI assistants work together on
-design and documentation. It provides conventions for organizing context, writing artifacts, and moving ideas from
+Forge is a framework for structuring collaborative workspaces where software engineers and AI assistants work together
+on design and documentation. It provides conventions for organizing context, writing artifacts, and moving ideas from
 rough exploration to implementation-ready decisions.
 
 ---
@@ -47,6 +47,9 @@ Forge addresses this by:
   implementations, not just descriptions of them.
 - **Defining workflows** that move systematically from exploration to actionable work.
 - **Living alongside code** as a git-tracked workspace that evolves with the systems it documents.
+
+> **Note:** This documentation uses `AGENTS.md` as the generic name for context files. Rename to your AI tool's
+> convention: `CLAUDE.md` for Claude Code, `.cursorrules` for Cursor, `COPILOT.md` for GitHub Copilot, etc.
 
 ### Guiding Principles
 

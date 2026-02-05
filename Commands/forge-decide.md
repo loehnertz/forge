@@ -23,11 +23,12 @@ Get alignment on the proposal, make the call, and record the decision for poster
 2. Address feedback and open questions
 3. Make the decision – commit to an approach
 4. Record the decision with context and rationale
-5. Update proposal status to "Accepted" or "Superseded"
+5. Update proposal frontmatter `status` to "Accepted" or "Superseded"
 
 ## Handling Open Decisions in Proposals
 
-When reviewing a proposal, check for an "Open Decisions" section with individual decision entries. Each entry has a status label that can be one of three values:
+When reviewing a proposal, check for an "Open Decisions" section with individual decision entries. Each entry has a
+status label that can be one of three values:
 
 - **"Recommendation"** – Initial state with a suggested approach, no action needed yet
 - **"Decision Needed"** – Flagged for attention, requires discussion or stakeholder input
@@ -47,6 +48,19 @@ This keeps proposals clean while preserving decision history.
 - Record the "why" not just the "what"
 - It's okay to decide with incomplete information – note what was uncertain
 - A decision to not proceed is still a valid decision worth recording
+
+## Superseding Previous Decisions
+
+When circumstances change and a previous decision no longer applies, create a new decision that supersedes it rather
+than editing the original. This preserves the full decision history.
+
+In the new Decision's content:
+
+1. Reference the original decision being superseded
+2. Explain what changed – new requirements, learnings, or context that invalidates the original
+3. Update the original decision's status to "Superseded"
+
+The old decision stays in place as historical record; the new decision becomes authoritative.
 
 ---
 

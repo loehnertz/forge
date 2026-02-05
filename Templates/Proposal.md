@@ -1,15 +1,15 @@
+---
+status: Draft
+---
+
 # Proposal: [Title]
 
 <!--
 This is an example Proposal template (also known as RFC – Request for Comments).
 Adapt sections to your needs. Proposals should clearly state the problem before proposing solutions.
+
+Status values: Draft → In Review → Accepted → Superseded
 -->
-
-## Status
-
-**Draft** → **In Review** → **Accepted** → **Superseded**
-
-**Decision**: [Link to decision if made]
 
 ## Problem Statement
 
@@ -62,9 +62,9 @@ Workflow: Each entry has a status label that can be one of three values:
 
 ### Decision Tracking
 
-| ID  | Decision              | Status | Section |
-|-----|-----------------------|--------|---------|
-| 1   | [Decision summary]    | Open   | X.X     |
+| ID | Decision           | Status | Section |
+|----|--------------------|--------|---------|
+| 1  | [Decision summary] | Open   | X.X     |
 
 ### X.X [Decision Category]
 
@@ -72,10 +72,10 @@ Workflow: Each entry has a status label that can be one of three values:
 
 **Context:** Why this decision matters and what constraints apply.
 
-| Option       | Description          | Pros             | Cons             |
-|--------------|----------------------|------------------|------------------|
-| **A) Name**  | What this option is  | Benefits         | Drawbacks        |
-| **B) Name**  | What this option is  | Benefits         | Drawbacks        |
+| Option      | Description         | Pros     | Cons      |
+|-------------|---------------------|----------|-----------|
+| **A) Name** | What this option is | Benefits | Drawbacks |
+| **B) Name** | What this option is | Benefits | Drawbacks |
 
 **Recommendation:** Option X because [reasoning].
 

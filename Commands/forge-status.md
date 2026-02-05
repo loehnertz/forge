@@ -46,13 +46,13 @@ Summary: 3 products, 6 initiatives (1 stale, 1 blocked, 1 complete)
 
 Infer stage from artifacts present:
 
-| Artifacts Present                  | Inferred Stage |
-|------------------------------------|----------------|
-| Only Exploration.md (or nothing)   | Discover       |
-| Proposal.md exists, no Decision    | Design         |
-| Decision.md exists, Tickets/ empty | Decide         |
-| Decision.md + Tickets/ has content | Decompose      |
-| Status field = "Complete"          | Complete       |
+| Artifacts Present                          | Inferred Stage |
+|--------------------------------------------|----------------|
+| Only Exploration.md (or nothing)           | Discover       |
+| Proposal.md exists, no Decision            | Design         |
+| Decision.md exists, Tickets/ empty         | Decide         |
+| Decision.md + Tickets/ has content         | Decompose      |
+| Decision.md frontmatter `status: Accepted` | Complete       |
 
 If Initiative AGENTS.md has an explicit stage, prefer that over inference.
 
