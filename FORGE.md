@@ -1,6 +1,6 @@
 # Forge
 
-> A framework for AI-assisted engineering workspaces
+> A framework for AI-assisted software engineering workspaces
 
 Forge is a framework for structuring collaborative workspaces where software engineers and AI assistants work together
 on design and documentation. It provides conventions for organizing context, writing artifacts, and moving ideas from
@@ -22,8 +22,8 @@ rough exploration to implementation-ready decisions.
 
 ## What is Forge?
 
-Forge is a framework for building AI-assisted engineering workspaces: structured environments where AI tools have the
-context they need to be genuinely useful collaborators rather than generic assistants.
+Forge is a framework for building AI-assisted software engineering workspaces: structured environments where AI tools
+have the context they need to be genuinely useful collaborators rather than generic assistants.
 
 ### The Problem
 
@@ -32,7 +32,7 @@ produce generic suggestions that require extensive correction. We spend time exp
 and valuable design discussions happen in ephemeral chat sessions that leave no trace.
 
 Built-in "project" or "memory" features in AI tools attempt to address this by letting us attach persistent instructions
-and reference files. But they fall short for engineering work: there's no structure for organizing context
+and reference files. But they fall short for software engineering work: there's no structure for organizing context
 hierarchically, no access to actual source code, and no way to evolve documentation alongside the codebase. They're
 better than starting from scratch each time, but they remain disconnected from the reality of our systems.
 

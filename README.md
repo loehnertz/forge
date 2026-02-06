@@ -1,7 +1,7 @@
 <p align="center">
   <img src="logo.png" alt="Forge logo" width="300">
   <br><br>
-  <strong>A framework for AI-assisted engineering workspaces</strong>
+  <strong>A framework for AI-assisted software engineering workspaces</strong>
   <br><br>
   <a href="./FORGE.md">Documentation</a> ·
   <a href="./AGENTS.EXAMPLE.md">Template</a> ·
