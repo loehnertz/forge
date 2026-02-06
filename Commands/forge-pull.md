@@ -31,8 +31,8 @@ require user decisions on how to handle. Always present conversion issues to the
 ## What Happens Here
 
 1. **Identify artifacts** from the provided arguments (specific file, type for batch, or prompt user to select)
-2. **Validate external link** – `external.type` and `external.id` must be present in the artifact's frontmatter. If
-   missing, tell the user to push first using `/forge-push`
+2. **Validate external link** – `external.type` and `external.id` must be present and non-empty in the artifact's
+   frontmatter. If missing, empty, or null, tell the user to push first using `/forge-push`
 3. **Load service instructions** – read the matching subsection in the Product's `## External Services` (in the Product
    `AGENTS.md`). This subsection is the primary source of truth for how to interact with the external service – it
    contains the user's "To pull" instructions, service-specific configuration, and any conversion hints. Follow those
