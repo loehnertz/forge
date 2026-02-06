@@ -1,5 +1,9 @@
 ---
 status: Draft
+external:
+  type:
+  id:
+  last-synced:
 ---
 
 # Decision: [Title]

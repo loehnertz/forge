@@ -433,11 +433,13 @@ These create the full folder structure with `.gitkeep` files in empty directorie
 
 **Utility commands** (available at any stage):
 
-| Command           | What it does                                                        |
-|-------------------|---------------------------------------------------------------------|
-| `/forge-review`   | Reviews artifact quality and readiness                              |
-| `/forge-status`   | Shows workspace overview with all products and initiatives by stage |
-| `/forge-validate` | Validates workspace health, links, and staleness                    |
+| Command           | What it does                                                                 |
+|-------------------|------------------------------------------------------------------------------|
+| `/forge-review`   | Reviews artifact quality and readiness                                       |
+| `/forge-status`   | Shows workspace overview with all products and initiatives by stage          |
+| `/forge-validate` | Validates workspace health, links, and staleness                             |
+| `/forge-push`     | Pushes artifacts to linked external services (wiki, issue tracker)           |
+| `/forge-pull`     | Pulls remote changes from linked external services back into local artifacts |
 
 ### Skills
 
@@ -487,6 +489,63 @@ The `## Related Repositories` section in product `AGENTS.md` files links to actu
 ```
 
 This allows AI to read and understand actual implementation when discussing design.
+
+### Connecting to External Services
+
+Forge follows a **lifecycle handoff** model for external systems: we author artifacts locally, then push them out when
+they're ready for broader visibility. If external collaborators make changes, we pull those changes back in. This is
+intentionally not bidirectional sync. Forge remains the authoring environment during design time.
+
+> **Be aware:** Pushing and pulling are inherently **lossy processes**. Markdown and external formats (Confluence
+> storage format, Jira fields, Notion blocks, etc.) do not have a 1:1 mapping. Every conversion loses or approximates
+> something – Mermaid diagrams may become code blocks, Confluence macros may become blockquotes, rich layouts may
+> flatten. Repeated round-trips amplify this drift. Treat push/pull as a handoff mechanism, not a sync tool. When
+> fidelity matters, review the conversion output carefully before confirming.
+
+#### The `external` Frontmatter Block
+
+Every publishable artifact can optionally link to one external resource via a generic `external` block in its
+frontmatter:
+
+```yaml
+---
+status: Draft
+external:
+  type: confluence-page
+  id: "12345678"
+  last-synced: 2025-01-15T10:30:00Z
+---
+```
+
+| Field         | Purpose                                                                                                                                  |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| `type`        | Identifies the external resource kind (e.g., `confluence-page`, `jira-issue`). Maps to a service type defined in the Product `AGENTS.md` |
+| `id`          | The external resource's identifier (page ID, issue key, etc.)                                                                            |
+| `last-synced` | ISO 8601 timestamp of the last push or pull – enables staleness detection                                                                |
+
+All fields start empty in templates. They are populated by `/forge-push` on first push and updated on subsequent
+push/pull operations.
+
+#### Configuring Services in Product `AGENTS.md`
+
+External service configuration lives in the `## External Services` section of each Product's `AGENTS.md`. Each
+subsection defines a service type (e.g., a wiki page type, an issue tracker type) with freeform instructions that tell
+the AI how to interact with it. A subsection should include:
+
+- A `Used for:` line mapping artifact types to this service (e.g., Explorations, Proposals, Decisions, Tickets)
+- Service-specific configuration (space, project, labels, etc.)
+- `To push:` instructions for creating/updating resources in the external system
+- `To pull:` instructions for fetching content and converting back to Markdown
+
+The `Used for:` line maps artifact types to service types – this is how `/forge-push` knows which service to use when
+pushing an artifact for the first time. See `Templates/Product-AGENTS.EXAMPLE.md` for the full template.
+
+#### Push and Pull Commands
+
+- **`/forge-push`** – Pushes a local artifact to its linked external resource. Creates a new resource on first push,
+  updates the existing one on subsequent pushes. See `Commands/forge-push.md`.
+- **`/forge-pull`** – Pulls the latest state from a linked external resource back into the local artifact. Shows a diff
+  before applying changes. See `Commands/forge-pull.md`.
 
 ---
 
@@ -575,6 +634,13 @@ Cross-product linking helps the AI build a "mental model" of how your systems in
 data flows where, and where integration points exist.
 
 Isolated documents lose context over time.
+
+### Push When Ready
+
+Push finalized artifacts to external systems for team visibility using `/forge-push`. Keep Forge as the authoring
+environment during design time and push when the artifact is stable enough for external consumption. Avoid pushing
+`Draft` artifacts unless the team expects to collaborate externally during early stages. Use `/forge-pull` to
+incorporate changes made by external collaborators before resuming local edits.
 
 ### Keep, Don't Delete
 

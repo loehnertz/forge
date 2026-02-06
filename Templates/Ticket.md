@@ -1,3 +1,10 @@
+---
+external:
+  type:
+  id:
+  last-synced:
+---
+
 # Ticket: [Title]
 
 <!--

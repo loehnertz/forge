@@ -33,6 +33,25 @@ Brief description of this product area.
 | Payments     | We call their API for checkout            |
 | User Service | Provides authentication, we consume users |
 
+## External Services
+
+<!--
+Configuration for /forge-push and /forge-pull.
+Each subsection defines a service type and instructs the AI on how to interact with it.
+The type name (e.g., "confluence-page", "jira-issue", "notion-page", "linear-issue") is referenced in artifact
+frontmatter. Add or remove subsections based on your team's tools.
+
+Example subsection:
+
+### [service-type]
+
+Used for: [Artifact types this service handles]
+[Service-specific config keys, e.g., Space, Project, Labels, etc.]
+
+To push: [Instructions for converting Markdown and creating/updating the external resource]
+To pull: [Instructions for fetching the resource and converting back to Markdown]
+-->
+
 ## Active Initiatives
 
 <!-- Link to each initiative's context file so AI tools discover the full hierarchy -->
