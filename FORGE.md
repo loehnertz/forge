@@ -115,6 +115,7 @@ The internal structure of a Forge workspace:
 ```
 forge/
 ├── AGENTS.EXAMPLE.md      # Template: rename for your AI tool (see below)
+├── STYLE.EXAMPLE.md       # Template: personal writing style (see below)
 ├── FORGE.md               # This framework document
 ├── Commands/              # Lifecycle commands – copy to your tool's location
 ├── Templates/             # Starter files to bootstrap artifacts consistently
@@ -143,6 +144,9 @@ Forge ships with generic files that you adapt for your specific AI tool:
 
 3. **Skills:** Skills (AI-invoked integrations like issue trackers or wikis) are user-maintained based on your
    integrations. Create them in your tool's skill/plugin location as needed.
+
+4. **Personal style (optional):** Copy `STYLE.EXAMPLE.md` to `STYLE.md` and add your personal writing
+   preferences. This file is gitignored – each team member can have their own.
 
 The `Commands/` folder contains the "shipped with Forge" versions. Your tool-specific copies can be customized (e.g.,
 adding frontmatter, tool-specific syntax) while the originals serve as reference.
@@ -192,6 +196,20 @@ For complex `Initiatives`, a dedicated context file captures the goal, backgroun
 navigating the `Initiative's` artifacts.
 
 **Template:** See [Templates/Initiative-AGENTS.EXAMPLE.md](./Templates/Initiative-AGENTS.EXAMPLE.md)
+
+### Personal Writing Style (`STYLE.md`)
+
+For personal writing preferences – tone, spelling, formatting habits – that shouldn't be shared across
+the team, Forge supports an optional `STYLE.md` file at the workspace root.
+
+- **Gitignored by default.** Each team member can have their own without conflicts.
+- **Overrides writing conventions only.** `STYLE.md` takes precedence over the shared Writing
+  Conventions in `AGENTS.md` for stylistic choices but does not override structural rules, folder
+  conventions, or workflow instructions.
+- **Root-only.** Personal style is about the person, not the product or initiative. Product-level style
+  overrides already have a mechanism – the `AGENTS.md` hierarchy.
+
+**Template:** See [STYLE.EXAMPLE.md](./STYLE.EXAMPLE.md). Copy to `STYLE.md` and customize.
 
 ### Linking Parent and Child Context Files
 

@@ -29,6 +29,7 @@ Please check the [FORGE.md](./FORGE.md) for the complete folder structure.
 - [FORGE.md](./FORGE.md) – Framework documentation
 - `Templates/` – Starter files for artifacts
 - `Commands/` – Lifecycle and utility commands (copy to your tool's location)
+- `STYLE.md` – Personal writing style preferences (optional, gitignored)
 
 ## Staleness Detection
 
@@ -44,6 +45,11 @@ To check when files were last updated, use version control or filesystem:
 - Use first-person plural ("we") rather than second person singular ("you")
 - Format Markdown tables with aligned columns
 -->
+
+**Personal style:** If a `STYLE.md` file exists at the workspace root, read it and apply those
+preferences when writing artifacts. `STYLE.md` preferences take precedence over shared writing
+conventions above for stylistic choices (tone, spelling, formatting) but do not override structural
+rules, folder conventions, or workflow instructions.
 
 ## Useful Skills
 

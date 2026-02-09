@@ -3,3 +3,8 @@
 *.swp
 *.swo
 *~
+
+# Framework
+
+# Personal writing style (user-specific, not shared)
+STYLE.md

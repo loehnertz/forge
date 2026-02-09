@@ -81,6 +81,14 @@ echo
 echo "  Checking FORGE.md"
 update_file "FORGE.md" "FORGE.md"
 
+# Update AGENTS.EXAMPLE.md
+echo "  Checking AGENTS.EXAMPLE.md"
+update_file "AGENTS.EXAMPLE.md" "AGENTS.EXAMPLE.md"
+
+# Update STYLE.EXAMPLE.md
+echo "  Checking STYLE.EXAMPLE.md"
+update_file "STYLE.EXAMPLE.md" "STYLE.EXAMPLE.md"
+
 # Update Commands/
 echo "  Checking Commands/"
 mkdir -p Commands
