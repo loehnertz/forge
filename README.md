@@ -37,16 +37,16 @@ detailed guidance.
 
 ### Key Elements
 
-| Element           | Purpose                                  |
-|-------------------|------------------------------------------|
-| `AGENTS.md` files | Provide layered context to AI agents |
-| `Notes`           | Dump raw meeting notes and transcripts   |
-| `Exploration`     | Synthesize research into understanding   |
-| `Proposal`        | Formalize proposals with alternatives    |
-| `Decision`        | Record decisions and reasoning           |
-| `Tickets`         | Define actionable work                   |
-| Skills            | Connect to external systems              |
-| Templates         | Bootstrap new artifacts consistently     |
+| Element           | Purpose                                |
+|-------------------|----------------------------------------|
+| `AGENTS.md` files | Provide layered context to AI agents   |
+| `Notes`           | Dump raw meeting notes and transcripts |
+| `Exploration`     | Synthesize research into understanding |
+| `Proposal`        | Formalize proposals with alternatives  |
+| `Decision`        | Record decisions and reasoning         |
+| `Tickets`         | Define actionable work                 |
+| Skills            | Connect to external systems            |
+| Templates         | Bootstrap new artifacts consistently   |
 
 ---
 
@@ -75,7 +75,8 @@ rm -rf /tmp/forge
 
 **1. Adapt for your AI tool**
 
-Copy `Templates/AGENTS.EXAMPLE.md` to the workspace root, renamed to your tool's convention, and fill in the placeholders:
+Copy `Templates/AGENTS.EXAMPLE.md` to the workspace root, renamed to your tool's convention, and fill in the
+placeholders:
 
 | Tool           | Context file                      |
 |----------------|-----------------------------------|
@@ -96,6 +97,10 @@ Move files from `Commands/` to your tool's command location:
 | OpenCode    | `.opencode/commands/` |
 
 Not all tools support custom commands; check your tool's documentation.
+
+> **New team member?** Run `/forge-onboard` after copying the commands. It walks you through
+> tool detection, configuring `REPOS.md` for each product, setting up your personal `STYLE.md`,
+> and adding yourself to each product's `TEAM.md` — all in one guided session.
 
 **3. Create your first product**
 
@@ -165,10 +170,10 @@ To force-update all files (backs up your versions as `*.local`):
 
 ## Documentation
 
-| Document                                     | Description                                                                                       |
-|----------------------------------------------|---------------------------------------------------------------------------------------------------|
-| **[FORGE.md](./FORGE.md)**                   | Complete framework documentation: philosophy, workspace structure, artifact types, best practices |
-| **[Templates/AGENTS.EXAMPLE.md](./Templates/AGENTS.EXAMPLE.md)** | Template for your root context file. Adapt this for your AI tool. |
+| Document                                                         | Description                                                                                       |
+|------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
+| **[FORGE.md](./FORGE.md)**                                       | Complete framework documentation: philosophy, workspace structure, artifact types, best practices |
+| **[Templates/AGENTS.EXAMPLE.md](./Templates/AGENTS.EXAMPLE.md)** | Template for your root context file. Adapt this for your AI tool.                                 |
 
 ---
 
