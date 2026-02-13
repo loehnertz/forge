@@ -9,8 +9,8 @@ external:
 # Glossary: [Product Name]
 
 <!--
-This is the shared domain vocabulary for this product.
-Add a row for every term that carries product-specific or ambiguous meaning.
+This is the ubiquitous language for this product.
+Add a row for every term that carries a precise or product-specific meaning.
 Keep definitions concise — one or two sentences. Use the Notes column for
 synonyms, deprecated terms, or cross-references to other glossary entries.
 

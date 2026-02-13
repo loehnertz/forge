@@ -37,6 +37,6 @@ Create the folder structure for a new product in the Forge workspace.
     - Fill in the context file with product context
     - Add related repositories
     - Copy `Templates/REPOS.EXAMPLE.md` to `Products/<ProductName>/REPOS.md` and fill in local repository paths
-    - Populate `GLOSSARY.md` with key domain terms
+    - Populate `GLOSSARY.md` with the product's ubiquitous language
     - Add team members to `TEAM.md`
     - Create first initiative with `/forge-new-initiative`

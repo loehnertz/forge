@@ -21,7 +21,7 @@ Brief description of this product area.
 
 ## Glossary
 
-See [GLOSSARY.md](./GLOSSARY.md) for shared domain vocabulary and term definitions.
+See [GLOSSARY.md](./GLOSSARY.md) for the product's ubiquitous language and term definitions.
 
 ## Related Repositories
 

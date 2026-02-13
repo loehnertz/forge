@@ -120,7 +120,7 @@ forge/
 ├── Products/
 │   └── <Product>/
 │       ├── AGENTS.md      # Product context and linked repositories
-│       ├── GLOSSARY.md    # Shared domain vocabulary for this product
+│       ├── GLOSSARY.md    # Ubiquitous language for this product
 │       ├── TEAM.md        # Product team roster
 │       ├── REPOS.md       # Personal repository paths (gitignored)
 │       ├── Initiatives/   # Active workstreams
@@ -414,10 +414,10 @@ This preserves the full decision history and makes it clear why we changed cours
 
 **When to use:** When we've decided what to build and need to define the work for implementation.
 
-### Glossary: Shared Domain Vocabulary
+### Glossary: Ubiquitous Language
 
-**Purpose:** Capture shared domain terms and their product-specific meanings to reduce ambiguity in
-artifacts and AI conversations.
+**Purpose:** Capture the product's ubiquitous language — shared terms and their precise meanings — to
+reduce ambiguity in artifacts and AI conversations.
 
 **Characteristics:**
 
@@ -429,8 +429,8 @@ artifacts and AI conversations.
 **Template:** See [Templates/GLOSSARY.md](./Templates/GLOSSARY.md) for an example structure.
 
 **When to use:** Whenever a term carries product-specific meaning or is ambiguous across teams (e.g.,
-"account", "event", "order"). A populated glossary helps AI agents use consistent language and helps
-new team members ramp up quickly.
+"account", "event", "order"). A populated ubiquitous language glossary helps AI agents use consistent
+terminology and helps new team members ramp up quickly.
 
 ---
 
