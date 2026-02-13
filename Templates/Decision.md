@@ -41,3 +41,5 @@ What are the implications of this decision?
 
 - [Proposal](./Proposal.md)
 - [Related discussion or documentation]
+<!-- If this decision supersedes a prior one, add: -->
+<!-- - [Supersedes: Decision-<Topic>](./Decision-<Topic>.md) -->
