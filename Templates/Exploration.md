@@ -10,6 +10,9 @@ external:
 <!--
 This is an example Exploration template. Adapt sections to your needs.
 Exploration files are living scratchpads – update them as understanding evolves.
+
+No status field: Exploration has no formal review lifecycle. It is continuously updated
+throughout the Discover stage and referenced (not replaced) when moving to Design.
 -->
 
 ## Problem Statement
