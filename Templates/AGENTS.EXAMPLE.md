@@ -20,6 +20,17 @@ You assist with:
 - Keep documents concise and scannable.
 - Use the team's existing templates and conventions when available.
 
+## Products
+
+<!--
+Link to each product's context file here. This is how AI tools discover the context hierarchy — from this
+workspace root down into product and initiative context files.
+
+Example:
+- [Analytics](./Products/Analytics/AGENTS.md)
+- [Payments](./Products/Payments/AGENTS.md)
+-->
+
 ## Folder Structure
 
 Please check the [FORGE.md](./FORGE.md) for the complete folder structure.

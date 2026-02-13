@@ -66,9 +66,9 @@ Workflow: Each entry has a status label that can be one of three values:
 
 ### Decision Tracking
 
-| ID | Decision           | Status | Section |
-|----|--------------------|--------|---------|
-| 1  | [Decision summary] | Open   | X.X     |
+| ID | Decision           | Status         | Section |
+|----|--------------------|----------------|---------|
+| 1  | [Decision summary] | Recommendation | X.X     |
 
 ### X.X [Decision Category]
 

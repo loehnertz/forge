@@ -41,6 +41,8 @@ Before leaving this stage, verify the Initiative's `AGENTS.md` (or your tool's c
 - [ ] **Current State** is accurate (should be "Discover" or moving to "Design")
 - [ ] **Key findings** from exploration are captured in Background or notes
 - [ ] **Open Questions** list is current
+- [ ] **Dependencies** declared if this initiative depends on or blocks others — populate `depends-on`/`blocks`
+  frontmatter fields and the `## Dependencies` section (run `/forge-validate` to check symmetry)
 
 This keeps context fresh for future sessions and other collaborators.
 

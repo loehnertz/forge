@@ -8,7 +8,8 @@ Walk a new team member through the one-time setup of their local Forge workspace
 
 Ask the user which AI tool they are using (or detect from context):
 
-- **Claude Code** → context file: `CLAUDE.md`, commands: `~/.claude/commands/`
+- **Claude Code** → context file: `CLAUDE.md`, commands: `.claude/commands/` (project-local; prefer this over the global
+  `~/.claude/commands/` to avoid conflicts across multiple Forge workspaces)
 - **Cursor** → context file: `.cursorrules`, commands: `.cursor/rules/`
 - **GitHub Copilot** → context file: `.github/copilot-instructions.md`, commands: `.github/copilot/`
 - **Windsurf** → context file: `.windsurfrules`, commands: `.windsurf/rules/`

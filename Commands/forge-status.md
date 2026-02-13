@@ -46,13 +46,14 @@ Summary: 3 products, 6 initiatives (1 stale, 1 blocked, 1 complete)
 
 Infer stage from artifacts present:
 
-| Artifacts Present                          | Inferred Stage |
-|--------------------------------------------|----------------|
-| Only Exploration.md (or nothing)           | Discover       |
-| Proposal.md exists, no Decision            | Design         |
-| Decision.md exists, Tickets/ empty         | Decide         |
-| Decision.md + Tickets/ has content         | Decompose      |
-| Decision.md frontmatter `status: Accepted` | Complete       |
+| Artifacts Present                                   | Inferred Stage     |
+|-----------------------------------------------------|--------------------|
+| Only Exploration.md (or nothing)                    | Discover           |
+| Proposal.md exists, status `Draft`, no Decision     | Design             |
+| Proposal.md exists, status `In Review`, no Decision | Design (In Review) |
+| Decision.md exists, Tickets/ empty                  | Decide             |
+| Decision.md + Tickets/ has content                  | Decompose          |
+| Decision.md frontmatter `status: Accepted`          | Complete           |
 
 If Initiative AGENTS.md has an explicit stage, prefer that over inference.
 
@@ -76,8 +77,8 @@ Staleness is determined by checking when files were last modified using version 
 | Condition                | Indicator   |
 |--------------------------|-------------|
 | Last modified < 30 days  | ✅ Active    |
-| Last modified 30-60 days | ⚠️ Xd stale |
-| Last modified > 60 days  | ❌ Xd stale  |
+| Last modified 30-90 days | ⚠️ Xd stale |
+| Last modified > 90 days  | ❌ Xd stale  |
 
 ## Lead Display
 

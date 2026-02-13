@@ -135,6 +135,35 @@ forge/
 │       └── References/    # Product-level reference materials
 ```
 
+### Large Workspaces
+
+For organizations with many products, an optional grouping layer keeps the workspace navigable. Instead of a flat
+`Products/<Product>/` structure, you can nest products under a group or domain:
+
+```
+Products/
+├── Checkout/
+│   ├── Payments/
+│   └── Refunds/
+└── Platform/
+    ├── Auth/
+    └── Events/
+```
+
+Each product still follows the same conventions (`AGENTS.md`, `GLOSSARY.md`, `TEAM.md`, `Initiatives/`). The group
+folder itself has no required files — it is a pure organizational container. Update the root `AGENTS.md` `## Products`
+section to reflect the nested paths:
+
+```markdown
+## Products
+
+- [Payments](./Products/Checkout/Payments/AGENTS.md)
+- [Auth](./Products/Platform/Auth/AGENTS.md)
+```
+
+Cross-initiative `depends-on` and `blocks` paths must include the full relative path from the workspace root (e.g.,
+`Products/Checkout/Payments/Initiatives/Multi-Currency`).
+
 ### Adapting Forge to Your AI Tool
 
 Forge ships with generic files that you adapt for your specific AI tool:
@@ -680,7 +709,8 @@ Use version control or filesystem to check when files were last updated:
 - `git log -1 --format="%ci" -- <file>` – Shows absolute date of last commit
 - File modification time as fallback for untracked files
 
-The `/forge-validate` command uses these methods to flag files not updated in 30+ days.
+Both `/forge-validate` and `/forge-status` use these methods with the same thresholds: files not updated in
+30+ days are flagged as warnings; files not updated in 90+ days are flagged as errors.
 
 #### Context Health Checklist
 
@@ -694,6 +724,20 @@ Review context files monthly or quarterly. For each `AGENTS.md`, verify:
 
 Run `/forge-validate` to automate structural checks (including `REPOS.md` drift detection). Manual review is still
 needed for semantic accuracy (e.g., "is the architecture description still true?").
+
+#### Framework Updates
+
+When you run `copier update` to pull in a new Forge version, review the diff carefully. Framework updates can introduce:
+
+- **Renamed stages or artifact types:** Update the `Current State` section of affected initiative `AGENTS.md` files to
+  match the new naming.
+- **New required template sections:** Add missing sections to existing `Proposal.md`, `Decision.md`, or context files
+  by using the updated templates as a guide.
+- **Changed command behavior:** Re-read updated `Commands/` files before using them — their instructions may have
+  changed.
+
+The installed framework version is recorded in `.copier-answers.yml` at the workspace root (managed by Copier; do not
+edit manually). Use this to identify which version your existing artifacts were created under.
 
 ### Start Messy, Refine Progressively
 
