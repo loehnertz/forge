@@ -1,0 +1,42 @@
+# Forge — Copier template configuration
+# https://github.com/loehnertz/forge
+
+_min_copier_version: "9.0.0"
+
+# Custom _exclude replaces Copier's defaults, so we re-state them here.
+_exclude:
+  # Copier defaults
+  - "copier.yaml"
+  - "copier.yml"
+  - "~*"
+  - "*.py[co]"
+  - "__pycache__"
+  - ".git"
+  - ".DS_Store"
+  - ".svn"
+  # Forge repo-only files
+  - "README.md"
+  - "CLAUDE.md"
+  - "LICENSE"
+  - "logo.png"
+  - "update-forge.sh"
+  - ".gitignore"
+  - ".claude"
+  - ".idea"
+
+_message_after_copy: |
+  Forge has been set up successfully!
+
+  Next steps:
+  1. Copy Templates/AGENTS.EXAMPLE.md to your tool's context file (e.g., CLAUDE.md, .cursorrules)
+  2. Copy Commands/ files to your tool's command location (e.g., .claude/commands/)
+  3. Run '/forge-new-product' to create your first product
+  4. Run '/forge-onboard' to get started with the framework
+
+  See FORGE.md for the complete framework documentation.
+
+_message_after_update: |
+  Forge has been updated successfully!
+
+  Run 'git diff' to review the changes.
+  If there are conflicts, look for .rej files and resolve them manually.

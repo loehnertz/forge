@@ -52,21 +52,33 @@ detailed guidance.
 
 ## Getting Started
 
-**Option A: Use GitHub's template feature**
+**Option A: Use Copier (recommended)**
+
+[Copier](https://copier.readthedocs.io/) handles both initial setup and future updates with smart 3-way merging.
+
+```bash
+# Install Copier (requires Python 3.9+)
+pip install copier
+
+# Set up Forge in your project
+copier copy gh:loehnertz/forge ./my-workspace
+```
+
+**Option B: Use GitHub's template feature**
 
 Click the green **"Use this template"** button at the top of this repository to create your own Forge workspace.
 This gives you a fresh copy with all the framework files.
 
-**Option B: Copy files manually**
+**Option C: Copy files manually**
 
-If you prefer to add Forge to an existing repository or don't use GitHub:
+If you prefer to add Forge to an existing repository without tooling:
 
 ```bash
 # Clone the repository temporarily
 git clone https://github.com/loehnertz/forge.git /tmp/forge
 
 # Copy the framework files to your project
-cp /tmp/forge/FORGE.md /tmp/forge/update-forge.sh your-project/
+cp /tmp/forge/FORGE.md your-project/
 cp -r /tmp/forge/Commands /tmp/forge/Templates your-project/
 
 # Clean up
@@ -129,38 +141,19 @@ on the workflow and artifact types.
 
 ## Updating the Framework
 
-To pull the latest framework files:
+If you set up with Copier (Option A), pull the latest framework files with:
 
 ```bash
-./update-forge.sh
+copier update
 ```
 
-This updates:
+Copier uses git-tag-based versioning and 3-way merging, so it can intelligently merge upstream changes with your local
+modifications. If there are conflicts, Copier produces `.rej` files for manual resolution.
 
-- `FORGE.md`: framework documentation
-- `Commands/`: workflow commands
-- `Templates/`: artifact templates
+Make sure `.copier-answers.yml` is committed to your repository — Copier needs it to track the template source and
+version.
 
-**Handling local modifications:**
-
-If you've customized any framework files, the script detects this and saves the new upstream version as
-`<file>.upstream` instead of overwriting. You can then:
-
-```bash
-# Compare your version with upstream
-diff Commands/forge-design.md Commands/forge-design.md.upstream
-
-# Merge changes manually, then clean up
-rm Commands/forge-design.md.upstream
-```
-
-To force-update all files (backs up your versions as `*.local`):
-
-```bash
-./update-forge.sh --force
-```
-
-**Always preserved** (never touched by the script):
+**Always preserved** (never touched by Copier):
 
 - Your agent context file (`CLAUDE.md`, `.cursorrules`, etc.)
 - Product folders and their contents
