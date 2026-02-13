@@ -22,7 +22,9 @@ For each `AGENTS.md` file (or your tool's equivalent), verify that linked items 
 
 - Products listed in root `AGENTS.md` have corresponding folders
 - Initiatives listed in Product `AGENTS.md` have corresponding folders
-- Related Repository paths exist on disk
+- Each product with Related Repositories has a `REPOS.md` in its directory (warn if missing)
+- Repository names in Product `AGENTS.md` have matching entries in that product's `REPOS.md` (warn if missing)
+- Repository paths in `REPOS.md` exist on disk (error if missing)
 - Key Documents links point to existing files
 
 ### 2. Orphan Detection
@@ -92,7 +94,8 @@ Present results in a clear, scannable format:
 
 📁 Products/PaymentService
    ✅ AGENTS.md exists and linked
-   ✅ Related repositories accessible
+   ✅ REPOS.md exists
+   ✅ All repository paths accessible
    ✅ Last modified: 12 days ago
 
    📁 Initiatives/Checkout-V2
@@ -101,7 +104,8 @@ Present results in a clear, scannable format:
 
 📁 Products/UserAuth
    ⚠️  AGENTS.md last modified 45 days ago
-   ✅ Related repositories accessible
+   ⚠️  REPOS.md missing — repo paths not configured for this product
+   ✅ Related repositories listed
 
    📁 Initiatives/OAuth-Integration
       ⚠️  AGENTS.md says "Discover" but Decision.md exists

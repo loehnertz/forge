@@ -21,10 +21,16 @@ Brief description of this product area.
 
 ## Related Repositories
 
-| Repository | Path                        | Description      |
-|------------|-----------------------------|------------------|
-| backend    | ~/Projects/product-backend  | Main API service |
-| frontend   | ~/Projects/product-frontend | Web application  |
+<!--
+Repository names and descriptions are shared context (committed to git).
+Local paths live in REPOS.md in this same directory (gitignored, per-user).
+See Templates/REPOS.EXAMPLE.md for the path file format.
+-->
+
+| Repository | Description      |
+|------------|------------------|
+| backend    | Main API service |
+| frontend   | Web application  |
 
 ## Related Products
 

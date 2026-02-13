@@ -81,27 +81,20 @@ echo
 echo "  Checking FORGE.md"
 update_file "FORGE.md" "FORGE.md"
 
-# Update AGENTS.EXAMPLE.md
-echo "  Checking AGENTS.EXAMPLE.md"
-update_file "AGENTS.EXAMPLE.md" "AGENTS.EXAMPLE.md"
-
-# Update STYLE.EXAMPLE.md
-echo "  Checking STYLE.EXAMPLE.md"
-update_file "STYLE.EXAMPLE.md" "STYLE.EXAMPLE.md"
-
 # Update Commands/
 echo "  Checking Commands/"
 mkdir -p Commands
 for file in forge-decide forge-decompose forge-design forge-discover \
-            forge-new-initiative forge-new-product forge-review; do
+            forge-new-initiative forge-new-product forge-pull forge-push \
+            forge-review forge-status forge-validate; do
   update_file "Commands/${file}.md" "Commands/${file}.md"
 done
 
 # Update Templates/
 echo "  Checking Templates/"
 mkdir -p Templates
-for file in Decision Exploration Initiative-AGENTS.EXAMPLE \
-            Product-AGENTS.EXAMPLE Proposal Ticket; do
+for file in AGENTS.EXAMPLE Decision Exploration Initiative-AGENTS.EXAMPLE \
+            Product-AGENTS.EXAMPLE Proposal REPOS.EXAMPLE STYLE.EXAMPLE Ticket; do
   update_file "Templates/${file}.md" "Templates/${file}.md"
 done
 

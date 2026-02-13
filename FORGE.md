@@ -103,8 +103,8 @@ inside them:
 ```
 
 This separation keeps concerns clean: Forge handles design and documentation, repositories handle code. The **Related
-Repositories** pattern in product `AGENTS.md` files links the two by path, allowing AI assistants to read actual
-implementations when discussing design.
+Repositories** pattern in product `AGENTS.md` files (with paths in the companion `REPOS.md`) links the two, allowing
+AI assistants to read actual implementations when discussing design.
 This also hooks into the reality that the relationships between repositories are often more complex than being
 one-to-one to our products (e.g., monorepos).
 
@@ -114,14 +114,13 @@ The internal structure of a Forge workspace:
 
 ```
 forge/
-├── AGENTS.EXAMPLE.md      # Template: rename for your AI tool (see below)
-├── STYLE.EXAMPLE.md       # Template: personal writing style (see below)
 ├── FORGE.md               # This framework document
 ├── Commands/              # Lifecycle commands – copy to your tool's location
-├── Templates/             # Starter files to bootstrap artifacts consistently
+├── Templates/             # Starter files and example configs (see below)
 ├── Products/
 │   └── <Product>/
 │       ├── AGENTS.md      # Product context and linked repositories
+│       ├── REPOS.md       # Personal repository paths (gitignored)
 │       ├── Initiatives/   # Active workstreams
 │       │   └── <Initiative>/
 │       │       ├── AGENTS.md        # Initiative context (optional)
@@ -138,15 +137,19 @@ forge/
 
 Forge ships with generic files that you adapt for your specific AI tool:
 
-1. **Context file:** Rename `AGENTS.EXAMPLE.md` to your tool's convention.
+1. **Context file:** Copy `Templates/AGENTS.EXAMPLE.md` to the workspace root, renamed to your tool's convention.
 
 2. **Commands:** Copy files from `Commands/` to your tool's command location.
 
 3. **Skills:** Skills (AI-invoked integrations like issue trackers or wikis) are user-maintained based on your
    integrations. Create them in your tool's skill/plugin location as needed.
 
-4. **Personal style (optional):** Copy `STYLE.EXAMPLE.md` to `STYLE.md` and add your personal writing
-   preferences. This file is gitignored – each team member can have their own.
+4. **Personal style (optional):** Copy `Templates/STYLE.EXAMPLE.md` to `STYLE.md` at the workspace root and
+   add your personal writing preferences. This file is gitignored – each team member can have their own.
+
+5. **Repository paths:** For each product directory, copy `Templates/REPOS.EXAMPLE.md` to
+   `Products/<Product>/REPOS.md` and fill in the local paths where you have each repository cloned.
+   This file is gitignored – each team member maintains their own.
 
 The `Commands/` folder contains the "shipped with Forge" versions. Your tool-specific copies can be customized (e.g.,
 adding frontmatter, tool-specific syntax) while the originals serve as reference.
@@ -181,7 +184,7 @@ rename these files to match your AI tool's convention.
 The root file establishes workspace-wide conventions: working style, writing conventions, folder structure, and
 available skills/commands.
 
-**Template:** See [AGENTS.EXAMPLE.md](./AGENTS.EXAMPLE.md). Rename to your tool's convention.
+**Template:** See [Templates/AGENTS.EXAMPLE.md](./Templates/AGENTS.EXAMPLE.md). Copy to workspace root, renamed to your tool's convention.
 
 ### Product `AGENTS.md`
 
@@ -209,7 +212,23 @@ the team, Forge supports an optional `STYLE.md` file at the workspace root.
 - **Root-only.** Personal style is about the person, not the product or initiative. Product-level style
   overrides already have a mechanism – the `AGENTS.md` hierarchy.
 
-**Template:** See [STYLE.EXAMPLE.md](./STYLE.EXAMPLE.md). Copy to `STYLE.md` and customize.
+**Template:** See [Templates/STYLE.EXAMPLE.md](./Templates/STYLE.EXAMPLE.md). Copy to `STYLE.md` at the workspace root and customize.
+
+### Repository Paths (`REPOS.md`)
+
+Repository names and descriptions belong in the product `AGENTS.md` (shared context). But local filesystem
+paths differ per developer, so they live in a separate `REPOS.md` inside each product directory.
+
+- **Gitignored by default.** Each team member maintains their own paths.
+- **Per-product.** Each `Products/<Name>/` directory has its own `REPOS.md`, keeping paths co-located with
+  the product context that references those repositories.
+- **Flat mapping.** A simple `Repository` → `Path` table. The repository name must match the name used in
+  the product `AGENTS.md`'s `## Related Repositories` table.
+- **Required for repo access.** AI assistants use `REPOS.md` to resolve repository names to actual paths on
+  disk. Without it, they cannot read source code for that product's repositories.
+
+**Template:** See [Templates/REPOS.EXAMPLE.md](./Templates/REPOS.EXAMPLE.md). Copy to
+`Products/<Product>/REPOS.md` and fill in your local paths.
 
 ### Linking Parent and Child Context Files
 
@@ -495,18 +514,30 @@ Document available commands and skills in your root `AGENTS.md` so team members 
 
 ### Connecting to Repositories
 
-The `## Related Repositories` section in product `AGENTS.md` files links to actual codebases:
+Repository information is split across two files per product:
+
+**Product `AGENTS.md`** — shared context (committed to git):
 
 ```markdown
 ## Related Repositories
 
-| Repository | Path                        | Description           |
-|------------|-----------------------------|-----------------------|
-| backend    | ~/Projects/myapp-backend    | API and business logic|
-| frontend   | ~/Projects/myapp-frontend   | React application     |
+| Repository | Description            |
+|------------|------------------------|
+| backend    | API and business logic |
+| frontend   | React application      |
 ```
 
-This allows AI to read and understand actual implementation when discussing design.
+**Product `REPOS.md`** — personal paths (gitignored):
+
+```markdown
+| Repository | Path                      |
+|------------|---------------------------|
+| backend    | ~/Projects/myapp-backend  |
+| frontend   | ~/Projects/myapp-frontend |
+```
+
+Names and descriptions are team knowledge; paths are personal. AI assistants resolve repository names by
+looking up the path in `REPOS.md`, then read actual source code at that location.
 
 ### Connecting to External Services
 
@@ -607,7 +638,8 @@ The `/forge-validate` command uses these methods to flag files not updated in 30
 Review context files monthly or quarterly. For each `AGENTS.md`, verify:
 
 - [ ] **Architecture** section reflects current state
-- [ ] **Related Repositories** paths exist on disk
+- [ ] **Related Repositories** names match entries in the product's `REPOS.md`
+- [ ] **`REPOS.md`** paths exist on disk
 - [ ] **Related Products** links are still accurate
 
 Run `/forge-validate` to automate structural checks. Manual review is still needed for semantic accuracy (e.g., "is

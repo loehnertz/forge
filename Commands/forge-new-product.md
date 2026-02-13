@@ -26,4 +26,5 @@ Create the folder structure for a new product in the Forge workspace.
 5. **Report**: Show the user what was created and suggest next steps:
     - Fill in the context file with product context
     - Add related repositories
+    - Copy `Templates/REPOS.EXAMPLE.md` to `Products/<ProductName>/REPOS.md` and fill in local repository paths
     - Create first initiative with `/forge-new-initiative`

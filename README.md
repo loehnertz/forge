@@ -4,7 +4,7 @@
   <strong>A framework for AI-assisted software engineering workspaces</strong>
   <br><br>
   <a href="./FORGE.md">Documentation</a> ·
-  <a href="./AGENTS.EXAMPLE.md">Template</a> ·
+  <a href="./Templates/AGENTS.EXAMPLE.md">Template</a> ·
   <a href="#getting-started">Getting Started</a>
 </p>
 
@@ -66,7 +66,7 @@ If you prefer to add Forge to an existing repository or don't use GitHub:
 git clone https://github.com/loehnertz/forge.git /tmp/forge
 
 # Copy the framework files to your project
-cp /tmp/forge/FORGE.md /tmp/forge/AGENTS.EXAMPLE.md /tmp/forge/update-forge.sh your-project/
+cp /tmp/forge/FORGE.md /tmp/forge/update-forge.sh your-project/
 cp -r /tmp/forge/Commands /tmp/forge/Templates your-project/
 
 # Clean up
@@ -75,7 +75,7 @@ rm -rf /tmp/forge
 
 **1. Adapt for your AI tool**
 
-Rename `AGENTS.EXAMPLE.md` to your tool's convention and fill in the placeholders in the file:
+Copy `Templates/AGENTS.EXAMPLE.md` to the workspace root, renamed to your tool's convention, and fill in the placeholders:
 
 | Tool           | Context file                      |
 |----------------|-----------------------------------|
@@ -104,7 +104,8 @@ Not all tools support custom commands; check your tool's documentation.
 ```
 
 Then fill in the generated `AGENTS.md` with product context, link related repositories, and seed `References/` with
-existing documentation.
+existing documentation. Copy `Templates/REPOS.EXAMPLE.md` to the product directory as `REPOS.md` and fill in the
+local paths where you have each repository cloned (this file is gitignored — each team member has their own).
 
 **4. Start an initiative**
 
@@ -167,7 +168,7 @@ To force-update all files (backs up your versions as `*.local`):
 | Document                                     | Description                                                                                       |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------|
 | **[FORGE.md](./FORGE.md)**                   | Complete framework documentation: philosophy, workspace structure, artifact types, best practices |
-| **[AGENTS.EXAMPLE.md](./AGENTS.EXAMPLE.md)** | Template for your root context file. Adapt this for your AI tool.                                 |
+| **[Templates/AGENTS.EXAMPLE.md](./Templates/AGENTS.EXAMPLE.md)** | Template for your root context file. Adapt this for your AI tool. |
 
 ---
 

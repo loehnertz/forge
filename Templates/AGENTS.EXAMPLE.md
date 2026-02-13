@@ -30,6 +30,7 @@ Please check the [FORGE.md](./FORGE.md) for the complete folder structure.
 - `Templates/` – Starter files for artifacts
 - `Commands/` – Lifecycle and utility commands (copy to your tool's location)
 - `STYLE.md` – Personal writing style preferences (optional, gitignored)
+- `REPOS.md` – Per-product repository path mappings (per-user, gitignored; lives in each product directory)
 
 ## Staleness Detection
 
