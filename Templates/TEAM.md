@@ -11,7 +11,7 @@ Add a row for each person. The AI Tool column helps team members understand whic
 name and command location each person uses.
 
 Common AI Tool values:
-  Claude Code    → context file: CLAUDE.md, commands: ~/.claude/commands/
+  Claude Code    → context file: CLAUDE.md, commands: .claude/commands/ (project-local)
   Cursor         → context file: .cursorrules, commands: .cursor/rules/
   GitHub Copilot → context file: .github/copilot-instructions.md, commands: .github/copilot/
   Windsurf       → context file: .windsurfrules, commands: .windsurf/rules/
