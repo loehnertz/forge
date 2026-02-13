@@ -85,16 +85,16 @@ update_file "FORGE.md" "FORGE.md"
 echo "  Checking Commands/"
 mkdir -p Commands
 for file in forge-decide forge-decompose forge-design forge-discover \
-            forge-new-initiative forge-new-product forge-pull forge-push \
-            forge-review forge-status forge-validate; do
+            forge-new-initiative forge-new-product forge-onboard forge-pull forge-push \
+            forge-review forge-search forge-status forge-validate; do
   update_file "Commands/${file}.md" "Commands/${file}.md"
 done
 
 # Update Templates/
 echo "  Checking Templates/"
 mkdir -p Templates
-for file in AGENTS.EXAMPLE Decision Exploration Initiative-AGENTS.EXAMPLE \
-            Product-AGENTS.EXAMPLE Proposal REPOS.EXAMPLE STYLE.EXAMPLE Ticket; do
+for file in AGENTS.EXAMPLE Decision Exploration GLOSSARY Initiative-AGENTS.EXAMPLE \
+            Product-AGENTS.EXAMPLE Proposal REPOS.EXAMPLE STYLE.EXAMPLE TEAM Ticket; do
   update_file "Templates/${file}.md" "Templates/${file}.md"
 done
 

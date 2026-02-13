@@ -11,6 +11,7 @@ Detect problems in the workspace that could mislead AI agents or indicate stale 
 - Stale context files
 - Stage inconsistencies
 - Broken or circular dependencies
+- REPOS.md drift (repositories listed in AGENTS.md but missing from REPOS.md, or vice versa)
 
 ## Validation Checks
 
@@ -84,6 +85,27 @@ For each Initiative with `depends-on` or `blocks` in its YAML frontmatter:
 | Circular    | ❌ Error | A → B → C → A forms a cycle                       |
 | Asymmetric  | ⚠️ Warn | A depends-on B, but B doesn't list A in blocks    |
 
+### 6. REPOS.md Drift Check
+
+For each product that has **both** a `## Related Repositories` table in its `AGENTS.md` **and** a
+`REPOS.md` file, compare the repository names in each direction:
+
+- **❌ Error:** Repository is listed in `AGENTS.md` but has no entry in `REPOS.md` — this user has
+  no local path configured for it and AI agents cannot access it.
+- **⚠️ Warning:** Repository is listed in `REPOS.md` but not in `AGENTS.md` — the entry may be
+  stale or belong to a different product.
+
+Skip silently if the product has no `## Related Repositories` section or no `REPOS.md` (a separate
+warning for the missing `REPOS.md` is already emitted by Check 1).
+
+> **Note:** `REPOS.md` is gitignored — this check is per-user. Other team members may have
+> different entries in their own copies.
+
+| Check                               | Level      | Example                                                    |
+|-------------------------------------|------------|------------------------------------------------------------|
+| In AGENTS.md, missing from REPOS.md | ❌ Error    | `backend` listed in AGENTS.md but no row in REPOS.md       |
+| In REPOS.md, not in AGENTS.md       | ⚠️ Warning | `legacy-api` in REPOS.md has no matching repo in AGENTS.md |
+
 ## Output Format
 
 Present results in a clear, scannable format:
@@ -96,6 +118,7 @@ Present results in a clear, scannable format:
    ✅ AGENTS.md exists and linked
    ✅ REPOS.md exists
    ✅ All repository paths accessible
+   ✅ REPOS.md in sync with Related Repositories
    ✅ Last modified: 12 days ago
 
    📁 Initiatives/Checkout-V2

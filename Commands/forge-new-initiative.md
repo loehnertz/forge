@@ -9,6 +9,7 @@ Create the folder structure for a new initiative within a product.
     - Otherwise, ask the user:
         - Which product? (list existing products in Products/)
         - What's the initiative name?
+        - Who is the lead for this initiative? (name or @handle; optional — leave blank if unknown)
 
 2. **Create folder structure**:
    ```
@@ -26,6 +27,7 @@ Create the folder structure for a new initiative within a product.
 3. **Create context file** using `Templates/Initiative-AGENTS.EXAMPLE.md` as the starting point:
     - Copy the template to `AGENTS.md` (or your tool's context file name)
     - Replace `[Initiative Name]` with the actual initiative name
+    - Set `lead:` in the frontmatter to the provided value (leave blank if none given)
     - Fill in the Goal section
 
 4. **Create Exploration.md** using `Templates/Exploration.md` as the starting point:
@@ -37,4 +39,6 @@ Create the folder structure for a new initiative within a product.
 6. **Report**: Show the user what was created and suggest next steps:
     - Fill in the goal and background in context file
     - Start capturing research in `Exploration.md`
+    - Update the product's `## Active Initiatives` table in the product `AGENTS.md` — add a new row
+      with the initiative name (linked), the starting stage (`Discover`), and the lead if provided
     - Use `/forge-discover` to begin the Discover stage
