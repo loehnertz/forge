@@ -4,7 +4,9 @@ Create the folder structure for a new product in the Forge workspace.
 
 ## Steps
 
-1. **Get product name**: If not provided, ask the user for the product name.
+1. **Get product name**: If not provided, ask the user for the product name. For large workspaces using
+   the optional grouping layer, the name can include a group prefix (e.g., `Checkout/Payments` creates
+   `Products/Checkout/Payments/`). Create any intermediate group directories as needed.
 
 2. **Create folder structure**:
    ```
