@@ -149,11 +149,11 @@ Forge ships with generic files that you adapt for your specific AI tool:
 4. **Personal style (optional):** Copy `Templates/STYLE.EXAMPLE.md` to `STYLE.md` at the workspace root and
    add your personal writing preferences. This file is gitignored – each team member can have their own.
 
-5. **Repository paths:** Each product directory includes a `REPOS.md` — fill in the local paths where you have
-   each repository cloned. This file is gitignored – each team member maintains their own.
+5. **Repository paths:** Each product directory includes a `REPOS.md` where you can fill in the local paths of
+   each cloned repository. This file is gitignored – each team member maintains their own copy.
 
 6. **Team roster (optional):** Each product directory includes a `TEAM.md` where you can add the team members
-   working on that product. This file is git-tracked – each product has its own roster reflecting who works on it.
+   working on that product. This file is git-tracked – each product has its own roster.
 
 The `Commands/` folder contains the "shipped with Forge" versions. Your tool-specific copies can be customized (e.g.,
 adding frontmatter, tool-specific syntax) while the originals serve as reference.
