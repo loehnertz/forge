@@ -19,6 +19,10 @@ Brief description of this product area.
 - Key components and their relationships
 - Important patterns used
 
+## Glossary
+
+See [GLOSSARY.md](./GLOSSARY.md) for shared domain vocabulary and term definitions.
+
 ## Related Repositories
 
 <!--
@@ -60,11 +64,16 @@ To pull: [Instructions for fetching the resource and converting back to Markdown
 
 ## Active Initiatives
 
-<!-- Link to each initiative's context file so AI tools discover the full hierarchy -->
+<!--
+Link to each initiative's context file so AI tools discover the full hierarchy.
+Stage can be set manually or inferred by /forge-status from artifacts present.
+Lead is optional — set it to the name or @handle of the person driving the initiative.
+Move completed initiatives to a "Completed Initiatives" section or remove them.
+-->
 
-- [Example-Initiative](./Initiatives/Example-Initiative/AGENTS.md)
-
-<!-- Add more initiatives as you create them. Move completed ones to a "Completed Initiatives" section or remove them. -->
+| Initiative                                                       | Stage    | Lead |
+|------------------------------------------------------------------|----------|------|
+| [Example-Initiative](./Initiatives/Example-Initiative/AGENTS.md) | Discover |      |
 
 ## References
 

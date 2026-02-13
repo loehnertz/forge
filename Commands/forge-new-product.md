@@ -10,6 +10,8 @@ Create the folder structure for a new product in the Forge workspace.
    ```
    Products/<ProductName>/
    ├── `AGENTS.md` (or your tool's context file name)
+   ├── `GLOSSARY.md`
+   ├── `TEAM.md`
    ├── Initiatives/
    │   └── .gitkeep
    └── References/
@@ -21,10 +23,20 @@ Create the folder structure for a new product in the Forge workspace.
     - Replace `[Product Name]` with the actual product name
     - Fill in the Context section
 
-4. **Create .gitkeep files** in empty folders (Initiatives/, References/).
+4. **Create GLOSSARY.md** using `Templates/GLOSSARY.md` as the starting point:
+    - Copy `Templates/GLOSSARY.md` to `Products/<ProductName>/GLOSSARY.md`
+    - Replace `[Product Name]` with the actual product name
 
-5. **Report**: Show the user what was created and suggest next steps:
+5. **Create TEAM.md** using `Templates/TEAM.md` as the starting point:
+    - Copy `Templates/TEAM.md` to `Products/<ProductName>/TEAM.md`
+    - Replace `[Product Name]` with the actual product name
+
+6. **Create .gitkeep files** in empty folders (Initiatives/, References/).
+
+7. **Report**: Show the user what was created and suggest next steps:
     - Fill in the context file with product context
     - Add related repositories
     - Copy `Templates/REPOS.EXAMPLE.md` to `Products/<ProductName>/REPOS.md` and fill in local repository paths
+    - Populate `GLOSSARY.md` with key domain terms
+    - Add team members to `TEAM.md`
     - Create first initiative with `/forge-new-initiative`
