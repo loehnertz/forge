@@ -20,7 +20,7 @@ Ask whether the search should be case-sensitive (default: case-insensitive).
 
 ### 2. Scan Workspace
 
-Search all `.md` files recursively under `Products/`. Exclude:
+Search all `.md` files recursively in the workspace. Exclude:
 
 - `Templates/` directory
 - `Commands/` directory
