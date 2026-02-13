@@ -1,7 +1,7 @@
 <p align="center">
   <img src="logo.png" alt="Forge logo" width="300">
   <br><br>
-  <strong>A framework for AI-assisted software engineering workspaces</strong>
+  <strong>A framework for agentic AI software engineering workspaces</strong>
   <br><br>
   <a href="./FORGE.md">Documentation</a> ·
   <a href="./Templates/AGENTS.EXAMPLE.md">Template</a> ·
@@ -12,8 +12,8 @@
 
 ## What is Forge?
 
-Forge gives AI assistants the context they need to be genuinely useful collaborators – through layered context files,
-durable artifacts, and connections to real code. It works with any AI coding assistant (Claude Code, Cursor, Copilot,
+Forge gives AI agents the context they need to be genuinely useful collaborators – through layered context files,
+durable artifacts, and connections to real code. It works with any AI coding agent (Claude Code, Cursor, Copilot,
 etc.).
 
 See **[FORGE.md](./FORGE.md)** for the complete framework documentation covering philosophy, problem statement, and
@@ -39,7 +39,7 @@ detailed guidance.
 
 | Element           | Purpose                                  |
 |-------------------|------------------------------------------|
-| `AGENTS.md` files | Provide layered context to AI assistants |
+| `AGENTS.md` files | Provide layered context to AI agents |
 | `Notes`           | Dump raw meeting notes and transcripts   |
 | `Exploration`     | Synthesize research into understanding   |
 | `Proposal`        | Formalize proposals with alternatives    |

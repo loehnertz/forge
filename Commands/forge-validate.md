@@ -4,7 +4,7 @@ Validate the health of the Forge workspace by checking for structural issues, st
 
 ## Purpose
 
-Detect problems in the workspace that could mislead AI assistants or indicate stale context:
+Detect problems in the workspace that could mislead AI agents or indicate stale context:
 
 - Missing or broken links
 - Orphaned artifacts

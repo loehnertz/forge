@@ -1,8 +1,8 @@
 # Forge
 
-> A framework for AI-assisted software engineering workspaces
+> A framework for agentic AI software engineering workspaces
 
-Forge is a framework for structuring collaborative workspaces where software engineers and AI assistants work together
+Forge is a framework for structuring collaborative workspaces where software engineers and AI agents work together
 on design and documentation. It provides conventions for organizing context, writing artifacts, and moving ideas from
 rough exploration to implementation-ready decisions.
 
@@ -22,12 +22,12 @@ rough exploration to implementation-ready decisions.
 
 ## What is Forge?
 
-Forge is a framework for building AI-assisted software engineering workspaces: structured environments where AI tools
-have the context they need to be genuinely useful collaborators rather than generic assistants.
+Forge is a framework for building agentic AI software engineering workspaces: structured environments where AI tools
+have the context they need to be genuinely useful collaborators rather than generic agents.
 
 ### The Problem
 
-AI assistants are powerful but context-starved. Without understanding our architecture, conventions, and goals, they
+AI agents are powerful but context-starved. Without understanding our architecture, conventions, and goals, they
 produce generic suggestions that require extensive correction. We spend time explaining the same background repeatedly,
 and valuable design discussions happen in ephemeral chat sessions that leave no trace.
 
@@ -40,10 +40,10 @@ better than starting from scratch each time, but they remain disconnected from t
 
 Forge addresses this by:
 
-- **Structuring context** through hierarchical `AGENTS.md` files that give AI assistants progressively deeper
+- **Structuring context** through hierarchical `AGENTS.md` files that give AI agents progressively deeper
   understanding. From workspace-wide conventions down to initiative-specific goals, rather than flat instruction dumps.
 - **Capturing knowledge** in durable artifacts (`Notes`, `Proposals`, `Decisions`) rather than transient conversations.
-- **Connecting to reality** by linking workspaces to actual codebases and external systems. AI assistants can read real
+- **Connecting to reality** by linking workspaces to actual codebases and external systems. AI agents can read real
   implementations, not just descriptions of them.
 - **Defining workflows** that move systematically from exploration to actionable work.
 - **Living alongside code** as a git-tracked workspace that evolves with the systems it documents.
@@ -60,12 +60,12 @@ Forge addresses this by:
 
 ### Who is Forge For?
 
-Forge works with any AI coding assistant. Despite being marketed for coding, these tools excel at writing, ideation, and
+Forge works with any AI coding agent. Despite being marketed for coding, these tools excel at writing, ideation, and
 design work. The conventions are tool-agnostic; adapt the context file naming to your tool's conventions.
 
 Forge is designed for software engineering teams who:
 
-- Use AI assistants for design and documentation work.
+- Use AI agents for design and documentation work.
 - Want to preserve and build on design discussions rather than lose them.
 - Need AI collaborators that understand their specific systems and conventions.
 - Value written artifacts over verbal discussions for technical decisions.
@@ -104,7 +104,7 @@ inside them:
 
 This separation keeps concerns clean: Forge handles design and documentation, repositories handle code. The **Related
 Repositories** pattern in product `AGENTS.md` files (with paths in the companion `REPOS.md`) links the two, allowing
-AI assistants to read actual implementations when discussing design.
+AI agents to read actual implementations when discussing design.
 This also hooks into the reality that the relationships between repositories are often more complex than being
 one-to-one to our products (e.g., monorepos).
 
@@ -173,7 +173,7 @@ adding frontmatter, tool-specific syntax) while the originals serve as reference
 
 ## The `AGENTS.md` System
 
-`AGENTS.md` files are the heart of Forge. They provide context to AI assistants at each level of the workspace
+`AGENTS.md` files are the heart of Forge. They provide context to AI agents at each level of the workspace
 hierarchy.
 
 Throughout this documentation, we use `AGENTS.md` as the generic term for context files. When setting up your workspace,
@@ -224,7 +224,7 @@ paths differ per developer, so they live in a separate `REPOS.md` inside each pr
   the product context that references those repositories.
 - **Flat mapping.** A simple `Repository` → `Path` table. The repository name must match the name used in
   the product `AGENTS.md`'s `## Related Repositories` table.
-- **Required for repo access.** AI assistants use `REPOS.md` to resolve repository names to actual paths on
+- **Required for repo access.** AI agents use `REPOS.md` to resolve repository names to actual paths on
   disk. Without it, they cannot read source code for that product's repositories.
 
 **Template:** See [Templates/REPOS.EXAMPLE.md](./Templates/REPOS.EXAMPLE.md). Copy to
@@ -413,7 +413,7 @@ Forge covers **the 4 D's** before code gets written.
 ```
 
 Once you have tickets, Forge's job is done. **Implementation is intentionally not part of the framework.** There are
-already established methodologies for writing code, managing sprints, and shipping software (also AI-assisted).
+already established methodologies for writing code, managing sprints, and shipping software (also agentic AI).
 Forge focuses on what often gets lost: the design thinking and decision-making that happens *before* implementation.
 
 Nevertheless, during implementation, reference your Forge `Initiative` for context. Link pull requests back to the
@@ -536,7 +536,7 @@ Repository information is split across two files per product:
 | frontend   | ~/Projects/myapp-frontend |
 ```
 
-Names and descriptions are team knowledge; paths are personal. AI assistants resolve repository names by
+Names and descriptions are team knowledge; paths are personal. AI agents resolve repository names by
 looking up the path in `REPOS.md`, then read actual source code at that location.
 
 ### Connecting to External Services
@@ -656,14 +656,14 @@ Don't try to write perfect documents from the start:
 
 ### Use AI for What It's Good At
 
-AI assistants excel at:
+AI agents excel at:
 
 - Drafting structured documents from rough notes.
 - Exploring trade-offs systematically.
 - Generating alternatives we haven't considered.
 - Consistency checking and gap identification.
 
-AI assistants need human judgment for:
+AI agents need human judgment for:
 
 - Business context and priorities.
 - Team dynamics and politics.
