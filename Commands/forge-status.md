@@ -26,17 +26,17 @@ Present results grouped by product:
 ══════════════════════════════════════════════════════════════════════
 
 📦 Analytics
-   🔍 Standardized-Events        Discover    ⚠️ 45d stale
-   📝 Dashboard-Redesign         Design      ✅ Active
+   🔍 Standardized-Events        Discover    ⚠️ 45d stale    Lead: Jane Smith
+   📝 Dashboard-Redesign         Design      ✅ Active        Lead: —
    ✅ Real-Time-Alerts           Complete
 
 📦 Payments
-   🔍 Multi-Currency             Discover    ✅ Active
+   🔍 Multi-Currency             Discover    ✅ Active        Lead: @alice
    📐 Checkout-V2                Decide      ⏸️ Blocked by: OAuth-Migration
-   🎫 Refund-Automation          Decompose   ✅ Active
+   🎫 Refund-Automation          Decompose   ✅ Active        Lead: —
 
 📦 Auth
-   🔍 OAuth-Migration            Discover    ✅ Active (blocks 1)
+   🔍 OAuth-Migration            Discover    ✅ Active (blocks 1)   Lead: @bob
 
 ══════════════════════════════════════════════════════════════════════
 Summary: 3 products, 6 initiatives (1 stale, 1 blocked, 1 complete)
@@ -78,6 +78,14 @@ Staleness is determined by checking when files were last modified using version 
 | Last modified < 30 days  | ✅ Active    |
 | Last modified 30-60 days | ⚠️ Xd stale |
 | Last modified > 60 days  | ❌ Xd stale  |
+
+## Lead Display
+
+Read the `lead:` field from each initiative's `AGENTS.md` YAML frontmatter:
+
+- If `lead:` has a value, display it as `Lead: <value>` after the staleness indicator.
+- If `lead:` is blank or absent, display `Lead: —`.
+- Omit the Lead column entirely for completed initiatives to keep output compact.
 
 ## Dependency Indicators
 
