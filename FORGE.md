@@ -120,6 +120,8 @@ forge/
 ├── Products/
 │   └── <Product>/
 │       ├── AGENTS.md      # Product context and linked repositories
+│       ├── GLOSSARY.md    # Shared domain vocabulary for this product
+│       ├── TEAM.md        # Product team roster
 │       ├── REPOS.md       # Personal repository paths (gitignored)
 │       ├── Initiatives/   # Active workstreams
 │       │   └── <Initiative>/
@@ -147,9 +149,11 @@ Forge ships with generic files that you adapt for your specific AI tool:
 4. **Personal style (optional):** Copy `Templates/STYLE.EXAMPLE.md` to `STYLE.md` at the workspace root and
    add your personal writing preferences. This file is gitignored – each team member can have their own.
 
-5. **Repository paths:** For each product directory, copy `Templates/REPOS.EXAMPLE.md` to
-   `Products/<Product>/REPOS.md` and fill in the local paths where you have each repository cloned.
-   This file is gitignored – each team member maintains their own.
+5. **Repository paths:** For each product directory, you got a `REPOS.md` to fill in the local paths where you have
+   each repository cloned. This file is gitignored – each team member maintains their own.
+
+6. **Team roster (optional):** For each product directory, you got a `TEAM.md` where you can add the team members
+   working on that product. This file is git-tracked – each product has its own roster reflecting who works on it.
 
 The `Commands/` folder contains the "shipped with Forge" versions. Your tool-specific copies can be customized (e.g.,
 adding frontmatter, tool-specific syntax) while the originals serve as reference.
@@ -184,7 +188,8 @@ rename these files to match your AI tool's convention.
 The root file establishes workspace-wide conventions: working style, writing conventions, folder structure, and
 available skills/commands.
 
-**Template:** See [Templates/AGENTS.EXAMPLE.md](./Templates/AGENTS.EXAMPLE.md). Copy to workspace root, renamed to your tool's convention.
+**Template:** See [Templates/AGENTS.EXAMPLE.md](./Templates/AGENTS.EXAMPLE.md). Copy to workspace root, renamed to your
+tool's convention.
 
 ### Product `AGENTS.md`
 
@@ -196,7 +201,9 @@ connections to other products.
 ### Initiative `AGENTS.md` (Optional)
 
 For complex `Initiatives`, a dedicated context file captures the goal, background, current state, and guidance for
-navigating the `Initiative's` artifacts.
+navigating the `Initiative's` artifacts. The YAML frontmatter includes a `lead:` field (name or @handle of the
+person driving the initiative) in addition to `depends-on` and `blocks` for dependency tracking. The `lead:` value
+is displayed by `/forge-status`.
 
 **Template:** See [Templates/Initiative-AGENTS.EXAMPLE.md](./Templates/Initiative-AGENTS.EXAMPLE.md)
 
@@ -212,7 +219,8 @@ the team, Forge supports an optional `STYLE.md` file at the workspace root.
 - **Root-only.** Personal style is about the person, not the product or initiative. Product-level style
   overrides already have a mechanism – the `AGENTS.md` hierarchy.
 
-**Template:** See [Templates/STYLE.EXAMPLE.md](./Templates/STYLE.EXAMPLE.md). Copy to `STYLE.md` at the workspace root and customize.
+**Template:** See [Templates/STYLE.EXAMPLE.md](./Templates/STYLE.EXAMPLE.md). Copy to `STYLE.md` at the workspace root
+and customize.
 
 ### Repository Paths (`REPOS.md`)
 
@@ -229,6 +237,22 @@ paths differ per developer, so they live in a separate `REPOS.md` inside each pr
 
 **Template:** See [Templates/REPOS.EXAMPLE.md](./Templates/REPOS.EXAMPLE.md). Copy to
 `Products/<Product>/REPOS.md` and fill in your local paths.
+
+Run `/forge-validate` to check for drift between `REPOS.md` and the product `AGENTS.md` — it will flag
+repositories present in one but missing from the other.
+
+### Team Roster (`TEAM.md`)
+
+`TEAM.md` inside each product directory lists the people working on that product.
+
+- **Git-tracked.** Unlike `STYLE.md` and `REPOS.md`, this file is shared — it records who works on the
+  product and which AI tool each person uses.
+- **Per-product.** Each `Products/<Name>/` directory has its own `TEAM.md`, reflecting that different
+  products often have different teams.
+- **Members table.** Columns: Name, Role, AI Tool, Contact.
+
+**Template:** See [Templates/TEAM.md](./Templates/TEAM.md). Copy to `Products/<Product>/TEAM.md` for each product.
+`/forge-onboard` can add the current user to each product's roster interactively.
 
 ### Linking Parent and Child Context Files
 
@@ -390,6 +414,24 @@ This preserves the full decision history and makes it clear why we changed cours
 
 **When to use:** When we've decided what to build and need to define the work for implementation.
 
+### Glossary: Shared Domain Vocabulary
+
+**Purpose:** Capture shared domain terms and their product-specific meanings to reduce ambiguity in
+artifacts and AI conversations.
+
+**Characteristics:**
+
+- Lives at the product level (`Products/<Product>/GLOSSARY.md`), not inside an `Initiative`.
+- A single `## Terms` table: Term, Definition, Notes.
+- Notes column holds synonyms, deprecated terms, or cross-references.
+- Evolves over time as the domain is better understood.
+
+**Template:** See [Templates/GLOSSARY.md](./Templates/GLOSSARY.md) for an example structure.
+
+**When to use:** Whenever a term carries product-specific meaning or is ambiguous across teams (e.g.,
+"account", "event", "order"). A populated glossary helps AI agents use consistent language and helps
+new team members ramp up quickly.
+
 ---
 
 ## Initiative Lifecycle
@@ -450,12 +492,18 @@ Forge distinguishes between two types of extensibility:
 
 Commands are user-invoked actions. Forge ships with these in the `Commands/` folder (copy to your tool's location):
 
+**Setup commands** (one-time workspace configuration):
+
+| Command          | What it does                                                                               |
+|------------------|--------------------------------------------------------------------------------------------|
+| `/forge-onboard` | Walk a new team member through tool detection, `REPOS.md`, `STYLE.md`, and `TEAM.md` setup |
+
 **Scaffolding commands** (create folder structures):
 
-| Command                 | What it does                                                  |
-|-------------------------|---------------------------------------------------------------|
-| `/forge-new-product`    | Scaffold a new `Product` with `AGENTS.md` and empty folders   |
-| `/forge-new-initiative` | Scaffold a new `Initiative` with `Exploration.md` and folders |
+| Command                 | What it does                                                                           |
+|-------------------------|----------------------------------------------------------------------------------------|
+| `/forge-new-product`    | Scaffold a new `Product` with `AGENTS.md`, `GLOSSARY.md`, `TEAM.md`, and empty folders |
+| `/forge-new-initiative` | Scaffold a new `Initiative` with `Exploration.md`, folders, and optional lead prompt   |
 
 These create the full folder structure with `.gitkeep` files in empty directories so they can be committed to git.
 
@@ -470,13 +518,14 @@ These create the full folder structure with `.gitkeep` files in empty directorie
 
 **Utility commands** (available at any stage):
 
-| Command           | What it does                                                                 |
-|-------------------|------------------------------------------------------------------------------|
-| `/forge-review`   | Reviews artifact quality and readiness                                       |
-| `/forge-status`   | Shows workspace overview with all products and initiatives by stage          |
-| `/forge-validate` | Validates workspace health, links, and staleness                             |
-| `/forge-push`     | Pushes artifacts to linked external services (wiki, issue tracker)           |
-| `/forge-pull`     | Pulls remote changes from linked external services back into local artifacts |
+| Command           | What it does                                                                            |
+|-------------------|-----------------------------------------------------------------------------------------|
+| `/forge-review`   | Reviews artifact quality and readiness                                                  |
+| `/forge-search`   | Searches all workspace artifacts for a keyword or phrase, grouped by Product/Initiative |
+| `/forge-status`   | Shows workspace overview with all products, initiatives by stage, and leads             |
+| `/forge-validate` | Validates workspace health, links, staleness, and `REPOS.md` drift                      |
+| `/forge-push`     | Pushes artifacts to linked external services (wiki, issue tracker)                      |
+| `/forge-pull`     | Pulls remote changes from linked external services back into local artifacts            |
 
 ### Skills
 
@@ -640,10 +689,11 @@ Review context files monthly or quarterly. For each `AGENTS.md`, verify:
 - [ ] **Architecture** section reflects current state
 - [ ] **Related Repositories** names match entries in the product's `REPOS.md`
 - [ ] **`REPOS.md`** paths exist on disk
+- [ ] **`REPOS.md` drift** — no repositories in `AGENTS.md` missing from `REPOS.md`, and no stale extras in `REPOS.md`
 - [ ] **Related Products** links are still accurate
 
-Run `/forge-validate` to automate structural checks. Manual review is still needed for semantic accuracy (e.g., "is
-the architecture description still true?").
+Run `/forge-validate` to automate structural checks (including `REPOS.md` drift detection). Manual review is still
+needed for semantic accuracy (e.g., "is the architecture description still true?").
 
 ### Start Messy, Refine Progressively
 
