@@ -10,7 +10,7 @@ Ask the user which AI tool they are using (or detect from context):
 
 - **Claude Code** → context file: `CLAUDE.md`, commands: `~/.claude/commands/`
 - **Cursor** → context file: `.cursorrules`, commands: `.cursor/rules/`
-- **GitHub Copilot** → context file: `COPILOT-INSTRUCTIONS.md`, commands: `.github/copilot/`
+- **GitHub Copilot** → context file: `.github/copilot-instructions.md`, commands: `.github/copilot/`
 - **Windsurf** → context file: `.windsurfrules`, commands: `.windsurf/rules/`
 - **Other** → ask user to confirm their context filename and command location
 

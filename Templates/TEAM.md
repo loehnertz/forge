@@ -13,7 +13,7 @@ name and command location each person uses.
 Common AI Tool values:
   Claude Code    → context file: CLAUDE.md, commands: ~/.claude/commands/
   Cursor         → context file: .cursorrules, commands: .cursor/rules/
-  GitHub Copilot → context file: COPILOT-INSTRUCTIONS.md, commands: .github/copilot/
+  GitHub Copilot → context file: .github/copilot-instructions.md, commands: .github/copilot/
   Windsurf       → context file: .windsurfrules, commands: .windsurf/rules/
   Other          → describe accordingly
 -->
