@@ -29,6 +29,11 @@ Create the folder structure for a new initiative within a product.
     - Replace `[Initiative Name]` with the actual initiative name
     - Set `lead:` in the frontmatter to the provided value (leave blank if none given)
     - Fill in the Goal section
+    - Ask the user if this initiative depends on any other initiative or blocks any other. If yes, populate
+      the `depends-on` and `blocks` frontmatter arrays with the relative paths to those initiatives
+      (e.g., `Products/Auth/Initiatives/OAuth-Migration`), and fill in the `## Dependencies` section with
+      a brief note explaining why each dependency exists. Also ask the blocking/depending initiative's owner
+      to add the symmetric entry to keep `forge-validate` happy.
 
 4. **Create Exploration.md** using `Templates/Exploration.md` as the starting point:
     - Copy the template to `Exploration.md`
