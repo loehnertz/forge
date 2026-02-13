@@ -42,3 +42,7 @@ Create the folder structure for a new product in the Forge workspace.
     - Populate `GLOSSARY.md` with the product's ubiquitous language
     - Add team members to `TEAM.md`
     - Create first initiative with `/forge-new-initiative`
+
+---
+
+**Awaiting your direction.** What is the name of the new product?

@@ -47,3 +47,7 @@ Create the folder structure for a new initiative within a product.
     - Update the product's `## Active Initiatives` table in the product `AGENTS.md` — add a new row
       with the initiative name (linked), the starting stage (`Discover`), and the lead if provided
     - Use `/forge-discover` to begin the Discover stage
+
+---
+
+**Awaiting your direction.** Which product should the new initiative be created under, and what is the initiative name?
