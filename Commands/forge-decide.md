@@ -8,7 +8,7 @@ Get alignment on the proposal, make the call, and record the decision for poster
 
 ## Context
 
-- **Entry trigger**: Proposal is ready for review and decision
+- **Entry trigger**: Proposal is ready for review and decision (status: `Draft` or `In Review`)
 - **Exit artifact**: Decision recording what was decided and why
 
 ## Relevant Files
@@ -23,7 +23,7 @@ Get alignment on the proposal, make the call, and record the decision for poster
 2. Address feedback and open questions
 3. Make the decision – commit to an approach
 4. Record the decision with context and rationale
-5. Update proposal frontmatter `status` to "Accepted" or "Superseded"
+5. Update proposal frontmatter `status` to `Accepted` or `Superseded` (from `Draft` or `In Review`)
 
 ## Handling Open Decisions in Proposals
 

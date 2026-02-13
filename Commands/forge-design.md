@@ -23,6 +23,8 @@ Formalize findings into a proposal, evaluate alternatives, and prepare for a dec
 2. Propose a solution with enough detail for others to evaluate
 3. Document alternatives considered and why they were not chosen
 4. Identify risks, trade-offs, and open questions
+5. When the proposal is ready for stakeholder review, update its `status` to `In Review` — this signals
+   that design work is complete and the proposal is awaiting a decision (run `/forge-decide` next)
 
 ## Design Principles
 
