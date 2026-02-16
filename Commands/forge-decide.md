@@ -14,8 +14,9 @@ Get alignment on the proposal, make the call, and record the decision for poster
 ## Relevant Files
 
 - `Proposal.md` – The proposal being decided on
-- `Decision.md` – The decision record to create
-- `Templates/Decision.md` – Template to start from (if available)
+- `Decision.md` – The decision record to create (if the product is inside a product group, the
+  template was resolved via product group override first, then root fallback — see FORGE.md "Template
+  Resolution")
 
 ## What Happens Here
 

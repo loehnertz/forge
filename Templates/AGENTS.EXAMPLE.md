@@ -42,7 +42,8 @@ Please check the [FORGE.md](./FORGE.md) for the complete folder structure.
 - `Commands/` – Lifecycle and utility commands (copy to your tool's location)
 - `STYLE.md` – Personal writing style preferences (optional, gitignored)
 - `REPOS.md` – Per-product repository path mappings (per-user, gitignored; lives in each product directory)
-- `TEAM.md` – Per-product team roster (git-tracked; lives in each product directory)
+- `TEAM.md` – Per-product or per-product-group team roster (git-tracked; lives in each product or product group directory)
+- `STYLE.md` – Per-product-group shared writing style (git-tracked, optional; lives in each product group directory)
 
 ## Staleness Detection
 

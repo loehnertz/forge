@@ -14,8 +14,9 @@ Formalize findings into a proposal, evaluate alternatives, and prepare for a dec
 ## Relevant Files
 
 - `Exploration.md` – Reference your discovery findings
-- `Proposal.md` – The proposal document to create or refine
-- `Templates/Proposal.md` – Template to start from (if available)
+- `Proposal.md` – The proposal document to create or refine (if the product is inside a product group,
+  the template was resolved via product group override first, then root fallback — see FORGE.md "Template
+  Resolution")
 
 ## What Happens Here
 

@@ -13,7 +13,9 @@ Capture the problem or opportunity, research the space, and gather context befor
 
 ## Relevant Files
 
-- `Exploration.md` – The living scratchpad for this stage
+- `Exploration.md` – The living scratchpad for this stage (if the product is inside a product group,
+  the template was resolved via product group override first, then root fallback — see FORGE.md "Template
+  Resolution")
 - `References/` – Place for external documents, exports, research materials
 
 ## What Happens Here

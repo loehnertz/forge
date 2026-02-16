@@ -20,10 +20,12 @@ tool's conventions.
 
 ### 2. Configure Repository Paths (`REPOS.md`)
 
-For each directory under `Products/`:
+For each product under `Products/` (scanning into product group subdirectories where applicable):
 
 1. Read the product's `AGENTS.md` (or tool's context file) and find the `## Related Repositories`
-   table.
+   table. When scanning, distinguish product groups from products: a directory is a product if it
+   contains an `Initiatives/` folder; a directory is a product group if it contains product
+   subdirectories.
 2. If the product has related repositories, show the table and prompt the user for the local path
    where each repository is cloned on their machine.
 3. If `Products/<Product>/REPOS.md` already exists, show the current contents and ask whether to
@@ -50,18 +52,23 @@ Ask the user if they want to copy the `Commands/` folder contents to their tool'
   exist there (offer to overwrite or skip).
 - If no: let the user know they can do this manually later.
 
-### 5. Add to Product Team Rosters (`TEAM.md`) — If Present
+### 5. Add to Team Rosters (`TEAM.md`) — If Present
 
-For each product directory under `Products/`:
+For each product group and product directory under `Products/` (scanning into product group subdirectories):
 
-1. If `Products/<Product>/TEAM.md` exists, show the current `## Members` table.
-2. Ask the user if they want to add themselves as a new row for that product.
+1. If a product group has a `TEAM.md`, show the current `## Members` table and ask if the user wants
+   to add themselves at the product group level. Adding at the product group level covers all products
+   within.
+2. For each product, if `Products/<Product>/TEAM.md` exists (or
+   `Products/<Group>/<Product>/TEAM.md`), show the current `## Members` table and ask if the user
+   wants to add themselves.
 3. If yes: collect Name, Role, AI Tool (from Step 1), and Contact (email or handle). Append the
    row to the table.
-4. If the user is not involved in a particular product, skip it.
+4. If the user is not involved in a particular product group or product, skip it.
 
-If no `TEAM.md` files exist anywhere, mention that each product can have one (from
-`Templates/TEAM.md`) and that `/forge-new-product` creates it automatically.
+If no `TEAM.md` files exist anywhere, mention that each product or product group can have one (from
+`Templates/TEAM.md`) and that `/forge-new-product` and `/forge-new-group` create them
+automatically.
 
 ### 6. Orientation Overview
 

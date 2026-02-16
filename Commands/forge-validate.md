@@ -106,6 +106,46 @@ warning for the missing `REPOS.md` is already emitted by Check 1).
 | In AGENTS.md, missing from REPOS.md | ❌ Error    | `backend` listed in AGENTS.md but no row in REPOS.md       |
 | In REPOS.md, not in AGENTS.md       | ⚠️ Warning | `legacy-api` in REPOS.md has no matching repo in AGENTS.md |
 
+### 7. Product Group Validation
+
+For each product group directory (directories under `Products/` that contain product subdirectories):
+
+**Product group link integrity:**
+
+- If the product group has an `AGENTS.md`, verify that its `## Products` table links to existing product directories
+- Verify the root `AGENTS.md` references the product group and its products
+
+**Template override validation:**
+
+- If the product group has a `Templates/` directory, check that every file in it has a counterpart in the
+  root `Templates/` directory
+- Flag files without root counterparts as errors — product groups can override existing templates but
+  cannot add new template types
+
+**Product group orphan detection:**
+
+- Find product group directories that exist but are not referenced in the root `AGENTS.md`
+- Find products within product groups that are not referenced in the product group's `AGENTS.md` (if it
+  exists)
+
+**Product group staleness:**
+
+- Apply the same freshness checks (30/90 day thresholds) to product-group-level `AGENTS.md`, `GLOSSARY.md`,
+  `TEAM.md`, and `STYLE.md`
+
+**Glossary term conflict warnings:**
+
+- If both a product group and its product define the same term in their `GLOSSARY.md`, flag a warning
+  (product-level wins, but the conflict should be intentional)
+
+| Check                          | Level      | Example                                                         |
+|--------------------------------|------------|-----------------------------------------------------------------|
+| Template without root counterpart | ❌ Error | `Products/Platform/Templates/Custom.md` has no root equivalent  |
+| Unlinked product group         | ⚠️ Warning | `Products/Platform/` not referenced in root AGENTS.md           |
+| Unlinked product in product group | ⚠️ Warning | `Products/Platform/Auth/` not in product group's `## Products` table |
+| Stale product group file       | ⚠️/❌      | Product group `AGENTS.md` not updated in 45 days                |
+| Glossary term conflict         | ⚠️ Warning | "Event" defined in both product group and product GLOSSARY.md   |
+
 ## Output Format
 
 Present results in a clear, scannable format:

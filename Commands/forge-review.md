@@ -20,13 +20,15 @@ Provide structured feedback on artifacts to identify gaps, surface questions, an
 ## Relevant Files
 
 - The artifact being reviewed
-- `Templates/` – Reference templates for conformance checking
+- `Templates/` – Reference templates for conformance checking (if the product is inside a product
+  group, check `Products/<Group>/Templates/` for an override first, then fall back to root `Templates/`)
 - Related artifacts (e.g., Exploration when reviewing a Proposal)
 
 ## What Happens Here
 
 1. Identify the artifact(s) to review
-2. Load the corresponding template to check conformance
+2. Load the corresponding template to check conformance (using template resolution: product group
+   override first, root fallback)
 3. Assess completeness, clarity, and quality
 4. Surface questions and concerns
 5. Provide actionable improvement suggestions

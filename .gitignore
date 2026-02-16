@@ -7,7 +7,8 @@
 # Framework
 
 # Personal writing style (user-specific, not shared)
-STYLE.md
+# Root-only — group-level STYLE.md files (Products/<Group>/STYLE.md) are git-tracked
+/STYLE.md
 
 # Personal repository paths (user-specific, not shared)
-REPOS.md
+**/REPOS.md

@@ -54,7 +54,10 @@ Within each group, sort by artifact priority:
 
 ### 5. Output Format
 
-Group results by Product, then by Initiative within each product. For each match, show:
+Group results by Product (nested under Product Group if applicable), then by Initiative within each
+product. Include matches from product-group-level files (AGENTS.md, GLOSSARY.md, STYLE.md) under the
+product group header.
+For each match, show:
 
 - The artifact type and filename (linked if possible)
 - A 2–3 line snippet centered on the first match within the file
@@ -75,13 +78,17 @@ Group results by Product, then by Initiative within each product. For each match
       🔍 Exploration.md
          "...previous attempt at **event sourcing** stalled due to schema..."
 
-📦 Payments
-   📁 Initiatives/Checkout-V2
-      🎫 Tickets/Ticket-001.md
-         "...implement **event sourcing** handler for payment events..."
+👥 Platform
+   ⚙️ GLOSSARY.md
+      "...Event Sourcing — a pattern where state changes are stored as..."
+
+   📦 Events
+      📁 Initiatives/Schema-Registry
+         🎫 Tickets/Ticket-001.md
+            "...implement **event sourcing** handler for domain events..."
 
 ══════════════════════════════════════════════════════════════════════
-Found 4 matches across 2 products, 3 initiatives.
+Found 5 matches across 1 product group, 2 products, 3 initiatives.
 ```
 
 ### Artifact Type Icons

@@ -15,7 +15,9 @@ Break the decided approach into actionable work items ready for implementation.
 
 - `Decision.md` – The decision driving this work
 - `Proposal.md` – Design details to reference
-- `Tickets/` – Folder for ticket drafts
+- `Tickets/` – Folder for ticket drafts (if the product is inside a product group, ticket templates
+  are resolved via product group override first, then root fallback — see FORGE.md "Template
+  Resolution")
 
 ## What Happens Here
 
