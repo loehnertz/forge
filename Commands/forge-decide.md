@@ -15,7 +15,6 @@ Get alignment on the proposal, make the call, and record the decision for poster
 
 - `Proposal.md` – The proposal being decided on
 - `Decision.md` – The decision record to create
-- `Templates/Decision.md` – Template to start from (if available)
 
 ## What Happens Here
 

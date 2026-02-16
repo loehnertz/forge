@@ -118,51 +118,114 @@ forge/
 ├── Commands/              # Lifecycle commands – copy to your tool's location
 ├── Templates/             # Starter files and example configs (see below)
 ├── Products/
-│   └── <Product>/
-│       ├── AGENTS.md      # Product context and linked repositories
-│       ├── GLOSSARY.md    # Ubiquitous language for this product
-│       ├── TEAM.md        # Product team roster
-│       ├── REPOS.md       # Personal repository paths (gitignored)
-│       ├── Initiatives/   # Active workstreams
-│       │   └── <Initiative>/
-│       │       ├── AGENTS.md        # Initiative context (optional)
-│       │       ├── Exploration.md   # Research synthesis
-│       │       ├── Proposal.md      # Formal proposals
-│       │       ├── Decision.md      # Architecture decisions
-│       │       ├── Notes/           # Raw meeting notes, brain dumps
-│       │       ├── References/      # Initiative-specific references
-│       │       └── Tickets/         # Work item drafts
-│       └── References/    # Product-level reference materials
+│   ├── <Product>/                     # Standalone product (no product group)
+│   │   ├── AGENTS.md                  # Product context and linked repositories
+│   │   ├── GLOSSARY.md               # Ubiquitous language for this product
+│   │   ├── TEAM.md                    # Product team roster
+│   │   ├── REPOS.md                   # Personal repository paths (gitignored)
+│   │   ├── Initiatives/...
+│   │   └── References/
+│   └── <Group>/                       # Product group (team)
+│       ├── AGENTS.md                  # Product group context, conventions, Forge overrides (optional)
+│       ├── STYLE.md                   # Shared team writing style (optional, git-tracked)
+│       ├── GLOSSARY.md               # Shared terminology across the product group (optional)
+│       ├── TEAM.md                    # Team roster (optional)
+│       ├── Templates/                 # Overrides of root Templates/ (optional)
+│       │   └── Proposal.md           # Product group's version used instead of root's
+│       └── <Product>/                 # Product within the product group
+│           ├── AGENTS.md
+│           ├── GLOSSARY.md
+│           ├── TEAM.md
+│           ├── REPOS.md
+│           ├── Initiatives/
+│           │   └── <Initiative>/
+│           │       ├── AGENTS.md        # Initiative context (optional)
+│           │       ├── Exploration.md   # Research synthesis
+│           │       ├── Proposal.md      # Formal proposals
+│           │       ├── Decision.md      # Architecture decisions
+│           │       ├── Notes/           # Raw meeting notes, brain dumps
+│           │       ├── References/      # Initiative-specific references
+│           │       └── Tickets/         # Work item drafts
+│           └── References/
 ```
 
-### Large Workspaces
+### Product Groups
 
-For organizations with many products, an optional grouping layer keeps the workspace navigable. Instead of a flat
-`Products/<Product>/` structure, you can nest products under a group or domain:
+For organizations with many products, a **product group** layer keeps the workspace navigable and carries team-specific
+context. A product group typically represents a **team** that owns multiple products. Instead of a flat
+`Products/<Product>/` structure, you nest products under a product group:
 
 ```
 Products/
-├── Checkout/
-│   ├── Payments/
-│   └── Refunds/
-└── Platform/
-    ├── Auth/
-    └── Events/
+├── Checkout/              # Product group (team)
+│   ├── AGENTS.md          # Product group context, conventions, Forge overrides
+│   ├── STYLE.md           # Shared team writing style
+│   ├── GLOSSARY.md        # Shared terminology
+│   ├── TEAM.md            # Team roster
+│   ├── Templates/         # Template overrides
+│   │   └── Proposal.md
+│   ├── Payments/          # Product
+│   └── Refunds/           # Product
+└── Platform/              # Product group (team)
+    ├── AGENTS.md
+    ├── Auth/              # Product
+    └── Events/            # Product
 ```
 
-Each product still follows the same conventions (`AGENTS.md`, `GLOSSARY.md`, `TEAM.md`, `Initiatives/`). The group
-folder itself has no required files — it is a pure organizational container. Update the root `AGENTS.md` `## Products`
-section to reflect the nested paths:
+Each product within a product group still follows the same conventions (`AGENTS.md`, `GLOSSARY.md`, `TEAM.md`,
+`Initiatives/`). **All product-group-level files are optional.** A product group with no files remains a valid
+container — this is fully backwards compatible with existing workspaces.
+
+**Product group vs. product detection:** A directory is a **product** if it contains an `Initiatives/` folder. A
+directory is a **product group** if it contains subdirectories that are products.
+
+#### What Product Groups Can Carry
+
+| File          | Purpose                                                       | Git-tracked? |
+|---------------|---------------------------------------------------------------|--------------|
+| `AGENTS.md`   | Product group context, conventions, `## Forge Customizations` | Yes          |
+| `STYLE.md`    | Shared team writing style                                     | Yes          |
+| `GLOSSARY.md` | Shared terminology across the product group's products        | Yes          |
+| `TEAM.md`     | Team roster (team = product group)                            | Yes          |
+| `Templates/`  | Overrides of root `Templates/` (same-named files only)        | Yes          |
+
+#### Template Resolution
+
+When scaffolding an artifact within a grouped product (e.g., creating a Proposal.md), templates are resolved in
+this order:
+
+1. `Products/<Group>/Templates/<Template>.md` — product group override (if it exists)
+2. `Templates/<Template>.md` — root fallback
+
+Product groups can **override** existing base templates but cannot add new template types. Every file in a product
+group's `Templates/` directory must have a counterpart in the root `Templates/` directory.
+
+#### Linking Product Groups
+
+Update the root `AGENTS.md` `## Products` section to reference product groups and their products:
 
 ```markdown
 ## Products
 
+### Checkout
+
+- [Checkout Product Group](./Products/Checkout/AGENTS.md)
 - [Payments](./Products/Checkout/Payments/AGENTS.md)
+- [Refunds](./Products/Checkout/Refunds/AGENTS.md)
+
+### Platform
+
+- [Platform Product Group](./Products/Platform/AGENTS.md)
 - [Auth](./Products/Platform/Auth/AGENTS.md)
 ```
 
 Cross-initiative `depends-on` and `blocks` paths must include the full relative path from the workspace root (e.g.,
 `Products/Checkout/Payments/Initiatives/Multi-Currency`).
+
+Product groups can document cross-group relationships via a `## Related Product Groups` section in their `AGENTS.md`
+(see `Templates/Group-AGENTS.EXAMPLE.md` for the format).
+
+Use `/forge-new-group` to scaffold a new product group with all optional files.
 
 ### Adapting Forge to Your AI Tool
 
@@ -181,8 +244,12 @@ Forge ships with generic files that you adapt for your specific AI tool:
 5. **Repository paths:** Each product directory includes a `REPOS.md` where you can fill in the local paths of
    each cloned repository. This file is gitignored – each team member maintains their own copy.
 
-6. **Team roster (optional):** Each product directory includes a `TEAM.md` where you can add the team members
-   working on that product. This file is git-tracked – each product has its own roster.
+6. **Team roster (optional):** Each product or product group directory can include a `TEAM.md` where you can
+   add the team members working on that product or product group. This file is git-tracked.
+
+7. **Team style (optional):** If you use [product groups](#product-groups), copy
+   `Templates/Group-STYLE.EXAMPLE.md` to `Products/<Group>/STYLE.md` and customize for the team's shared
+   writing preferences. This file is git-tracked – see [Writing Style](#writing-style-stylemd) for the cascade.
 
 The `Commands/` folder contains the "shipped with Forge" versions. Your tool-specific copies can be customized (e.g.,
 adding frontmatter, tool-specific syntax) while the originals serve as reference.
@@ -227,6 +294,25 @@ connections to other products.
 
 **Template:** See [Templates/Product-AGENTS.EXAMPLE.md](./Templates/Product-AGENTS.EXAMPLE.md)
 
+### Product Group `AGENTS.md` (Optional)
+
+For workspaces using [product groups](#product-groups), a product-group-level context file provides team-wide
+conventions, shared context, and Forge customizations that cascade to all products within the product group. This sits
+between root and
+product in the hierarchy:
+
+```
+Root AGENTS.md → Product Group AGENTS.md → Product AGENTS.md → Initiative AGENTS.md
+```
+
+Product group context is useful for:
+
+- **Team conventions** that supplement or override root conventions for a specific team
+- **Cross-cutting concerns** that span the product group's products
+- **Forge Customizations** that apply to the team's products but not the entire workspace
+
+**Template:** See [Templates/Group-AGENTS.EXAMPLE.md](./Templates/Group-AGENTS.EXAMPLE.md)
+
 ### Initiative `AGENTS.md` (Optional)
 
 For complex `Initiatives`, a dedicated context file captures the goal, background, current state, and guidance for
@@ -236,20 +322,33 @@ is displayed by `/forge-status`.
 
 **Template:** See [Templates/Initiative-AGENTS.EXAMPLE.md](./Templates/Initiative-AGENTS.EXAMPLE.md)
 
-### Personal Writing Style (`STYLE.md`)
+### Writing Style (`STYLE.md`)
 
-For personal writing preferences – tone, spelling, formatting habits – that shouldn't be shared across
-the team, Forge supports an optional `STYLE.md` file at the workspace root.
+Forge supports `STYLE.md` files at two levels, each serving a different purpose:
 
-- **Gitignored by default.** Each team member can have their own without conflicts.
-- **Overrides writing conventions only.** `STYLE.md` takes precedence over the shared Writing
-  Conventions in `AGENTS.md` for stylistic choices but does not override structural rules, folder
-  conventions, or workflow instructions.
-- **Root-only.** Personal style is about the person, not the product or initiative. Product-level style
-  overrides already have a mechanism – the `AGENTS.md` hierarchy.
+**Personal style** (`/STYLE.md` at workspace root):
+
+- **Gitignored.** Each team member can have their own without conflicts.
+- **Overrides writing conventions only.** Takes precedence over all other style sources for stylistic choices
+  but does not override structural rules, folder conventions, or workflow instructions.
 
 **Template:** See [Templates/STYLE.EXAMPLE.md](./Templates/STYLE.EXAMPLE.md). Copy to `STYLE.md` at the workspace root
 and customize.
+
+**Team style** (`Products/<Group>/STYLE.md`):
+
+- **Git-tracked.** Shared across the team — everyone in the product group follows the same style preferences.
+- **Product-group-level only.** Lives inside a [product group](#product-groups) directory.
+- **Overridden by personal style.** If a team member has a personal `STYLE.md`, their preferences take priority.
+
+**Template:** See [Templates/Group-STYLE.EXAMPLE.md](./Templates/Group-STYLE.EXAMPLE.md). Copy to
+`Products/<Group>/STYLE.md` and customize.
+
+The full style cascade (most specific wins):
+
+1. Personal `STYLE.md` (workspace root, gitignored)
+2. Product Group `STYLE.md` (`Products/<Group>/STYLE.md`, git-tracked)
+3. Root `AGENTS.md` Writing Conventions
 
 ### Repository Paths (`REPOS.md`)
 
@@ -272,29 +371,54 @@ repositories present in one but missing from the other.
 
 ### Team Roster (`TEAM.md`)
 
-`TEAM.md` inside each product directory lists the people working on that product.
+`TEAM.md` lists the people working on a product or product group.
 
-- **Git-tracked.** Unlike `STYLE.md` and `REPOS.md`, this file is shared — it records who works on the
-  product and which AI tool each person uses.
-- **Per-product.** Each `Products/<Name>/` directory has its own `TEAM.md`, reflecting that different
-  products often have different teams.
+- **Git-tracked.** Unlike personal `STYLE.md` and `REPOS.md`, this file is shared — it records who works on the
+  product or product group and which AI tool each person uses.
+- **Per-product or per-product-group.** Each `Products/<Name>/` directory can have its own `TEAM.md`. When using
+  [product groups](#product-groups), a `TEAM.md` at the product group level serves as the default team roster for
+  all products within that product group. Products can optionally have their own `TEAM.md` for sub-team overrides.
 - **Members table.** Columns: Name, Role, AI Tool, Contact.
 
-**Template:** See [Templates/TEAM.md](./Templates/TEAM.md). Copy to `Products/<Product>/TEAM.md` for each product.
-`/forge-onboard` can add the current user to each product's roster interactively.
+**Template:** See [Templates/TEAM.md](./Templates/TEAM.md). Copy to `Products/<Product>/TEAM.md` or
+`Products/<Group>/TEAM.md`.
+`/forge-onboard` can add the current user to each product or product group roster interactively.
 
 ### Linking Parent and Child Context Files
 
 Parent context files should explicitly reference their children. This ensures AI tools discover and load the full
 context hierarchy. Without these references, nested context may be missed entirely.
 
-**Root → Products:**
+**Root → Products** (ungrouped):
 
 ```markdown
 ## Products
 
 - [Analytics](./Products/Analytics/AGENTS.md)
 - [Payments](./Products/Payments/AGENTS.md)
+```
+
+**Root → Product Group → Products** (grouped):
+
+```markdown
+## Products
+
+### Platform
+
+- [Platform Product Group](./Products/Platform/AGENTS.md)
+- [Auth](./Products/Platform/Auth/AGENTS.md)
+- [Events](./Products/Platform/Events/AGENTS.md)
+```
+
+**Product Group → Products:**
+
+```markdown
+## Products
+
+| Product | Description |
+|---------|-------------|
+| [Auth](./Auth/AGENTS.md) | Authentication and authorization |
+| [Events](./Events/AGENTS.md) | Event bus and messaging |
 ```
 
 **Product → Initiatives:**
@@ -306,8 +430,9 @@ context hierarchy. Without these references, nested context may be missed entire
 - [API-Redesign](./Initiatives/API-Redesign/AGENTS.md)
 ```
 
-Keep these links current. When you create a new `Product` or `Initiative`, add it to the parent's list. When an
-`Initiative` completes, either remove it or move it to a "Completed" section.
+Keep these links current. When you create a new `Product`, `Product Group`, or `Initiative`, add it to the parent's
+list.
+When an `Initiative` completes, either remove it or move it to a "Completed" section.
 
 ### Customizing Forge
 
@@ -331,11 +456,15 @@ Keep these links current. When you create a new `Product` or `Initiative`, add i
 - Initiatives use ticket prefix: `PROJ-123-Feature-Name/`
 ```
 
-This layering works at every level:
+This layering works at every level — more-specific customizations override less-specific ones (same cascade rule as
+`STYLE.md`):
 
 - **Root `AGENTS.md`:** Company-wide Forge customizations.
+- **Product Group `AGENTS.md`:** Team-wide overrides that cascade to all products in the product group (e.g., the
+  Platform team requires ADR numbers on all decisions). See [Product Groups](#product-groups).
 - **Product `AGENTS.md`:** Product-specific overrides (e.g., stricter review requirements for a high-risk domain).
-- **Templates/:** Customized artifact structures with required sections baked in.
+- **Templates/:** Customized artifact structures with required sections baked in. Product groups can override root
+  templates by placing same-named files in `Products/<Group>/Templates/`.
 
 ---
 
@@ -349,6 +478,18 @@ Exploration     → Refined synthesis of research
 Proposal        → Formal proposal (also known as RFC)
 Decision        → Locked decision record (also known as ADR)
 ```
+
+#### Status Lifecycles
+
+Artifacts that carry a `status` frontmatter field follow these lifecycles:
+
+| Artifact | Status Values                                     |
+|----------|---------------------------------------------------|
+| Proposal | `Draft` → `In Review` → `Accepted` → `Superseded` |
+| Decision | `Draft` → `Accepted` → `Superseded`               |
+
+`Exploration` and `Ticket` intentionally have no `status` field. Explorations have no formal review lifecycle; ticket
+status is tracked in the external issue tracker.
 
 ### Notes: Raw Context
 
@@ -366,6 +507,8 @@ the
 current understanding, or ask the user to clarify.
 
 `Notes` are raw input (what we heard). `Exploration` is synthesis (what we understand).
+
+**Template:** None. Notes are freeform by design — no template is needed.
 
 **When to use:** After any meeting, interview, or brainstorm. Capture first, synthesize later.
 
@@ -455,7 +598,13 @@ reduce ambiguity in artifacts and AI conversations.
 - Notes column holds synonyms, deprecated terms, or cross-references.
 - Evolves over time as the domain is better understood.
 
-**Template:** See [Templates/GLOSSARY.md](./Templates/GLOSSARY.md) for an example structure.
+When using [product groups](#product-groups), a `GLOSSARY.md` can also live at the product group level
+(`Products/<Group>/GLOSSARY.md`) for shared terminology across the product group's products. Terms accumulate: both
+product and product group glossary terms apply. On conflicts (same term defined at both levels), the product-level
+definition wins.
+
+**Template:** See [Templates/GLOSSARY.md](./Templates/GLOSSARY.md) for an example structure. The template includes
+`external` frontmatter, so glossaries can be pushed to an external service (e.g., a wiki page) via `/forge-push`.
 
 **When to use:** Whenever a term carries product-specific meaning or is ambiguous across teams (e.g.,
 "account", "event", "order"). A populated ubiquitous language glossary helps AI agents use consistent
@@ -505,6 +654,8 @@ Each stage has a corresponding command. See [Commands & Skills](#commands--skill
 
 **Practical notes:** Stages are a guide, not a mandate. `Design` often reveals gaps that send us back to `Discover`.
 Small changes might skip stages entirely. Some initiatives die early – keep them around to preserve the learning.
+`/forge-status` infers a fifth **Complete** pseudo-stage for initiatives whose Decision has been accepted and tickets
+have been written — this is not a formal lifecycle stage, but a convenience for operational visibility.
 
 ---
 
@@ -529,10 +680,11 @@ Commands are user-invoked actions. Forge ships with these in the `Commands/` fol
 
 **Scaffolding commands** (create folder structures):
 
-| Command                 | What it does                                                                           |
-|-------------------------|----------------------------------------------------------------------------------------|
-| `/forge-new-product`    | Scaffold a new `Product` with `AGENTS.md`, `GLOSSARY.md`, `TEAM.md`, and empty folders |
-| `/forge-new-initiative` | Scaffold a new `Initiative` with `Exploration.md`, folders, and optional lead prompt   |
+| Command                 | What it does                                                                                       |
+|-------------------------|----------------------------------------------------------------------------------------------------|
+| `/forge-new-group`      | Scaffold or upgrade a product group with `AGENTS.md`, `GLOSSARY.md`, `TEAM.md`, and optional files |
+| `/forge-new-product`    | Scaffold a new `Product` with `AGENTS.md`, `GLOSSARY.md`, `TEAM.md`, and empty folders             |
+| `/forge-new-initiative` | Scaffold a new `Initiative` with `Exploration.md`, folders, and optional lead prompt               |
 
 These create the full folder structure with `.gitkeep` files in empty directories so they can be committed to git.
 
@@ -721,6 +873,8 @@ Review context files monthly or quarterly. For each `AGENTS.md`, verify:
 - [ ] **`REPOS.md`** paths exist on disk
 - [ ] **`REPOS.md` drift** — no repositories in `AGENTS.md` missing from `REPOS.md`, and no stale extras in `REPOS.md`
 - [ ] **Related Products** links are still accurate
+- [ ] **Product group context (if applicable)** — product-group-level `AGENTS.md`, `GLOSSARY.md`, and `STYLE.md` reflect
+  current conventions
 
 Run `/forge-validate` to automate structural checks (including `REPOS.md` drift detection). Manual review is still
 needed for semantic accuracy (e.g., "is the architecture description still true?").

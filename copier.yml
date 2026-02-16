@@ -16,12 +16,8 @@ _exclude:
   - ".svn"
   # Forge repo-only files
   - "README.md"
-  - "CLAUDE.md"
   - "LICENSE"
   - "logo.png"
-  - "update-forge.sh"
-  - ".claude"
-  - ".idea"
 
 _message_after_copy: |
   Forge has been set up successfully!

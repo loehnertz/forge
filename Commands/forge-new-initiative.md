@@ -24,7 +24,9 @@ Create the folder structure for a new initiative within a product.
        └── .gitkeep
    ```
 
-3. **Create context file** using `Templates/Initiative-AGENTS.EXAMPLE.md` as the starting point:
+3. **Create context file** using `Templates/Initiative-AGENTS.EXAMPLE.md` as the starting point
+   (if the product is inside a product group, check `Products/<Group>/Templates/` first for an override,
+   then fall back to root `Templates/`):
     - Copy the template to `AGENTS.md` (or your tool's context file name)
     - Replace `[Initiative Name]` with the actual initiative name
     - Set `lead:` in the frontmatter to the provided value (leave blank if none given)
@@ -35,7 +37,8 @@ Create the folder structure for a new initiative within a product.
       a brief note explaining why each dependency exists. Also ask the blocking/depending initiative's owner
       to add the symmetric entry to keep `forge-validate` happy.
 
-4. **Create Exploration.md** using `Templates/Exploration.md` as the starting point:
+4. **Create Exploration.md** using `Templates/Exploration.md` as the starting point
+   (applying the same template resolution as Step 3 — product group override first, then root fallback):
     - Copy the template to `Exploration.md`
     - Replace `[Topic Name]` with the initiative name
 
