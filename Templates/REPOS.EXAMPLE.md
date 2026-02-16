@@ -13,3 +13,6 @@ paths where you have cloned or checked out each repository.
 | backend    | ~/Projects/product-backend  |
 | frontend   | ~/Projects/product-frontend |
 -->
+
+| Repository | Path |
+|------------|------|

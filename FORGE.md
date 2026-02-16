@@ -220,6 +220,9 @@ Update the root `AGENTS.md` `## Products` section to reference product groups an
 Cross-initiative `depends-on` and `blocks` paths must include the full relative path from the workspace root (e.g.,
 `Products/Checkout/Payments/Initiatives/Multi-Currency`).
 
+Product groups can document cross-group relationships via a `## Related Product Groups` section in their `AGENTS.md`
+(see `Templates/Group-AGENTS.EXAMPLE.md` for the format).
+
 Use `/forge-new-group` to scaffold a new product group with all optional files.
 
 ### Adapting Forge to Your AI Tool
@@ -449,7 +452,8 @@ When an `Initiative` completes, either remove it or move it to a "Completed" sec
 - Initiatives use ticket prefix: `PROJ-123-Feature-Name/`
 ```
 
-This layering works at every level:
+This layering works at every level — more-specific customizations override less-specific ones (same cascade rule as
+`STYLE.md`):
 
 - **Root `AGENTS.md`:** Company-wide Forge customizations.
 - **Product Group `AGENTS.md`:** Team-wide overrides that cascade to all products in the product group (e.g., the
@@ -471,6 +475,18 @@ Proposal        → Formal proposal (also known as RFC)
 Decision        → Locked decision record (also known as ADR)
 ```
 
+#### Status Lifecycles
+
+Artifacts that carry a `status` frontmatter field follow these lifecycles:
+
+| Artifact   | Status Values                                    |
+|------------|--------------------------------------------------|
+| Proposal   | `Draft` → `In Review` → `Accepted` → `Superseded` |
+| Decision   | `Draft` → `Accepted` → `Superseded`               |
+
+`Exploration` and `Ticket` intentionally have no `status` field. Explorations have no formal review lifecycle; ticket
+status is tracked in the external issue tracker.
+
 ### Notes: Raw Context
 
 **Purpose:** Dump raw meeting notes, transcripts, and unfiltered information.
@@ -487,6 +503,8 @@ the
 current understanding, or ask the user to clarify.
 
 `Notes` are raw input (what we heard). `Exploration` is synthesis (what we understand).
+
+**Template:** None. Notes are freeform by design — no template is needed.
 
 **When to use:** After any meeting, interview, or brainstorm. Capture first, synthesize later.
 
@@ -581,7 +599,8 @@ When using [product groups](#product-groups), a `GLOSSARY.md` can also live at t
 product and product group glossary terms apply. On conflicts (same term defined at both levels), the product-level
 definition wins.
 
-**Template:** See [Templates/GLOSSARY.md](./Templates/GLOSSARY.md) for an example structure.
+**Template:** See [Templates/GLOSSARY.md](./Templates/GLOSSARY.md) for an example structure. The template includes
+`external` frontmatter, so glossaries can be pushed to an external service (e.g., a wiki page) via `/forge-push`.
 
 **When to use:** Whenever a term carries product-specific meaning or is ambiguous across teams (e.g.,
 "account", "event", "order"). A populated ubiquitous language glossary helps AI agents use consistent
@@ -631,6 +650,8 @@ Each stage has a corresponding command. See [Commands & Skills](#commands--skill
 
 **Practical notes:** Stages are a guide, not a mandate. `Design` often reveals gaps that send us back to `Discover`.
 Small changes might skip stages entirely. Some initiatives die early – keep them around to preserve the learning.
+`/forge-status` infers a fifth **Complete** pseudo-stage for initiatives whose Decision has been accepted and tickets
+have been written — this is not a formal lifecycle stage, but a convenience for operational visibility.
 
 ---
 

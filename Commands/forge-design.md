@@ -14,9 +14,7 @@ Formalize findings into a proposal, evaluate alternatives, and prepare for a dec
 ## Relevant Files
 
 - `Exploration.md` – Reference your discovery findings
-- `Proposal.md` – The proposal document to create or refine (if the product is inside a product group,
-  the template was resolved via product group override first, then root fallback — see FORGE.md "Template
-  Resolution")
+- `Proposal.md` – The proposal document to create or refine
 
 ## What Happens Here
 
@@ -32,7 +30,7 @@ Formalize findings into a proposal, evaluate alternatives, and prepare for a dec
 - State the problem before jumping to solution
 - Evaluate alternatives honestly – don't strawman options
 - The proposal is a thinking tool, not just documentation
-- It's okay to have open questions – flag them in an `## Open Decisions` section (see `forge-decide.md` for the three-state label workflow: Recommendation → Decision Needed → Decision)
+- It's okay to have open questions – flag them in an `## Open Decisions` section (see `/forge-decide` for the three-state label workflow: Recommendation → Decision Needed → Decision)
 
 ---
 
