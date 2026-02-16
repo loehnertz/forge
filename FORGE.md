@@ -181,13 +181,13 @@ directory is a **product group** if it contains subdirectories that are products
 
 #### What Product Groups Can Carry
 
-| File | Purpose | Git-tracked? |
-|------|---------|--------------|
-| `AGENTS.md` | Product group context, conventions, `## Forge Customizations` | Yes |
-| `STYLE.md` | Shared team writing style | Yes |
-| `GLOSSARY.md` | Shared terminology across the product group's products | Yes |
-| `TEAM.md` | Team roster (team = product group) | Yes |
-| `Templates/` | Overrides of root `Templates/` (same-named files only) | Yes |
+| File          | Purpose                                                       | Git-tracked? |
+|---------------|---------------------------------------------------------------|--------------|
+| `AGENTS.md`   | Product group context, conventions, `## Forge Customizations` | Yes          |
+| `STYLE.md`    | Shared team writing style                                     | Yes          |
+| `GLOSSARY.md` | Shared terminology across the product group's products        | Yes          |
+| `TEAM.md`     | Team roster (team = product group)                            | Yes          |
+| `Templates/`  | Overrides of root `Templates/` (same-named files only)        | Yes          |
 
 #### Template Resolution
 
@@ -208,11 +208,13 @@ Update the root `AGENTS.md` `## Products` section to reference product groups an
 ## Products
 
 ### Checkout
+
 - [Checkout Product Group](./Products/Checkout/AGENTS.md)
 - [Payments](./Products/Checkout/Payments/AGENTS.md)
 - [Refunds](./Products/Checkout/Refunds/AGENTS.md)
 
 ### Platform
+
 - [Platform Product Group](./Products/Platform/AGENTS.md)
 - [Auth](./Products/Platform/Auth/AGENTS.md)
 ```
@@ -402,6 +404,7 @@ context hierarchy. Without these references, nested context may be missed entire
 ## Products
 
 ### Platform
+
 - [Platform Product Group](./Products/Platform/AGENTS.md)
 - [Auth](./Products/Platform/Auth/AGENTS.md)
 - [Events](./Products/Platform/Events/AGENTS.md)
@@ -427,7 +430,8 @@ context hierarchy. Without these references, nested context may be missed entire
 - [API-Redesign](./Initiatives/API-Redesign/AGENTS.md)
 ```
 
-Keep these links current. When you create a new `Product`, `Product Group`, or `Initiative`, add it to the parent's list.
+Keep these links current. When you create a new `Product`, `Product Group`, or `Initiative`, add it to the parent's
+list.
 When an `Initiative` completes, either remove it or move it to a "Completed" section.
 
 ### Customizing Forge
@@ -479,10 +483,10 @@ Decision        → Locked decision record (also known as ADR)
 
 Artifacts that carry a `status` frontmatter field follow these lifecycles:
 
-| Artifact   | Status Values                                    |
-|------------|--------------------------------------------------|
-| Proposal   | `Draft` → `In Review` → `Accepted` → `Superseded` |
-| Decision   | `Draft` → `Accepted` → `Superseded`               |
+| Artifact | Status Values                                     |
+|----------|---------------------------------------------------|
+| Proposal | `Draft` → `In Review` → `Accepted` → `Superseded` |
+| Decision | `Draft` → `Accepted` → `Superseded`               |
 
 `Exploration` and `Ticket` intentionally have no `status` field. Explorations have no formal review lifecycle; ticket
 status is tracked in the external issue tracker.
@@ -676,8 +680,8 @@ Commands are user-invoked actions. Forge ships with these in the `Commands/` fol
 
 **Scaffolding commands** (create folder structures):
 
-| Command                 | What it does                                                                                      |
-|-------------------------|---------------------------------------------------------------------------------------------------|
+| Command                 | What it does                                                                                       |
+|-------------------------|----------------------------------------------------------------------------------------------------|
 | `/forge-new-group`      | Scaffold or upgrade a product group with `AGENTS.md`, `GLOSSARY.md`, `TEAM.md`, and optional files |
 | `/forge-new-product`    | Scaffold a new `Product` with `AGENTS.md`, `GLOSSARY.md`, `TEAM.md`, and empty folders             |
 | `/forge-new-initiative` | Scaffold a new `Initiative` with `Exploration.md`, folders, and optional lead prompt               |
@@ -869,7 +873,8 @@ Review context files monthly or quarterly. For each `AGENTS.md`, verify:
 - [ ] **`REPOS.md`** paths exist on disk
 - [ ] **`REPOS.md` drift** — no repositories in `AGENTS.md` missing from `REPOS.md`, and no stale extras in `REPOS.md`
 - [ ] **Related Products** links are still accurate
-- [ ] **Product group context (if applicable)** — product-group-level `AGENTS.md`, `GLOSSARY.md`, and `STYLE.md` reflect current conventions
+- [ ] **Product group context (if applicable)** — product-group-level `AGENTS.md`, `GLOSSARY.md`, and `STYLE.md` reflect
+  current conventions
 
 Run `/forge-validate` to automate structural checks (including `REPOS.md` drift detection). Manual review is still
 needed for semantic accuracy (e.g., "is the architecture description still true?").

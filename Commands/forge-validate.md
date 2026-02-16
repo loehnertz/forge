@@ -138,13 +138,13 @@ For each product group directory (directories under `Products/` that contain pro
 - If both a product group and its product define the same term in their `GLOSSARY.md`, flag a warning
   (product-level wins, but the conflict should be intentional)
 
-| Check                          | Level      | Example                                                         |
-|--------------------------------|------------|-----------------------------------------------------------------|
-| Template without root counterpart | ❌ Error | `Products/Platform/Templates/Custom.md` has no root equivalent  |
-| Unlinked product group         | ⚠️ Warning | `Products/Platform/` not referenced in root AGENTS.md           |
+| Check                             | Level      | Example                                                              |
+|-----------------------------------|------------|----------------------------------------------------------------------|
+| Template without root counterpart | ❌ Error    | `Products/Platform/Templates/Custom.md` has no root equivalent       |
+| Unlinked product group            | ⚠️ Warning | `Products/Platform/` not referenced in root AGENTS.md                |
 | Unlinked product in product group | ⚠️ Warning | `Products/Platform/Auth/` not in product group's `## Products` table |
-| Stale product group file       | ⚠️/❌      | Product group `AGENTS.md` not updated in 45 days                |
-| Glossary term conflict         | ⚠️ Warning | "Event" defined in both product group and product GLOSSARY.md   |
+| Stale product group file          | ⚠️/❌       | Product group `AGENTS.md` not updated in 45 days                     |
+| Glossary term conflict            | ⚠️ Warning | "Event" defined in both product group and product GLOSSARY.md        |
 
 ## Output Format
 

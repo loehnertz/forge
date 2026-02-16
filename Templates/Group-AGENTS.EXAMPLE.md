@@ -50,9 +50,9 @@ Link to each product's context file within this product group. This is how AI to
 the context hierarchy — from this product group down into product and initiative context files.
 -->
 
-| Product   | Description                                          |
-|-----------|------------------------------------------------------|
-| [Product] | [Brief description](./[Product]/AGENTS.md)           |
+| Product   | Description                                |
+|-----------|--------------------------------------------|
+| [Product] | [Brief description](./[Product]/AGENTS.md) |
 
 ## Related Product Groups
 
@@ -61,8 +61,8 @@ Cross-references to collaborating product groups. Helps AI understand inter-team
 and integration points.
 -->
 
-| Product Group   | Relationship                                                     |
-|-----------------|------------------------------------------------------------------|
+| Product Group   | Relationship                                                      |
+|-----------------|-------------------------------------------------------------------|
 | [Product Group] | [How this product group interacts with the related product group] |
 
 ## References
