@@ -123,7 +123,8 @@ forge/
 │   └── <name>/
 │       ├── Commands/
 │       ├── Templates/
-│       └── AGENTS.md
+│       ├── AGENTS.md          # Plugin context: what this plugin provides
+│       └── ...                # Any additional files the plugin ships
 ├── Products/
 │   └── <Product>/
 │       ├── AGENTS.md      # Product context and linked repositories
