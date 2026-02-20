@@ -596,7 +596,8 @@ workspace:
 
 **Workspace layout.** Installed plugins live under `Plugins/` at the workspace root. Each plugin
 subdirectory is an independent Copier destination with its own `.copier-answers.yml`, so plugins update
-independently of core Forge:
+independently of core Forge. Plugins can include any additional files alongside `Commands/` and
+`Templates/` — Copier copies everything not in the plugin's `_exclude` list:
 
     Plugins/
       <name>/
