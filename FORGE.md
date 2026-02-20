@@ -581,8 +581,7 @@ needs:
 ### Plugin System
 
 Plugins extend Forge with additional commands and templates maintained outside the core framework. Common
-uses: integration with external tools (GitHub, Jira, Linear), domain-specific artifact types (ADRs,
-RFCs), and presentation outputs.
+uses: integration with external tools, domain-specific artifact types, and presentation outputs.
 
 **Plugin structure.** Each plugin is a standalone git repository that Copier can install into a
 workspace:
@@ -600,11 +599,11 @@ subdirectory is an independent Copier destination with its own `.copier-answers.
 independently of core Forge:
 
     Plugins/
-      github/
+      <name>/
         Commands/
-          forge-github-sync-issues.md
+          forge-<name>-<verb>.md
         Templates/
-          Github-Issue.md
+          <Name>-<Type>.md
         AGENTS-snippet.md
         .copier-answers.yml    # tracks this plugin's version
 
@@ -626,9 +625,9 @@ After installing, add an entry to `forge-plugins.yml` at the workspace root.
 
 **Naming rules.** These rules prevent conflicts between plugins and with core Forge:
 
-- Plugin `name`: lowercase, no hyphens or spaces (e.g., `github`, `jira`)
-- Command files: `forge-<name>-<verb>[-noun].md` (e.g., `forge-github-sync-issues.md`)
-- Template files: `<Name>-<Type>.md` (e.g., `Github-Issue.md`)
+- Plugin `name`: lowercase, no hyphens or spaces
+- Command files: `forge-<name>-<verb>[-noun].md`
+- Template files: `<Name>-<Type>.md`
 - Plugins never write to the root `Commands/` or `Templates/` directories — those belong to core Forge
 
 **The manifest.** `forge-plugins.yml` at the workspace root is the machine-readable record of installed

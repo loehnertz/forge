@@ -78,4 +78,4 @@ Forge plugins extend the framework with additional commands and templates. Each 
 are listed in `forge-plugins.yml`.
 
 When a plugin is installed, read its `AGENTS-snippet.md` to understand what commands and templates it
-provides. Plugin commands follow the `forge-<plugin-name>-<verb>` convention (e.g., `/forge-github-sync-issues`).
+provides. Plugin commands follow the `forge-<plugin-name>-<verb>` convention.
