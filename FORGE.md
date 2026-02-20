@@ -589,7 +589,7 @@ workspace:
     forge-plugin-<name>/
       copier.yml            # excludes meta files from distribution
       forge-plugin.yml      # plugin descriptor (name, version, min-forge-version, tags)
-      AGENTS.md     # AI-readable: what this plugin provides
+      AGENTS.md             # AI-readable: what this plugin provides
       Commands/             # optional: command files (forge-<name>-<verb>.md)
       Templates/            # optional: artifact templates
       README.md             # excluded from distribution
