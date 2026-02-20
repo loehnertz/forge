@@ -123,7 +123,7 @@ forge/
 │   └── <name>/
 │       ├── Commands/
 │       ├── Templates/
-│       └── AGENTS-snippet.md
+│       └── AGENTS.md
 ├── Products/
 │   └── <Product>/
 │       ├── AGENTS.md      # Product context and linked repositories
@@ -589,7 +589,7 @@ workspace:
     forge-plugin-<name>/
       copier.yml            # excludes meta files from distribution
       forge-plugin.yml      # plugin descriptor (name, version, min-forge-version, tags)
-      AGENTS-snippet.md     # AI-readable: what this plugin provides
+      AGENTS.md     # AI-readable: what this plugin provides
       Commands/             # optional: command files (forge-<name>-<verb>.md)
       Templates/            # optional: artifact templates
       README.md             # excluded from distribution
@@ -605,7 +605,7 @@ independently of core Forge. Plugins can include any additional files alongside 
           forge-<name>-<verb>.md
         Templates/
           <Name>-<Type>.md
-        AGENTS-snippet.md
+        AGENTS.md
         .copier-answers.yml    # tracks this plugin's version
 
 **Installing and updating plugins:**
