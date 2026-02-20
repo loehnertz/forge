@@ -1,0 +1,7 @@
+# Forge Plugin Registry
+# Lists plugins installed in this workspace.
+# Do not edit 'source' or 'path' manually — these are read by Copier for updates.
+# Install a plugin: copier copy <source> Plugins/<name>
+# Update a plugin:  copier update Plugins/<name>
+
+plugins: []

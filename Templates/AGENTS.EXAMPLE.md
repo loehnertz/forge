@@ -70,3 +70,12 @@ rules, folder conventions, or workflow instructions.
 - `/read-confluence` - Search existing documentation
 - `/read-jira` - Fetch ticket details
 -->
+
+## Plugins
+
+Forge plugins extend the framework with additional commands and templates. Each plugin lives in
+`Plugins/<name>/` and includes an `AGENTS-snippet.md` describing its capabilities. Installed plugins
+are listed in `forge-plugins.yml`.
+
+When a plugin is installed, read its `AGENTS-snippet.md` to understand what commands and templates it
+provides. Plugin commands follow the `forge-<plugin-name>-<verb>` convention (e.g., `/forge-github-sync-issues`).
