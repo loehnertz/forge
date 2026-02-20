@@ -115,8 +115,16 @@ The internal structure of a Forge workspace:
 ```
 forge/
 ├── FORGE.md               # This framework document
+├── AGENTS.md              # Root context file (copied from Templates/AGENTS.EXAMPLE.md)
 ├── Commands/              # Lifecycle commands – copy to your tool's location
 ├── Templates/             # Starter files and example configs (see below)
+├── forge-plugins.yml      # Installed plugin registry
+├── Plugins/               # Optional: installed plugins (see Plugin System)
+│   └── <name>/
+│       ├── Commands/
+│       ├── Templates/
+│       ├── AGENTS.md          # Plugin context: what this plugin provides
+│       └── ...                # Any additional files the plugin ships
 ├── Products/
 │   ├── <Product>/                     # Standalone product (no product group)
 │   │   ├── AGENTS.md                  # Product context and linked repositories
@@ -722,6 +730,62 @@ needs:
 | Documentation | Search and read wiki pages                   | Confluence, Notion, GitBook     |
 | Code review   | Run quality checks on changes                | Custom agents, linters          |
 | Scaffolding   | Generate boilerplate for new features        | API designer, component builder |
+
+### Plugin System
+
+Plugins extend Forge with additional commands and templates maintained outside the core framework. Common
+uses: integration with external tools, domain-specific artifact types, and presentation outputs.
+
+**Plugin structure.** Each plugin is a standalone git repository that Copier can install into a
+workspace:
+
+    forge-plugin-<name>/
+      copier.yml            # excludes meta files from distribution
+      forge-plugin.yml      # plugin descriptor (name, version, min-forge-version, tags)
+      AGENTS.md             # AI-readable: what this plugin provides
+      Commands/             # optional: command files (forge-<name>-<verb>.md)
+      Templates/            # optional: artifact templates
+      README.md             # excluded from distribution
+
+**Workspace layout.** Installed plugins live under `Plugins/` at the workspace root. Each plugin
+subdirectory is an independent Copier destination with its own `.copier-answers.yml`, so plugins update
+independently of core Forge. Plugins can include any additional files alongside `Commands/` and
+`Templates/` — Copier copies everything not in the plugin's `_exclude` list:
+
+    Plugins/
+      <name>/
+        Commands/
+          forge-<name>-<verb>.md
+        Templates/
+          <Name>-<Type>.md
+        AGENTS.md
+        .copier-answers.yml    # tracks this plugin's version
+
+**Installing and updating plugins:**
+
+    # Install
+    copier copy gh:<author>/forge-plugin-<name> Plugins/<name>
+
+    # Update one plugin
+    copier update Plugins/<name>
+
+    # Update all plugins
+    for dir in Plugins/*/; do copier update "$dir"; done
+
+    # Uninstall
+    rm -rf Plugins/<name>
+
+After installing, add an entry to `forge-plugins.yml` at the workspace root.
+
+**Naming rules.** These rules prevent conflicts between plugins and with core Forge:
+
+- Plugin `name`: lowercase, no hyphens or spaces
+- Command files: `forge-<name>-<verb>[-noun].md`
+- Template files: `<Name>-<Type>.md`
+- Plugins never write to the root `Commands/` or `Templates/` directories — those belong to core Forge
+
+**The manifest.** `forge-plugins.yml` at the workspace root is the machine-readable record of installed
+plugins. A future `forge` CLI will use it to automate install and update operations.
 
 ### Defining Commands & Skills
 
