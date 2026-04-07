@@ -69,6 +69,9 @@ Link to each initiative's context file so AI tools discover the full hierarchy.
 Stage can be set manually or inferred by /forge-status from artifacts present.
 Lead is optional — set it to the name or @handle of the person driving the initiative.
 Move completed initiatives to a "Completed Initiatives" section or remove them.
+Completed initiative artifacts are point-in-time historical records, not current truth.
+The code is authoritative — read initiative artifacts for the reasoning behind decisions,
+but verify specifics against the actual codebase.
 -->
 
 | Initiative                                                       | Stage    | Lead |
@@ -77,4 +80,9 @@ Move completed initiatives to a "Completed Initiatives" section or remove them.
 
 ## References
 
-<!-- Product-level documentation, wikis, runbooks -->
+<!--
+Product-level reference materials. If your repositories have their own documentation,
+limit this to genuinely external material (third-party APIs, regulatory docs, vendor specs).
+If repositories lack docs, this can hold architecture overviews and system descriptions.
+Prefer reading actual code via REPOS.md over relying on References/ copies.
+-->

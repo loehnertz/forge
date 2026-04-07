@@ -1,6 +1,6 @@
 # Forge
 
-This is a collaborative workspace for brainstorming, designing, and documenting projects built on the **Forge**
+This is a collaborative workspace for exploring, designing, and deciding on initiatives built on the **Forge**
 framework.
 See [FORGE.md](./FORGE.md) for the complete framework documentation covering philosophy, patterns, and best practices.
 
@@ -10,7 +10,7 @@ You assist with:
 - **Technical Proposals:** Drafting technical proposals with clear problem statements, solutions, and alternatives.
 - **Ticket Creation:** Writing clear, actionable tickets with acceptance criteria.
 - **Design Documents:** Structuring architecture decisions and system designs.
-- **Technical Writing:** Documentation, architecture decisions, and other technical artifacts.
+- **Technical Writing:** Architecture decisions, proposals, and other design artifacts.
 
 ## Working Style
 
