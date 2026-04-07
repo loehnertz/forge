@@ -1,10 +1,10 @@
 # Forge
 
-> A framework for agentic AI software engineering workspaces
+> A framework for designing software engineering initiatives with AI agents
 
-Forge is a framework for structuring collaborative workspaces where software engineers and AI agents work together
-on design and documentation. It provides conventions for organizing context, writing artifacts, and moving ideas from
-rough exploration to implementation-ready decisions.
+Forge is a framework for structuring collaborative workspaces where software engineers and AI agents design
+initiatives together. It provides conventions for organizing context, writing artifacts, and moving ideas from rough
+exploration to implementation-ready decisions.
 
 ---
 
@@ -46,7 +46,7 @@ Forge addresses this by:
 - **Connecting to reality** by linking workspaces to actual codebases and external systems. AI agents can read real
   implementations, not just descriptions of them.
 - **Defining workflows** that move systematically from exploration to actionable work.
-- **Living alongside code** as a git-tracked workspace that evolves with the systems it documents.
+- **Living alongside code** as a git-tracked workspace that captures design thinking before implementation begins.
 
 > **Note:** This documentation uses `AGENTS.md` as the generic name for context files. Rename to your AI tool's
 > convention: `CLAUDE.md` for Claude Code, `.cursorrules` for Cursor, `COPILOT.md` for GitHub Copilot, etc.
@@ -65,7 +65,7 @@ design work. The conventions are tool-agnostic; adapt the context file naming to
 
 Forge is designed for software engineering teams who:
 
-- Use AI agents for design and documentation work.
+- Use AI agents for design and decision-making work.
 - Want to preserve and build on design discussions rather than lose them.
 - Need AI collaborators that understand their specific systems and conventions.
 - Value written artifacts over verbal discussions for technical decisions.
@@ -102,7 +102,7 @@ inside them:
 └── shared-libraries/
 ```
 
-This separation keeps concerns clean: Forge handles design and documentation, repositories handle code. The **Related
+This separation keeps concerns clean: Forge handles initiative design, repositories handle code. The **Related
 Repositories** pattern in product `AGENTS.md` files (with paths in the companion `REPOS.md`) links the two, allowing
 AI agents to read actual implementations when discussing design.
 This also hooks into the reality that the relationships between repositories are often more complex than being
@@ -370,12 +370,29 @@ paths differ per developer, so they live in a separate `REPOS.md` inside each pr
   the product `AGENTS.md`'s `## Related Repositories` table.
 - **Required for repo access.** AI agents use `REPOS.md` to resolve repository names to actual paths on
   disk. Without it, they cannot read source code for that product's repositories.
+- **Primary bridge to truth.** `REPOS.md` is not just a path listing — it connects Forge's design
+  artifacts to the authoritative source code. When starting an initiative, follow these paths to
+  understand the current state of the system rather than relying solely on curated summaries.
 
 **Template:** See [Templates/REPOS.EXAMPLE.md](./Templates/REPOS.EXAMPLE.md). Copy to
 `Products/<Product>/REPOS.md` and fill in your local paths.
 
 Run `/forge-validate` to check for drift between `REPOS.md` and the product `AGENTS.md` — it will flag
 repositories present in one but missing from the other.
+
+### Reference Materials (`References/`)
+
+`References/` directories exist at both product and initiative levels. Their role depends on how well-documented the
+connected repositories are:
+
+- **If repositories have their own documentation** (architecture docs, READMEs, inline docs): Use `References/` only
+  for genuinely external material — third-party API docs, regulatory requirements, vendor specifications, or other
+  material that doesn't live in any repository.
+- **If repositories lack documentation:** `References/` fills the gap as primary context. Store architecture overviews,
+  API contracts, and system descriptions here until the repositories themselves have proper documentation.
+
+In either case, prefer reading actual repository content (via `REPOS.md` paths) over relying on `References/` copies,
+which can drift from reality. See [Trust Hierarchy](#trust-hierarchy).
 
 ### Team Roster (`TEAM.md`)
 
@@ -665,6 +682,26 @@ Small changes might skip stages entirely. Some initiatives die early – keep th
 `/forge-status` infers a fifth **Complete** pseudo-stage for initiatives whose Decision has been accepted and tickets
 have been written — this is not a formal lifecycle stage, but a convenience for operational visibility.
 
+### After Decompose: Artifacts Become Historical
+
+Once an initiative completes (tickets are created and implementation begins), its artifacts become **point-in-time
+historical records**, not current truth. The code that gets built is the authoritative source — not the proposals and
+decisions that led to it.
+
+This matters because:
+
+- **Implementation diverges from design.** Real-world constraints, discoveries during coding, and evolving requirements
+  mean the final system rarely matches the original proposal exactly.
+- **Stale artifacts mislead AI agents.** An AI reading an old proposal may treat it as current intent rather than
+  historical context, leading to suggestions based on outdated assumptions.
+- **The code is the source of truth.** After implementation, read the actual codebase (via Related Repositories) to
+  understand what was built. Read the initiative artifacts to understand *why* it was built that way — but verify
+  against the code before acting on any specifics.
+
+Completed initiative artifacts remain valuable as historical context — they capture the reasoning, trade-offs, and
+alternatives considered. But they are snapshots of a moment in time, not living documents that track the current state
+of the system. See [Keep as History, Not as Truth](#keep-as-history-not-as-truth).
+
 ---
 
 ## Commands & Skills
@@ -917,6 +954,10 @@ Stale context is worse than no context; it misleads. Update `AGENTS.md` files wh
 - `Initiatives` complete or change in direction.
 - Conventions evolve.
 
+> **Note:** This guidance applies to `AGENTS.md` context files, which describe current state. Initiative artifacts
+> (`Exploration.md`, `Proposal.md`, `Decision.md`) are point-in-time records and should NOT be retroactively updated —
+> see [After Decompose: Artifacts Become Historical](#after-decompose-artifacts-become-historical).
+
 #### Staleness Detection
 
 Use version control or filesystem to check when files were last updated:
@@ -997,6 +1038,20 @@ data flows where, and where integration points exist.
 
 Isolated documents lose context over time.
 
+### Trust Hierarchy
+
+When information conflicts across sources, follow this precedence:
+
+1. **Code** (via Related Repositories) — the ultimate source of truth for what exists today.
+2. **Repository documentation** — README files, inline docs, and architecture docs within code repos.
+3. **Forge context files** (`AGENTS.md`) — curated summaries that may lag behind the code.
+4. **`References/`** — external materials that may be outdated copies or third-party docs.
+5. **Completed initiative artifacts** — historical records that reflect intent at a point in time, not necessarily
+   current reality.
+
+When in doubt, read the code. `AGENTS.md` summaries and `References/` materials are valuable for orientation and
+understanding intent, but the codebase is authoritative for current behavior.
+
 ### Push When Ready
 
 Push finalized artifacts to external systems for team visibility using `/forge-push`. Keep Forge as the authoring
@@ -1004,9 +1059,14 @@ environment during design time and push when the artifact is stable enough for e
 `Draft` artifacts unless the team expects to collaborate externally during early stages. Use `/forge-pull` to
 incorporate changes made by external collaborators before resuming local edits.
 
-### Keep, Don't Delete
+### Keep as History, Not as Truth
 
-When work completes, leave initiatives where they are rather than deleting them. Future-us might need that context.
+When an initiative completes, leave its artifacts in place — they preserve valuable reasoning about *why* decisions were
+made. But treat them as historical records, not current documentation. The code is the source of truth for *what* was
+built; initiative artifacts explain the thinking that led there.
+
+When reading completed initiatives, verify any specifics against the actual codebase before acting on them.
+Implementations frequently diverge from original proposals as real-world constraints emerge.
 
 ### Know When to Stop Documenting
 

@@ -57,3 +57,6 @@ this section provides human-readable context about *why* each dependency exists.
 - **Notes/:** Raw meeting notes and transcripts. Unfiltered, may be incomplete or contradictory.
 - **`Exploration.md`:** Refined synthesis. Use this as the source of truth for current understanding.
 - When Notes and Exploration conflict, trust Exploration or ask for clarification.
+- **Completed initiatives:** If this initiative has completed, all artifacts are point-in-time historical
+  records. The implemented code is the source of truth for current behavior. Read these artifacts for
+  context on *why* decisions were made, but verify any specifics against the codebase.

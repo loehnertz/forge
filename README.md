@@ -1,7 +1,7 @@
 <p align="center">
   <img src="logo.png" alt="Forge logo" width="300">
   <br><br>
-  <strong>A framework for agentic AI software engineering workspaces</strong>
+  <strong>A framework for designing software engineering initiatives with AI agents</strong>
   <br><br>
   <a href="./FORGE.md">Documentation</a> ·
   <a href="./Templates/AGENTS.EXAMPLE.md">Template</a> ·
@@ -30,7 +30,7 @@ detailed guidance.
 
 - **Start simple:** Add structure only when it helps, not preemptively.
 - **Keep context current:** Stale `AGENTS.md` files mislead more than they help.
-- **Keep, don't delete:** Future-us might need that context.
+- **Keep as history:** Completed initiatives are historical records, not current truth.
 - **Link liberally:** Connect artifacts to each other and to code.
 - **Refine incrementally:** Messy exploration first, formal documents later.
 - **Know when to skip:** Not every change needs a proposal.
@@ -121,7 +121,8 @@ Not all tools support custom commands; check your tool's documentation.
 ```
 
 Then fill in the generated `AGENTS.md` with product context, link related repositories, and seed `References/` with
-existing documentation. Copy `Templates/REPOS.EXAMPLE.md` to the product directory as `REPOS.md` and fill in the
+external documentation (third-party APIs, regulatory docs). If your repositories lack their own docs, `References/` can
+also hold architecture overviews and system descriptions as interim context. Copy `Templates/REPOS.EXAMPLE.md` to the product directory as `REPOS.md` and fill in the
 local paths where you have each repository cloned (this file is gitignored — each team member has their own).
 
 **4. Start an initiative**
